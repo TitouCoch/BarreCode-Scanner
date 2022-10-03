@@ -1,36 +1,3 @@
-//-----------------------------------------------------------------------------------
-//VERSION UNICODE 
-
-var key = ['0', '1', '000','001','010','100','110','101','011','111']
-
-String.prototype.encodeUnicode = function() {
-
-  var chaineCaractere = this, result = [],encryped_string=[]
-
-  for (var i=0; i<chaineCaractere.length;i++) result.push(chaineCaractere[i].charCodeAt(0).toString(2).match(/.{1,3}/g));
-  for (var i=0; i<result.length; i++) 
-  for (var j=0; j<result[i].length; j++) encryped_string.push(key.indexOf(result[i][j]));
-
-
-  for (var a=0; a<encryped_string.length; a++) {
-    temp=document.getElementById('vertical'+a);
-    temp2 = 10*encryped_string[a]
-    temp.style.height=`${temp2}px`
-    temp.style.borderLeft="4px solid white"
-    temp.style.display="inline-block"
-    temp.style.marginLeft="5px"
-    temp.style.borderRadius="5px"
-  }
-
-  return encryped_string
-}
-
-
-var chaineCaractere = 'aaaaaaaaa';
-chaineCaractere.encodeUnicode()
-
-
-
 //-------------------------------------------------------------------------------------
 //VERSION BASE 36 - TABLE DE CRYPTAGE 
 
@@ -127,40 +94,9 @@ var tableCryptageInt=[[0,3,7],
 }
 
 
-var chaineCaractere = 'VT0410532';
-//chaineCaractere.encodeBaseTrenteSix()
+var chaineCaractere = "0000";
+chaineCaractere.encodeBaseTrenteSix()
 
 
 
 
-const video = document.getElementById('video');
-const canvas = document.getElementById('canvas');
-const snap = document.getElementById('snap');
-
-const constraints = {
-  audio:true,
-  video: {
-    width:{min:1024, ideal:1200,max:1920},
-    height:{min:576, ideal:720,max:1000}
-  }
-}
-
-
-async function startWebCam() {
-  try{
-    const stream= await navigator.mediaDevices.getUserMedia(constraints);
-    video.srcObject = stream;
-    window.stream = stream;
-  }catch(e){
-    console.log(e.toString());
-  }
-}
-
-
-var context = canvas.getContext('2d');
-
-snap.addEventListener('click', () =>{
-  context.drawImage(video,0,0,640,480);
-});
-
-startWebCam();
