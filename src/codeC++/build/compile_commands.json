@@ -1,0 +1,7 @@
+[
+{
+  "directory": "/Users/titoucoch/Desktop/ProjectOpenCV/build",
+  "command": "/usr/bin/clang++  -isystem /usr/local/include/opencv4 -g -arch arm64 -std=gnu++11 -o CMakeFiles/projectopencv.dir/main.cpp.o -c /Users/titoucoch/Desktop/ProjectOpenCV/main.cpp",
+  "file": "/Users/titoucoch/Desktop/ProjectOpenCV/main.cpp"
+}
+]

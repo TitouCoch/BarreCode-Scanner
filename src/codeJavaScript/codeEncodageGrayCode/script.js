@@ -139,9 +139,8 @@ String.prototype.encodeGrayCode = function() {
 }
 
 
-
 //Initialisation chaine de caractère licence
-var licence = '';
+var licence = 'VT0410532';
 //Appelle de la fonction avec la licence pour paramètre
 licence.encodeGrayCode()
 
