@@ -1,5 +1,5 @@
-###SPORT TRACK
-![Schéma de la structure du GitHub](images/SchémaReadme.png)
+**SportTrack**
+![Schéma de la structure du GitHub](https://i.imgur.com/3IwaXXY.png)
 **Auteurs :**
 - [Ivan Salle](https://github.com/IvanSalle)
 - [Titouan Cocheril](https://github.com/TitouCoch)
