@@ -35,7 +35,9 @@ imgElement.onload = function () {
   const dicObjet = {} //Création d'une variable dictionnaire 
   //Boucle qui parcours tous les contours de l'image
   for (var i = 0; i < contours.size(); ++i) {
+    console.log(contours)
     var ci = contours.get(i)  //Récupération du contours courant dans une variable
+    console.log(ci);
     dicObjet[i] = []  //Ajout de clé dans le dictionnaire dicObjet
     //Boucle qui parcours le contours courant
     for (var j = 0; j < ci.data32S.length; j += 2) {
