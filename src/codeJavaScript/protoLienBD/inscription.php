@@ -7,6 +7,7 @@
     <title>SPORT-TRACK</title>
 </head>
 <body>
+    <h1>Inscription Sport Track</h1>
     <form id="formulaireInscription" method="post" action="traitementInscription.php">
         <label for="numLicence">Numéro de licence</label>
         <input name="numLicence" type="text" placeholder="Numéro de licence">

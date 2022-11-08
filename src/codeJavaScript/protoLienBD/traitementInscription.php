@@ -27,7 +27,7 @@ if(count($res) == 1){
         $req = $conn->prepare($req);
         $req->execute(['licence'=>$licence, 'mail'=>$mail, 'mdp'=>$passwd]);
         //Redirection vers connexion
-        header("Location: inscription.php?err=success");
+        header("Location: connexion.php");
         exit;
     }else{
         //La licence est utilisé
