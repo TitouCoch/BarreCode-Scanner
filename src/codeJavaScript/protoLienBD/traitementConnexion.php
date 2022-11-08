@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 //On récupère les variables transmis par la méthode POST
 $mail = htmlspecialchars($_POST['email']);
 $passwd = htmlspecialchars($_POST['passwd']);
@@ -22,7 +24,9 @@ if(count($res)==1){
     $res = $req->fetch();
     if($res[0] == $passwd){
         //Le mot de passe est bon
-        header('location: connexion.php?err=sucess');
+        //On démarre la session
+        $_SESSION['user'] = $mail;
+        header('location: landing.php');
         exit;
     }else{
         //Le mot de passe est faux
