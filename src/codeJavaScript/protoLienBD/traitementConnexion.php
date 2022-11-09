@@ -35,7 +35,7 @@ if(count($res)==1){
     }
 }else{
     //L'email n'est pas valide
-    header('location: connexion.php?err=email');
+    header('location: connexion.php?err=mail');
     exit;
 }
 

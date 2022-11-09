@@ -33,17 +33,18 @@ $idEquipe = $res['id_equipe'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Landing page</title>
 </head>
 <body>
     <div id="carteDeProfil">   
         <?php
-        print("<p class='infoJoueur'> $nom </p>");
-        print("<p class='infoJoueur'> $prenom </p>");
-        print("<p class='infoJoueur'> $licence </p>");
-        print("<p class='infoJoueur'> $mail </p>");
-        print("<p class='infoJoueur'> $poste </p>");
-        print("<p class='infoJoueur'> $idEquipe </p>");
+        print("<p class='infoJoueur'>Nom : $nom </p>");
+        print("<p class='infoJoueur'>Prenom : $prenom </p>");
+        print("<p class='infoJoueur'>Licence : $licence </p>");
+        print("<p class='infoJoueur'>Adresse mail : $mail </p>");
+        print("<p class='infoJoueur'>Poste : $poste </p>");
+        print("<p class='infoJoueur'>idEquipe : $idEquipe </p>");
         ?>
     </div>
 
