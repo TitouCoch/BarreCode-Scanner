@@ -26,6 +26,13 @@ $prenom = $res['prenom'];
 $mail = $_SESSION['user'];
 $poste = $res['poste'];
 $idEquipe = $res['id_equipe'];
+
+//On récupère l'équipe du Joueur
+$req = "SELECT nom FROM Equipe WHERE id=:id";
+$req = $conn->prepare($req);
+$req->execute(['id'=>$idEquipe]);
+$res = $req->fetch();
+$equipe = $res['nom'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -44,7 +51,7 @@ $idEquipe = $res['id_equipe'];
         print("<p class='infoJoueur'>Licence : $licence </p>");
         print("<p class='infoJoueur'>Adresse mail : $mail </p>");
         print("<p class='infoJoueur'>Poste : $poste </p>");
-        print("<p class='infoJoueur'>idEquipe : $idEquipe </p>");
+        print("<p class='infoJoueur'>Equipe : $equipe </p>");
         ?>
     </div>
 
