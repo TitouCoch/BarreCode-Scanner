@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE Tabula_Rasa>
+<Algorithme>
+  <nom>5. Decodage dans main</nom>
+  <date_creation>9/11/2022 09:24</date_creation>
+  <Elements>
+    <Action>
+      <Position>630;37</Position>
+      <StyleLien>2</StyleLien>
+      <PreAssertion>matriceImage</PreAssertion>
+      <PostAssertion>?</PostAssertion>
+      <Titre>Decodage d'une image 
+Programme Principal</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>0</DetailsVideVisible>
+      <Enfants>
+        <Action>
+          <Position>128;165</Position>
+          <StyleLien>1</StyleLien>
+          <PreAssertion>matriceImage</PreAssertion>
+          <PostAssertion>matriceContoursObjets</PostAssertion>
+          <Titre>recuperationContoursObjet()</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants/>
+        </Action>
+        <Action>
+          <Position>377;277</Position>
+          <StyleLien>1</StyleLien>
+          <PreAssertion>matriceContoursObjets</PreAssertion>
+          <PostAssertion>licenceGreyCode</PostAssertion>
+          <Titre>recuperationRatio(matriceContoursObjets)</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants/>
+        </Action>
+        <Action>
+          <Position>766;175</Position>
+          <StyleLien>1</StyleLien>
+          <PreAssertion>licenceGreyCode</PreAssertion>
+          <PostAssertion>numLicence</PostAssertion>
+          <Titre>convertionLicenceGreyCode(licenceGreyCode)</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants/>
+        </Action>
+        <Action>
+          <Position>1137;278</Position>
+          <StyleLien>1</StyleLien>
+          <PreAssertion>numLicence</PreAssertion>
+          <PostAssertion>indicateur</PostAssertion>
+          <Titre>testerLicence(numLicence)</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants/>
+        </Action>
+      </Enfants>
+    </Action>
+  </Elements>
+  <Dictionary/>
+</Algorithme>

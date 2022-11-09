@@ -1,0 +1,145 @@
+<?xml version="1.0"?>
+<!DOCTYPE Tabula_Rasa>
+<Algorithme>
+  <nom>4. Conversion licenceGreyCode en string</nom>
+  <date_creation>9/11/2022 09:16</date_creation>
+  <Elements>
+    <Action>
+      <Position>615;17</Position>
+      <StyleLien>2</StyleLien>
+      <PreAssertion>licenceGreyCode</PreAssertion>
+      <PostAssertion>numLicence</PostAssertion>
+      <Titre>Conversion licenceGreyCode en 
+chaine de caractère</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>1</DetailsVideVisible>
+      <Enfants>
+        <Action>
+          <Position>598;138</Position>
+          <StyleLien>2</StyleLien>
+          <PreAssertion>licenceGreyCode</PreAssertion>
+          <PostAssertion>numLicence</PostAssertion>
+          <Titre>Parcours complet de licenceGreyCode 
+avec traitement systématique</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants>
+            <Iteration>
+              <Position>766.5;272.5</Position>
+              <StyleLien>1</StyleLien>
+              <Titre>pour bit de 0 à licenceGreyCode.length-1
+avec un pas de 6</Titre>
+              <IterationFixe>1</IterationFixe>
+              <Enfants>
+                <Action>
+                  <Position>282;376</Position>
+                  <StyleLien>2</StyleLien>
+                  <PreAssertion>licenceGreyCode</PreAssertion>
+                  <PostAssertion>motBinaire</PostAssertion>
+                  <Titre>Récupération de 6 bits de la liste 
+dans un motBinaire temporaire</Titre>
+                  <DetailsVisible>1</DetailsVisible>
+                  <DetailsVideVisible>1</DetailsVideVisible>
+                  <Enfants>
+                    <Iteration>
+                      <Position>622.5;505.5</Position>
+                      <StyleLien>1</StyleLien>
+                      <Titre>pour decalage de 0 à 5</Titre>
+                      <IterationFixe>1</IterationFixe>
+                      <Enfants>
+                        <Action>
+                          <Position>208;610</Position>
+                          <StyleLien>1</StyleLien>
+                          <PreAssertion>licenceGreyCode,
+motBinaire</PreAssertion>
+                          <PostAssertion>motBinaire</PostAssertion>
+                          <Titre>motBinaire ← motBinaire + licenceGreyCode[bit+decalage]</Titre>
+                          <DetailsVisible>1</DetailsVisible>
+                          <DetailsVideVisible>1</DetailsVideVisible>
+                          <Enfants/>
+                        </Action>
+                      </Enfants>
+                    </Iteration>
+                    <Action>
+                      <Position>140;508</Position>
+                      <StyleLien>1</StyleLien>
+                      <PreAssertion>motBinaire</PreAssertion>
+                      <PostAssertion>motBinaire</PostAssertion>
+                      <Titre>Initialisation motBinaire</Titre>
+                      <DetailsVisible>1</DetailsVisible>
+                      <DetailsVideVisible>1</DetailsVideVisible>
+                      <Enfants/>
+                    </Action>
+                  </Enfants>
+                </Action>
+                <Action>
+                  <Position>834;375</Position>
+                  <StyleLien>2</StyleLien>
+                  <PreAssertion>motBinaire,
+licenceGreyCode</PreAssertion>
+                  <PostAssertion>numLicence</PostAssertion>
+                  <Titre>Recherche de première occurrence dans
+la variable globale tableEncodage</Titre>
+                  <DetailsVisible>1</DetailsVisible>
+                  <DetailsVideVisible>1</DetailsVideVisible>
+                  <Enfants>
+                    <Iteration>
+                      <Position>1018.5;500.5</Position>
+                      <StyleLien>1</StyleLien>
+                      <Titre>pour cle dans tableEncodage.key</Titre>
+                      <IterationFixe>1</IterationFixe>
+                      <Enfants>
+                        <Condition>
+                          <Position>970.5;580</Position>
+                          <StyleLien>1</StyleLien>
+                          <estUnique>1</estUnique>
+                          <operationsLogiques>
+                            <operation>
+                              <Titre>motBinaire = tableEncodage[cle]</Titre>
+                              <Enfants>
+                                <Action>
+                                  <Position>846;706</Position>
+                                  <StyleLien>2</StyleLien>
+                                  <PreAssertion>∅</PreAssertion>
+                                  <PostAssertion>∅</PostAssertion>
+                                  <Titre>Ajout du caractère correspondant à
+la chaine de caractères numLicence</Titre>
+                                  <DetailsVisible>0</DetailsVisible>
+                                  <DetailsVideVisible>1</DetailsVideVisible>
+                                  <Enfants>
+                                    <Action>
+                                      <Position>855;812</Position>
+                                      <StyleLien>1</StyleLien>
+                                      <PreAssertion>∅</PreAssertion>
+                                      <PostAssertion>∅</PostAssertion>
+                                      <Titre>numLicence ← numLicence + cle</Titre>
+                                      <DetailsVisible>0</DetailsVisible>
+                                      <DetailsVideVisible>1</DetailsVideVisible>
+                                      <Enfants/>
+                                    </Action>
+                                  </Enfants>
+                                </Action>
+                                <Sortie>
+                                  <Position>1222;727</Position>
+                                </Sortie>
+                              </Enfants>
+                            </operation>
+                            <operation>
+                              <Titre>Sinon</Titre>
+                              <Enfants/>
+                            </operation>
+                          </operationsLogiques>
+                        </Condition>
+                      </Enfants>
+                    </Iteration>
+                  </Enfants>
+                </Action>
+              </Enfants>
+            </Iteration>
+          </Enfants>
+        </Action>
+      </Enfants>
+    </Action>
+  </Elements>
+  <Dictionary/>
+</Algorithme>

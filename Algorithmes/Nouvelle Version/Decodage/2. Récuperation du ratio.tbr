@@ -1,0 +1,314 @@
+<?xml version="1.0"?>
+<!DOCTYPE Tabula_Rasa>
+<Algorithme>
+  <nom>2. recuperation du ratio</nom>
+  <date_creation>9/11/2022 08:43</date_creation>
+  <Elements>
+    <Action>
+      <Position>639;68</Position>
+      <StyleLien>2</StyleLien>
+      <PreAssertion>matriceContoursObjets</PreAssertion>
+      <PostAssertion>listeRatios</PostAssertion>
+      <Titre>Récupération du ratio en fonction de 
+la hauteur des barres obtenues sur la photo</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>1</DetailsVideVisible>
+      <Enfants>
+        <Action>
+          <Position>300;246</Position>
+          <StyleLien>2</StyleLien>
+          <PreAssertion>matriceContoursObjets</PreAssertion>
+          <PostAssertion>listeObjets</PostAssertion>
+          <Titre>Récupération des hauteurs 
+et positions des objets</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants>
+            <Action>
+              <Position>150;376</Position>
+              <StyleLien>2</StyleLien>
+              <PreAssertion>listeObjets</PreAssertion>
+              <PostAssertion>listeObjets</PostAssertion>
+              <Titre>Initialisation</Titre>
+              <DetailsVisible>1</DetailsVisible>
+              <DetailsVideVisible>1</DetailsVideVisible>
+              <Enfants>
+                <Action>
+                  <Position>242;486</Position>
+                  <StyleLien>1</StyleLien>
+                  <PreAssertion>∅</PreAssertion>
+                  <PostAssertion>∅</PostAssertion>
+                  <Titre>listeObjets ← { }</Titre>
+                  <DetailsVisible>0</DetailsVisible>
+                  <DetailsVideVisible>1</DetailsVideVisible>
+                  <Enfants/>
+                </Action>
+              </Enfants>
+            </Action>
+            <Action>
+              <Position>503;375</Position>
+              <StyleLien>2</StyleLien>
+              <PreAssertion>listeObjets</PreAssertion>
+              <PostAssertion>listeObjets</PostAssertion>
+              <Titre>Parcours complet de listeObjet 
+avec traitement systématique</Titre>
+              <DetailsVisible>1</DetailsVisible>
+              <DetailsVideVisible>1</DetailsVideVisible>
+              <Enfants>
+                <Iteration>
+                  <Position>605.5;514.5</Position>
+                  <StyleLien>1</StyleLien>
+                  <Titre>pour objetCourant de 0 à
+matriceContoursObjets
+.length-1</Titre>
+                  <IterationFixe>1</IterationFixe>
+                  <Enfants>
+                    <Action>
+                      <Position>570;607</Position>
+                      <StyleLien>2</StyleLien>
+                      <PreAssertion>∅</PreAssertion>
+                      <PostAssertion>∅</PostAssertion>
+                      <Titre>Parcours complet des points de l'objet
+courant avec traitement systématique</Titre>
+                      <DetailsVisible>0</DetailsVisible>
+                      <DetailsVideVisible>1</DetailsVideVisible>
+                      <Enfants>
+                        <Iteration>
+                          <Position>558.5;742.5</Position>
+                          <StyleLien>1</StyleLien>
+                          <Titre>pour point de 0 à
+matriceContoursObjets[objetCourant]
+.length-1</Titre>
+                          <IterationFixe>1</IterationFixe>
+                          <Enfants>
+                            <Action>
+                              <Position>63;840</Position>
+                              <StyleLien>2</StyleLien>
+                              <PreAssertion>ymin,
+ymax,
+xpos</PreAssertion>
+                              <PostAssertion>ymin,
+ymax,
+xpos</PostAssertion>
+                              <Titre>Initialisation des variables</Titre>
+                              <DetailsVisible>1</DetailsVisible>
+                              <DetailsVideVisible>1</DetailsVideVisible>
+                              <Enfants>
+                                <Action>
+                                  <Position>51;950</Position>
+                                  <StyleLien>1</StyleLien>
+                                  <PreAssertion>∅</PreAssertion>
+                                  <PostAssertion>∅</PostAssertion>
+                                  <Titre>ymin ← matriceContoursObjets[objetCourant] [point] [1]
+ymax ← matriceContoursObjets[objetCourant] [point] [1]
+xpos ← matriceContoursObjets[objetCourant] [point] [0]
+</Titre>
+                                  <DetailsVisible>0</DetailsVisible>
+                                  <DetailsVideVisible>1</DetailsVideVisible>
+                                  <Enfants/>
+                                </Action>
+                              </Enfants>
+                            </Action>
+                            <Action>
+                              <Position>1568;838</Position>
+                              <StyleLien>2</StyleLien>
+                              <PreAssertion>listeObjets,
+hauteur,
+xpos</PreAssertion>
+                              <PostAssertion>listeObjets</PostAssertion>
+                              <Titre>Remplissage listeObjets</Titre>
+                              <DetailsVisible>1</DetailsVisible>
+                              <DetailsVideVisible>1</DetailsVideVisible>
+                              <Enfants>
+                                <Action>
+                                  <Position>1622;946</Position>
+                                  <StyleLien>1</StyleLien>
+                                  <PreAssertion>∅</PreAssertion>
+                                  <PostAssertion>∅</PostAssertion>
+                                  <Titre>listeObjets ← listeObjets + [xpos, hauteur]</Titre>
+                                  <DetailsVisible>0</DetailsVisible>
+                                  <DetailsVideVisible>0</DetailsVideVisible>
+                                  <Enfants/>
+                                </Action>
+                              </Enfants>
+                            </Action>
+                            <Action>
+                              <Position>1158;839</Position>
+                              <StyleLien>2</StyleLien>
+                              <PreAssertion>hauteur,
+ymin,
+ymax</PreAssertion>
+                              <PostAssertion>hauteur</PostAssertion>
+                              <Titre>Calcul de la hauteur de la barre</Titre>
+                              <DetailsVisible>1</DetailsVisible>
+                              <DetailsVideVisible>1</DetailsVideVisible>
+                              <Enfants>
+                                <Action>
+                                  <Position>1279;946</Position>
+                                  <StyleLien>1</StyleLien>
+                                  <PreAssertion>∅</PreAssertion>
+                                  <PostAssertion>∅</PostAssertion>
+                                  <Titre>hauteur ← ymax-ymin</Titre>
+                                  <DetailsVisible>0</DetailsVisible>
+                                  <DetailsVideVisible>1</DetailsVideVisible>
+                                  <Enfants/>
+                                </Action>
+                              </Enfants>
+                            </Action>
+                            <Action>
+                              <Position>730;839</Position>
+                              <StyleLien>2</StyleLien>
+                              <PreAssertion>∅</PreAssertion>
+                              <PostAssertion>∅</PostAssertion>
+                              <Titre>Recherche de coordonnée ymin et ymax</Titre>
+                              <DetailsVisible>0</DetailsVisible>
+                              <DetailsVideVisible>1</DetailsVideVisible>
+                              <Enfants>
+                                <Condition>
+                                  <Position>437.5;975</Position>
+                                  <StyleLien>1</StyleLien>
+                                  <estUnique>1</estUnique>
+                                  <operationsLogiques>
+                                    <operation>
+                                      <Titre>ymin > matriceContoursObjets[objetCourant] [point] [1]</Titre>
+                                      <Enfants>
+                                        <Action>
+                                          <Position>444;1080</Position>
+                                          <StyleLien>1</StyleLien>
+                                          <PreAssertion>∅</PreAssertion>
+                                          <PostAssertion>∅</PostAssertion>
+                                          <Titre>ymin ← matriceContoursObjets[objetCourant] [point] [1]</Titre>
+                                          <DetailsVisible>0</DetailsVisible>
+                                          <DetailsVideVisible>1</DetailsVideVisible>
+                                          <Enfants/>
+                                        </Action>
+                                      </Enfants>
+                                    </operation>
+                                    <operation>
+                                      <Titre>Sinon</Titre>
+                                      <Enfants/>
+                                    </operation>
+                                  </operationsLogiques>
+                                </Condition>
+                                <Condition>
+                                  <Position>844.5;973</Position>
+                                  <StyleLien>1</StyleLien>
+                                  <estUnique>1</estUnique>
+                                  <operationsLogiques>
+                                    <operation>
+                                      <Titre>ymax &lt; matriceContoursObjets[objetCourant] [point] [1]</Titre>
+                                      <Enfants>
+                                        <Action>
+                                          <Position>852;1079</Position>
+                                          <StyleLien>1</StyleLien>
+                                          <PreAssertion>∅</PreAssertion>
+                                          <PostAssertion>∅</PostAssertion>
+                                          <Titre>ymax ← matriceContoursObjets[objetCourant] [point] [1]</Titre>
+                                          <DetailsVisible>0</DetailsVisible>
+                                          <DetailsVideVisible>1</DetailsVideVisible>
+                                          <Enfants/>
+                                        </Action>
+                                      </Enfants>
+                                    </operation>
+                                    <operation>
+                                      <Titre>Sinon</Titre>
+                                      <Enfants/>
+                                    </operation>
+                                  </operationsLogiques>
+                                </Condition>
+                              </Enfants>
+                            </Action>
+                          </Enfants>
+                        </Iteration>
+                      </Enfants>
+                    </Action>
+                  </Enfants>
+                </Iteration>
+              </Enfants>
+            </Action>
+          </Enfants>
+        </Action>
+        <Action>
+          <Position>837;245</Position>
+          <StyleLien>1</StyleLien>
+          <PreAssertion>listeObjets</PreAssertion>
+          <PostAssertion>listeObjetsTrié</PostAssertion>
+          <Titre>Tri croissant de listeObjets en
+fonction de la clé abscisse x
+</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants/>
+        </Action>
+        <Action>
+          <Position>1295;245</Position>
+          <StyleLien>2</StyleLien>
+          <PreAssertion>listeObjetsTrié</PreAssertion>
+          <PostAssertion>listeRatios</PostAssertion>
+          <Titre>Calcul des ratios</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants>
+            <Action>
+              <Position>937;386</Position>
+              <StyleLien>1</StyleLien>
+              <PreAssertion>hauteurReference</PreAssertion>
+              <PostAssertion>hauteurReference</PostAssertion>
+              <Titre>Affectation de la hauteur référence 
+à la hauteur du premier objet</Titre>
+              <DetailsVisible>1</DetailsVisible>
+              <DetailsVideVisible>1</DetailsVideVisible>
+              <Enfants/>
+            </Action>
+            <Action>
+              <Position>1497;386</Position>
+              <StyleLien>2</StyleLien>
+              <PreAssertion>hauteurReference,
+listeObjetsTrié</PreAssertion>
+              <PostAssertion>listeRatios</PostAssertion>
+              <Titre>Parcours complet de tous les objets 
+de la liste avec traitement systématique</Titre>
+              <DetailsVisible>1</DetailsVisible>
+              <DetailsVideVisible>1</DetailsVideVisible>
+              <Enfants>
+                <Iteration>
+                  <Position>1647.5;522.5</Position>
+                  <StyleLien>1</StyleLien>
+                  <Titre>Pour objetCourant de 1 à listeObjetsTrié.lenght</Titre>
+                  <IterationFixe>1</IterationFixe>
+                  <Enfants>
+                    <Action>
+                      <Position>1535;598</Position>
+                      <StyleLien>2</StyleLien>
+                      <PreAssertion>∅</PreAssertion>
+                      <PostAssertion>∅</PostAssertion>
+                      <Titre>Division de la hauteur de l'objet courant
+par la hauteur référence et insertion dans
+la liste des ratios</Titre>
+                      <DetailsVisible>0</DetailsVisible>
+                      <DetailsVideVisible>1</DetailsVideVisible>
+                      <Enfants>
+                        <Action>
+                          <Position>1491;712</Position>
+                          <StyleLien>1</StyleLien>
+                          <PreAssertion>∅</PreAssertion>
+                          <PostAssertion>∅</PostAssertion>
+                          <Titre>listeRatios.push
+( listeObjetsTrié[ objetCourant ][ 1 ]/hauteurReference )</Titre>
+                          <DetailsVisible>0</DetailsVisible>
+                          <DetailsVideVisible>1</DetailsVideVisible>
+                          <Enfants/>
+                        </Action>
+                      </Enfants>
+                    </Action>
+                  </Enfants>
+                </Iteration>
+              </Enfants>
+            </Action>
+          </Enfants>
+        </Action>
+      </Enfants>
+    </Action>
+  </Elements>
+  <Dictionary/>
+</Algorithme>

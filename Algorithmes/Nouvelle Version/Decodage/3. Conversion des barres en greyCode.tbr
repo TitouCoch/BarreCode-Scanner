@@ -1,0 +1,102 @@
+<?xml version="1.0"?>
+<!DOCTYPE Tabula_Rasa>
+<Algorithme>
+  <nom>3. Conversion des barres en greyCode</nom>
+  <date_creation>9/11/2022 09:02</date_creation>
+  <Elements>
+    <Action>
+      <Position>602;71</Position>
+      <StyleLien>2</StyleLien>
+      <PreAssertion>listeRatios</PreAssertion>
+      <PostAssertion>licenceGreyCode</PostAssertion>
+      <Titre>Conversion barres en grey code</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>1</DetailsVideVisible>
+      <Enfants>
+        <Action>
+          <Position>706;185</Position>
+          <StyleLien>2</StyleLien>
+          <PreAssertion>∅</PreAssertion>
+          <PostAssertion>∅</PostAssertion>
+          <Titre>Parcours complet de listeRatios 
+avec traitement systématique</Titre>
+          <DetailsVisible>0</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants>
+            <Iteration>
+              <Position>716.5;327.5</Position>
+              <StyleLien>1</StyleLien>
+              <Titre>pour i allant de 0
+à listeRatios.length -1</Titre>
+              <IterationFixe>1</IterationFixe>
+              <Enfants>
+                <Action>
+                  <Position>654;406</Position>
+                  <StyleLien>2</StyleLien>
+                  <PreAssertion>∅</PreAssertion>
+                  <PostAssertion>∅</PostAssertion>
+                  <Titre>Recherche de première occurrence dans 
+la variable globale tableDecodage</Titre>
+                  <DetailsVisible>0</DetailsVisible>
+                  <DetailsVideVisible>1</DetailsVideVisible>
+                  <Enfants>
+                    <Iteration>
+                      <Position>706.5;537.5</Position>
+                      <StyleLien>1</StyleLien>
+                      <Titre>Pour ligne de 0 à 
+tableEncodage.length -1</Titre>
+                      <IterationFixe>1</IterationFixe>
+                      <Enfants>
+                        <Condition>
+                          <Position>632.5;628</Position>
+                          <StyleLien>1</StyleLien>
+                          <estUnique>1</estUnique>
+                          <operationsLogiques>
+                            <operation>
+                              <Titre>tableEncodage[ligne][0] &lt; listeRatios[ i ]
+et listeRatios[ i ] &lt;= tableEncodage[ligne][1]</Titre>
+                              <Enfants>
+                                <Iteration>
+                                  <Position>699.5;767.5</Position>
+                                  <StyleLien>1</StyleLien>
+                                  <Titre>pour bit de 0 à 2</Titre>
+                                  <IterationFixe>1</IterationFixe>
+                                  <Enfants>
+                                    <Action>
+                                      <Position>304;859</Position>
+                                      <StyleLien>1</StyleLien>
+                                      <PreAssertion>licenceGreyCode,
+tableEncodage</PreAssertion>
+                                      <PostAssertion>licenceGreyCode</PostAssertion>
+                                      <Titre>licenceGreyCode ← 
+licenceGreyCode + tableEncodage[ligne][2][bit]</Titre>
+                                      <DetailsVisible>1</DetailsVisible>
+                                      <DetailsVideVisible>1</DetailsVideVisible>
+                                      <Enfants/>
+                                    </Action>
+                                  </Enfants>
+                                </Iteration>
+                                <Sortie>
+                                  <Position>911;780</Position>
+                                </Sortie>
+                              </Enfants>
+                            </operation>
+                            <operation>
+                              <Titre>Sinon</Titre>
+                              <Enfants/>
+                            </operation>
+                          </operationsLogiques>
+                        </Condition>
+                      </Enfants>
+                    </Iteration>
+                  </Enfants>
+                </Action>
+              </Enfants>
+            </Iteration>
+          </Enfants>
+        </Action>
+      </Enfants>
+    </Action>
+  </Elements>
+  <Dictionary/>
+</Algorithme>

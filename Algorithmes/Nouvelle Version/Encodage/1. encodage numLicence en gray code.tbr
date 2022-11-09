@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!DOCTYPE Tabula_Rasa>
+<Algorithme>
+  <nom>encodage licence en gray code</nom>
+  <date_creation>8/11/2022 16:16</date_creation>
+  <Elements>
+    <Action>
+      <Position>452;42</Position>
+      <StyleLien>2</StyleLien>
+      <PreAssertion>numLicence,
+tableEncodageGreyCode</PreAssertion>
+      <PostAssertion>licenceGreyCode</PostAssertion>
+      <Titre>Conversion du numéro de 
+licence en gray code</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>1</DetailsVideVisible>
+      <Enfants>
+        <Action>
+          <Position>263;171</Position>
+          <StyleLien>2</StyleLien>
+          <PreAssertion>numLicence,
+tableEncodageGreyCode</PreAssertion>
+          <PostAssertion>licenceGreyCode</PostAssertion>
+          <Titre>Parcours complet du numéro
+de licence avec traitement 
+systématique (conversion en gray code)</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants>
+            <Iteration>
+              <Position>483.5;318.5</Position>
+              <StyleLien>1</StyleLien>
+              <Titre>pour caracCourant 
+allant de 0 à 
+numLicence.length -1</Titre>
+              <IterationFixe>1</IterationFixe>
+              <Enfants>
+                <Action>
+                  <Position>312;406</Position>
+                  <StyleLien>2</StyleLien>
+                  <PreAssertion>numLicence,
+tableEncodageGreyCode</PreAssertion>
+                  <PostAssertion>licenceGreyCode</PostAssertion>
+                  <Titre>Traduction du caractère 
+courant en grey code</Titre>
+                  <DetailsVisible>1</DetailsVisible>
+                  <DetailsVideVisible>1</DetailsVideVisible>
+                  <Enfants>
+                    <Action>
+                      <Position>376;525</Position>
+                      <StyleLien>1</StyleLien>
+                      <PreAssertion>∅</PreAssertion>
+                      <PostAssertion>∅</PostAssertion>
+                      <Titre>licenceGreyCode.push
+( tableEncodageGreyCode[ numLicence[caracCourant] ].values() )</Titre>
+                      <DetailsVisible>0</DetailsVisible>
+                      <DetailsVideVisible>1</DetailsVideVisible>
+                      <Enfants/>
+                    </Action>
+                  </Enfants>
+                </Action>
+              </Enfants>
+            </Iteration>
+          </Enfants>
+        </Action>
+        <Action>
+          <Position>909;170</Position>
+          <StyleLien>1</StyleLien>
+          <PreAssertion>licenceGreyCode</PreAssertion>
+          <PostAssertion>?</PostAssertion>
+          <Titre>Retourner licenceGreyCode</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>0</DetailsVideVisible>
+          <Enfants/>
+        </Action>
+      </Enfants>
+    </Action>
+  </Elements>
+  <Dictionary/>
+</Algorithme>

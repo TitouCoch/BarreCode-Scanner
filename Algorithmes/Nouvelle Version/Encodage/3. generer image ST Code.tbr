@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<!DOCTYPE Tabula_Rasa>
+<Algorithme>
+  <nom>generer image ST Code</nom>
+  <date_creation>8/11/2022 15:21</date_creation>
+  <Elements>
+    <Action>
+      <Position>613;46</Position>
+      <StyleLien>2</StyleLien>
+      <PreAssertion>numLicence</PreAssertion>
+      <PostAssertion>?</PostAssertion>
+      <Titre>Générer l'image du ST Code sur la page</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>0</DetailsVideVisible>
+      <Enfants>
+        <Action>
+          <Position>79;177</Position>
+          <StyleLien>1</StyleLien>
+          <PreAssertion>numLicence</PreAssertion>
+          <PostAssertion>licenceGreyCode</PostAssertion>
+          <Titre>Conversion numLicence en grey code</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants/>
+        </Action>
+        <Action>
+          <Position>589;177</Position>
+          <StyleLien>1</StyleLien>
+          <PreAssertion>licenceGreyCode</PreAssertion>
+          <PostAssertion>listeBarres</PostAssertion>
+          <Titre>Conversion du licenceGreyCode en barres</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants/>
+        </Action>
+        <Action>
+          <Position>1128;176</Position>
+          <StyleLien>2</StyleLien>
+          <PreAssertion>listeBarres</PreAssertion>
+          <PostAssertion>?</PostAssertion>
+          <Titre>Affichage de l'image ST Code</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>0</DetailsVideVisible>
+          <Enfants>
+            <Action>
+              <Position>1175;293</Position>
+              <StyleLien>2</StyleLien>
+              <PreAssertion>∅</PreAssertion>
+              <PostAssertion>∅</PostAssertion>
+              <Titre>Parcours complet de listeBarres
+ avec traitement systématique</Titre>
+              <DetailsVisible>1</DetailsVisible>
+              <DetailsVideVisible>1</DetailsVideVisible>
+              <Enfants>
+                <Iteration>
+                  <Position>1261.5;428.5</Position>
+                  <StyleLien>1</StyleLien>
+                  <Titre>pour i allant de 0
+à listeBarre.length -1</Titre>
+                  <IterationFixe>1</IterationFixe>
+                  <Enfants>
+                    <Action>
+                      <Position>1180;503</Position>
+                      <StyleLien>2</StyleLien>
+                      <PreAssertion>∅</PreAssertion>
+                      <PostAssertion>∅</PostAssertion>
+                      <Titre>Affectation de la hauteur sur les 
+éléments graphiques correspondant aux barres</Titre>
+                      <DetailsVisible>0</DetailsVisible>
+                      <DetailsVideVisible>1</DetailsVideVisible>
+                      <Enfants>
+                        <Action>
+                          <Position>874;640</Position>
+                          <StyleLien>1</StyleLien>
+                          <PreAssertion>barreHTMLTemp</PreAssertion>
+                          <PostAssertion>barreHTMLTemp</PostAssertion>
+                          <Titre>Affectation de l'élément graphique
+courante à une variable temporaire</Titre>
+                          <DetailsVisible>1</DetailsVisible>
+                          <DetailsVideVisible>1</DetailsVideVisible>
+                          <Enfants/>
+                        </Action>
+                        <Action>
+                          <Position>1434;640</Position>
+                          <StyleLien>1</StyleLien>
+                          <PreAssertion>∅</PreAssertion>
+                          <PostAssertion>∅</PostAssertion>
+                          <Titre>Affectation de la hauteur courante 
+à l'élément graphique</Titre>
+                          <DetailsVisible>0</DetailsVisible>
+                          <DetailsVideVisible>1</DetailsVideVisible>
+                          <Enfants/>
+                        </Action>
+                      </Enfants>
+                    </Action>
+                  </Enfants>
+                </Iteration>
+              </Enfants>
+            </Action>
+          </Enfants>
+        </Action>
+      </Enfants>
+    </Action>
+  </Elements>
+  <Dictionary/>
+</Algorithme>

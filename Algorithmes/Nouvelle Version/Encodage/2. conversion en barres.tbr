@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<!DOCTYPE Tabula_Rasa>
+<Algorithme>
+  <nom>conversion en barres</nom>
+  <date_creation>8/11/2022 16:30</date_creation>
+  <Elements>
+    <Action>
+      <Position>594;49</Position>
+      <StyleLien>2</StyleLien>
+      <PreAssertion>licenceGreyCode,
+correspGreyCodeBarre</PreAssertion>
+      <PostAssertion>listeBarres</PostAssertion>
+      <Titre>Conversion du numéro de licenceGreyCode en liste de barres</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>1</DetailsVideVisible>
+      <Enfants>
+        <Action>
+          <Position>231;175</Position>
+          <StyleLien>2</StyleLien>
+          <PreAssertion>listeBarres</PreAssertion>
+          <PostAssertion>listeBarres</PostAssertion>
+          <Titre>Initialisation de listeBarres</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants>
+            <Action>
+              <Position>260;287</Position>
+              <StyleLien>1</StyleLien>
+              <PreAssertion>listeBarres</PreAssertion>
+              <PostAssertion>listeBarres</PostAssertion>
+              <Titre>listeBarres ← [ ]</Titre>
+              <DetailsVisible>1</DetailsVisible>
+              <DetailsVideVisible>1</DetailsVideVisible>
+              <Enfants/>
+            </Action>
+          </Enfants>
+        </Action>
+        <Action>
+          <Position>747;177</Position>
+          <StyleLien>2</StyleLien>
+          <PreAssertion>licenceGreyCode,
+listeBarres</PreAssertion>
+          <PostAssertion>listeBarres</PostAssertion>
+          <Titre>Parcours complet de licenceGreyCode 
+avec traitement systématique 
+qui la transforme en liste de barres</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants>
+            <Iteration>
+              <Position>940.5;307.5</Position>
+              <StyleLien>1</StyleLien>
+              <Titre>i de 0 à licenceGreyCode.lenght-1
+avec un pas de 3</Titre>
+              <IterationFixe>1</IterationFixe>
+              <Enfants>
+                <Action>
+                  <Position>731;393</Position>
+                  <StyleLien>2</StyleLien>
+                  <PreAssertion>licenceGreyCode,
+motBinaire,
+listeBarres,
+correspGreyCodeBarre</PreAssertion>
+                  <PostAssertion>listeBarres</PostAssertion>
+                  <Titre>Conversion motBinaire (3 bits) 
+en 2 barres</Titre>
+                  <DetailsVisible>1</DetailsVisible>
+                  <DetailsVideVisible>1</DetailsVideVisible>
+                  <Enfants>
+                    <Action>
+                      <Position>211;528</Position>
+                      <StyleLien>2</StyleLien>
+                      <PreAssertion>motBinaire</PreAssertion>
+                      <PostAssertion>motBinaire</PostAssertion>
+                      <Titre>Initialisation du motBinaire temporaire</Titre>
+                      <DetailsVisible>1</DetailsVisible>
+                      <DetailsVideVisible>1</DetailsVideVisible>
+                      <Enfants>
+                        <Action>
+                          <Position>271;643</Position>
+                          <StyleLien>1</StyleLien>
+                          <PreAssertion>motBinaire</PreAssertion>
+                          <PostAssertion>motBinaire</PostAssertion>
+                          <Titre>motBinaire ← [ ]</Titre>
+                          <DetailsVisible>1</DetailsVisible>
+                          <DetailsVideVisible>1</DetailsVideVisible>
+                          <Enfants/>
+                        </Action>
+                      </Enfants>
+                    </Action>
+                    <Action>
+                      <Position>709;527</Position>
+                      <StyleLien>2</StyleLien>
+                      <PreAssertion>motBinaire</PreAssertion>
+                      <PostAssertion>motBinaire</PostAssertion>
+                      <Titre>Affectation motBinaire</Titre>
+                      <DetailsVisible>1</DetailsVisible>
+                      <DetailsVideVisible>1</DetailsVideVisible>
+                      <Enfants>
+                        <Iteration>
+                          <Position>778.5;650.5</Position>
+                          <StyleLien>1</StyleLien>
+                          <Titre>pour decalage de 1 à 3</Titre>
+                          <IterationFixe>1</IterationFixe>
+                          <Enfants>
+                            <Action>
+                              <Position>679;730</Position>
+                              <StyleLien>1</StyleLien>
+                              <PreAssertion>motBinaire</PreAssertion>
+                              <PostAssertion>motBinaire</PostAssertion>
+                              <Titre>motBinaire.push 
+( licenceGreyCode[ i+decalage] )</Titre>
+                              <DetailsVisible>1</DetailsVisible>
+                              <DetailsVideVisible>1</DetailsVideVisible>
+                              <Enfants/>
+                            </Action>
+                          </Enfants>
+                        </Iteration>
+                      </Enfants>
+                    </Action>
+                    <Action>
+                      <Position>1165;528</Position>
+                      <StyleLien>2</StyleLien>
+                      <PreAssertion>∅</PreAssertion>
+                      <PostAssertion>∅</PostAssertion>
+                      <Titre>Conversion motBinaire en 
+taille de barre avec une
+recherche de première occurrence</Titre>
+                      <DetailsVisible>0</DetailsVisible>
+                      <DetailsVideVisible>1</DetailsVideVisible>
+                      <Enfants>
+                        <Iteration>
+                          <Position>1212.5;659.5</Position>
+                          <StyleLien>1</StyleLien>
+                          <Titre>pour posCourante allant 
+de 1 à 
+correspGreyCodeBarre.size</Titre>
+                          <IterationFixe>1</IterationFixe>
+                          <Enfants>
+                            <Condition>
+                              <Position>1196.5;751</Position>
+                              <StyleLien>1</StyleLien>
+                              <estUnique>1</estUnique>
+                              <operationsLogiques>
+                                <operation>
+                                  <Titre>correspGreyCodeBarre[ posCourante ] = motBinaire</Titre>
+                                  <Enfants>
+                                    <Action>
+                                      <Position>984;890</Position>
+                                      <StyleLien>1</StyleLien>
+                                      <PreAssertion>listeBarres</PreAssertion>
+                                      <PostAssertion>listeBarres</PostAssertion>
+                                      <Titre>listeBarres ← listeBarres + posCourante</Titre>
+                                      <DetailsVisible>1</DetailsVisible>
+                                      <DetailsVideVisible>1</DetailsVideVisible>
+                                      <Enfants/>
+                                    </Action>
+                                    <Sortie>
+                                      <Position>1535;919</Position>
+                                    </Sortie>
+                                  </Enfants>
+                                </operation>
+                                <operation>
+                                  <Titre>Sinon</Titre>
+                                  <Enfants/>
+                                </operation>
+                              </operationsLogiques>
+                            </Condition>
+                          </Enfants>
+                        </Iteration>
+                      </Enfants>
+                    </Action>
+                  </Enfants>
+                </Action>
+              </Enfants>
+            </Iteration>
+          </Enfants>
+        </Action>
+        <Action>
+          <Position>1289;175</Position>
+          <StyleLien>1</StyleLien>
+          <PreAssertion>listeBarres</PreAssertion>
+          <PostAssertion>?</PostAssertion>
+          <Titre>Retourner listeBarres</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>0</DetailsVideVisible>
+          <Enfants/>
+        </Action>
+      </Enfants>
+    </Action>
+  </Elements>
+  <Dictionary/>
+</Algorithme>
