@@ -2,7 +2,7 @@
 <!DOCTYPE Tabula_Rasa>
 <Algorithme>
   <nom>4. Conversion licenceGreyCode en string</nom>
-  <date_creation>9/11/2022 09:16</date_creation>
+  <date_creation>9/11/2022 10:51</date_creation>
   <Elements>
     <Action>
       <Position>615;17</Position>
@@ -79,14 +79,14 @@ motBinaire</PreAssertion>
 licenceGreyCode</PreAssertion>
                   <PostAssertion>numLicence</PostAssertion>
                   <Titre>Recherche de première occurrence dans
-la variable globale tableEncodage</Titre>
+la variable globale tableEncodageGreyCode</Titre>
                   <DetailsVisible>1</DetailsVisible>
                   <DetailsVideVisible>1</DetailsVideVisible>
                   <Enfants>
                     <Iteration>
                       <Position>1018.5;500.5</Position>
                       <StyleLien>1</StyleLien>
-                      <Titre>pour cle dans tableEncodage.key</Titre>
+                      <Titre>pour cle dans tableEncodageGreyCode.key</Titre>
                       <IterationFixe>1</IterationFixe>
                       <Enfants>
                         <Condition>
@@ -95,7 +95,7 @@ la variable globale tableEncodage</Titre>
                           <estUnique>1</estUnique>
                           <operationsLogiques>
                             <operation>
-                              <Titre>motBinaire = tableEncodage[cle]</Titre>
+                              <Titre>motBinaire = tableEncodageGreyCode[cle]</Titre>
                               <Enfants>
                                 <Action>
                                   <Position>846;706</Position>
