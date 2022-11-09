@@ -138,11 +138,20 @@ String.prototype.encodeGrayCode = function() {
   return licence
 }
 
+//Input de la licence
+//Récupération des DOM
+var input = document.querySelector("#licenceInput")
+var buttonEncode = document.querySelector("#encodeButton")
+var exempleLicence = document.querySelectorAll(".exempleLicences")
 
-//Initialisation chaine de caractère licence
-var licence = 'VT0410532';
-//Appelle de la fonction avec la licence pour paramètre
-licence.encodeGrayCode()
+//Evenement du clique sur le bouton Encode
+buttonEncode.addEventListener("click", function(){
+  var licence = input.value
+  licence.encodeGrayCode()
+})
+
+
+
 
 
 
