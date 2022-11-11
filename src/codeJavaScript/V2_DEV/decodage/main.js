@@ -93,7 +93,6 @@ boutonPhoto.addEventListener('click', () => {
     let photoWebcam = new Photo(matriceImage);
     var matriceContoursObjet = photoWebcam.recuperationContourObjets();
     var listeRatios = photoWebcam.recuperationRatio(matriceContoursObjet);
-    console.log(listeRatios);
   
 
 });

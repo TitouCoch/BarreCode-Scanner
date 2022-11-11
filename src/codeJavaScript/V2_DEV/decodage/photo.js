@@ -100,14 +100,14 @@ return matriceContoursObjets;
         */
         // CALCUL DES RATIOS
         // initialisation
-        var listeRatios = new Float32Array(listeObjetsTrie.length);
         // affectation de  la hauteur du premier objet a la hauteur reference
         var hauteurReference = listeObjetsTrie[0][1];
         //parcours et calcul de chaques ratios
+        var listeRatio=[];
         for(var objetCourant = 1 ;objetCourant < listeObjetsTrie.length;objetCourant++){
-            var ratio = (listeObjetsTrie[0][1]/hauteurReference).toFixed(2);
-            console.log((listeObjetsTrie[0][1]/hauteurReference).toFixed(2));  
-            listeRatios[objetCourant] = ratio;
+            var dividende = listeObjetsTrie[objetCourant][1];
+            var ratio = (dividende/hauteurReference);   
+            listeRatio.push(ratio);
         }
         return listeRatios;
     };
