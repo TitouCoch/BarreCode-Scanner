@@ -21,6 +21,7 @@ class Licence {
             licenceGrayCode+=(tableEncodageGrayCode[this.numLicence[caracCourant]]);
         }
         //Retourne la licence convertie en gray code
+        console.log(licenceGrayCode)
         return licenceGrayCode;
     }
 

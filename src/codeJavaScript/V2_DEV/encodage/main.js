@@ -75,5 +75,5 @@ var correspGrayCodeBarre = {1:[0,0,0],
                 7:[1,0,1],
                 8:[0,1,0]};
 
-var licence= new Licence("a")
-licence.genererCodeBarre("a");
+var licence= new Licence("jetest")
+licence.genererCodeBarre("jetest");

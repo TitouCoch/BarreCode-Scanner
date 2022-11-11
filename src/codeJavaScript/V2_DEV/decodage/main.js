@@ -68,6 +68,17 @@ var tableEncodageGrayCode ={'a':'000000',
                     7:'100110',
                     8:'100010',
                     9:'100011'};
+
+  var tableDecodage=[[[0,0.125],[0,0,0]],
+  [[0.125,0.250],[0,0,1]],
+  [[0.250,0.375],[0,1,1]],
+  [[0.375,0.500],[1,1,1]],
+  [[0.500,0.625],[1,1,0]],
+  [[0.625,0.750],[1,0,0]],
+  [[0.750,0.875],[1,0,1]],
+  [[0.875,1],[0,1,0]]]
+  
+  
 //Initiation des variables
 //Récupération des éléments de la page HTML par leur ID
 const parametres = { video:true, audio:false};
@@ -154,7 +165,10 @@ boutonPhoto.addEventListener('click', () => {
     let matriceImage = document.getElementById('hiddenCanvas');
     let photoWebcam = new Photo(matriceImage);
     var matriceContoursObjet = photoWebcam.recuperationContourObjets();
-    var listeRatios = photoWebcam.recuperationRatio(matriceContoursObjet);
-  
+    var listeRatio = photoWebcam.recuperationRatio(matriceContoursObjet);
+    var graycode = photoWebcam.conversionGrayCode(listeRatio);
+    var licence = photoWebcam.conversionLicence(graycode);
+    console.log(licence)
+    
 
 });

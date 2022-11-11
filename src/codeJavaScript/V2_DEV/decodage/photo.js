@@ -109,25 +109,49 @@ return matriceContoursObjets;
             var ratio = (dividende/hauteurReference);   
             listeRatio.push(ratio);
         }
-        return listeRatios;
+        console.log(listeRatio)
+        return listeRatio;
     };
-    conversionGrayCode(listeRatios){
-    }
-    conversionLicence(licenceGreyCode){
-
+    conversionGrayCode(listeRatios) {
+        var licenceGrayCode="";
+        //Parcours complet de listeRatios avec traitement systématique
+        for (var i = 0; i < listeRatios.length; i++) {
+            //Recherche de la premère occurence dans la varaible global tableDecodage
+            for (var ligne=0; ligne < tableDecodage.length; ligne++) {
+                if (tableDecodage[ligne][0][0] < listeRatios[i] && listeRatios[i] <= tableDecodage[ligne][0][1]) {
+                    for (var bit =0; bit < 3; bit++) {
+                        licenceGrayCode+=tableDecodage[ligne][1][bit];
+                    }
+                    break;
+                }
+            }
+        }
+        console.log(licenceGrayCode)
+        return licenceGrayCode
+    };
+    conversionLicence(licenceGreyCode) {
+        var numLicence = "";
         // recuperation d'un mot binaire de 6bits de longueurs
-        for(var bit=0;bit < licenceGreyCode.length-1;bit += 6){
-            var motBinaire;
-            for(var decalage = 0; decalage < 5; decalage){
-                motBinaire += licenceGreyCode[bit+decalage];
+        for (var bit = 0; bit < licenceGreyCode.length - 1; bit += 6) {
+            var motBinaire = "";
+            if (licenceGreyCode.length - bit < 6) {
+                break;
+            }
+            for (var decalage = 0; decalage < 6; decalage++) {
+                motBinaire+=licenceGreyCode[bit + decalage];
+            }
+            console.log(motBinaire)
+
+            // insertion du caractere correspondant au motBinaire dans numLicence
+            for (var cle in tableEncodageGrayCode) {
+                console.log(motBinaire)
+                console.log(tableEncodageGrayCode[cle])
+                if (JSON.stringify(motBinaire) == JSON.stringify(tableEncodageGrayCode[cle])) {
+                    numLicence += cle;
+                }
             }
         }
-        // insertion du caractere correspondant au motBinaire dans numLicence
-        for(var cle in tableEncodageGrayCode){
-            if(motBinaire ===  tableEncodageCode[cle]){
-                numLicence += cle;
-            }
-        }
+        return numLicence;
     }
     testerLicence(numLicence){
 
