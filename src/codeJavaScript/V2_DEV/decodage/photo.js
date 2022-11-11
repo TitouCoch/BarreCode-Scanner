@@ -112,14 +112,27 @@ return matriceContoursObjets;
         return listeRatios;
     };
     conversionGrayCode(listeRatios){
-    
     }
     conversionLicence(licenceGreyCode){
 
+        // recuperation d'un mot binaire de 6bits de longueurs
+        for(var bit=0;bit < licenceGreyCode.length-1;bit += 6){
+            var motBinaire;
+            for(var decalage = 0; decalage < 5; decalage){
+                motBinaire += licenceGreyCode[bit+decalage];
+            }
+        }
+        // insertion du caractere correspondant au motBinaire dans numLicence
+        for(var cle in tableEncodageGrayCode){
+            if(motBinaire ===  tableEncodageCode[cle]){
+                numLicence += cle;
+            }
+        }
     }
     testerLicence(numLicence){
 
     }
     decodage(){
+        
     }
 };
