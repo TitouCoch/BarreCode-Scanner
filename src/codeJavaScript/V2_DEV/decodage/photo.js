@@ -133,6 +133,11 @@ return matriceContoursObjets;
 
     }
     decodage(){
-        
+            var matriceContourObjet = this.recuperationContourObjets(this.matriceImage);
+            var listeRatios = this.recuperationRatio(matriceContourObjet);
+            var licenceGrayCode = this.conversionGrayCode(listeRatios);
+            var numLicence = this.conversionLicence(licenceGrayCode);
+            this.testerLicence(numLicence);
+            //afficher info joueurs
     }
 };
