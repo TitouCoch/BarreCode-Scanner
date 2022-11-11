@@ -92,6 +92,8 @@ boutonPhoto.addEventListener('click', () => {
     let matriceImage = document.getElementById('hiddenCanvas');
     let photoWebcam = new Photo(matriceImage);
     var matriceContoursObjet = photoWebcam.recuperationContourObjets();
-    photoWebcam.recuperationRatio(matriceContoursObjet);
+    var listeRatios = photoWebcam.recuperationRatio(matriceContoursObjet);
+    console.log(listeRatios);
+  
 
 });
