@@ -2,15 +2,15 @@
 <!DOCTYPE Tabula_Rasa>
 <Algorithme>
   <nom>encodage licence en gray code</nom>
-  <date_creation>8/11/2022 16:16</date_creation>
+  <date_creation>11/11/2022 16:14</date_creation>
   <Elements>
     <Action>
       <Position>452;42</Position>
       <StyleLien>2</StyleLien>
-      <PreAssertion>numLicence,
+      <PreAssertion>numLicence,&#xd;
 tableEncodageGreyCode</PreAssertion>
       <PostAssertion>licenceGreyCode</PostAssertion>
-      <Titre>Conversion du numéro de 
+      <Titre>Conversion du numéro de &#xd;
 licence en gray code</Titre>
       <DetailsVisible>1</DetailsVisible>
       <DetailsVideVisible>1</DetailsVideVisible>
@@ -18,44 +18,56 @@ licence en gray code</Titre>
         <Action>
           <Position>263;171</Position>
           <StyleLien>2</StyleLien>
-          <PreAssertion>numLicence,
+          <PreAssertion>numLicence,&#xd;
 tableEncodageGreyCode</PreAssertion>
           <PostAssertion>licenceGreyCode</PostAssertion>
-          <Titre>Parcours complet du numéro
-de licence avec traitement 
+          <Titre>Parcours complet du numéro&#xd;
+de licence avec traitement &#xd;
 systématique (conversion en gray code)</Titre>
           <DetailsVisible>1</DetailsVisible>
           <DetailsVideVisible>1</DetailsVideVisible>
           <Enfants>
             <Iteration>
-              <Position>483.5;318.5</Position>
+              <Position>552.5;282.5</Position>
               <StyleLien>1</StyleLien>
               <Titre>pour caracCourant 
 allant de 0 à 
-numLicence.length -1</Titre>
+numLicence.length </Titre>
               <IterationFixe>1</IterationFixe>
               <Enfants>
                 <Action>
-                  <Position>312;406</Position>
+                  <Position>306;347</Position>
                   <StyleLien>2</StyleLien>
-                  <PreAssertion>numLicence,
+                  <PreAssertion>numLicence,&#xd;
 tableEncodageGreyCode</PreAssertion>
                   <PostAssertion>licenceGreyCode</PostAssertion>
-                  <Titre>Traduction du caractère 
+                  <Titre>Traduction du caractère &#xd;
 courant en grey code</Titre>
                   <DetailsVisible>1</DetailsVisible>
                   <DetailsVideVisible>1</DetailsVideVisible>
                   <Enfants>
                     <Action>
-                      <Position>376;525</Position>
-                      <StyleLien>1</StyleLien>
-                      <PreAssertion>∅</PreAssertion>
-                      <PostAssertion>∅</PostAssertion>
-                      <Titre>licenceGreyCode.push
-( tableEncodageGreyCode[ numLicence[caracCourant] ].values() )</Titre>
-                      <DetailsVisible>0</DetailsVisible>
-                      <DetailsVideVisible>1</DetailsVideVisible>
-                      <Enfants/>
+                      <Position>413;451</Position>
+                      <StyleLien>2</StyleLien>
+                      <PreAssertion>?</PreAssertion>
+                      <PostAssertion>?</PostAssertion>
+                      <Titre>Ajout dans la chaine de caractère licenceGrayCode
+ le caractère courant converti</Titre>
+                      <DetailsVisible>1</DetailsVisible>
+                      <DetailsVideVisible>0</DetailsVideVisible>
+                      <Enfants>
+                        <Action>
+                          <Position>394;553</Position>
+                          <StyleLien>1</StyleLien>
+                          <PreAssertion>∅</PreAssertion>
+                          <PostAssertion>∅</PostAssertion>
+                          <Titre>licenceGreyCode +=
+( tableEncodageGreyCode[ numLicence[caracCourant] ] )</Titre>
+                          <DetailsVisible>0</DetailsVisible>
+                          <DetailsVideVisible>1</DetailsVideVisible>
+                          <Enfants/>
+                        </Action>
+                      </Enfants>
                     </Action>
                   </Enfants>
                 </Action>

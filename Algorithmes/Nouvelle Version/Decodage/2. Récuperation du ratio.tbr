@@ -2,14 +2,14 @@
 <!DOCTYPE Tabula_Rasa>
 <Algorithme>
   <nom>2. recuperation du ratio</nom>
-  <date_creation>9/11/2022 08:43</date_creation>
+  <date_creation>10/11/2022 08:30</date_creation>
   <Elements>
     <Action>
       <Position>639;68</Position>
       <StyleLien>2</StyleLien>
       <PreAssertion>matriceContoursObjets</PreAssertion>
       <PostAssertion>listeRatios</PostAssertion>
-      <Titre>Récupération du ratio en fonction de 
+      <Titre>Récupération du ratio en fonction de &#xd;
 la hauteur des barres obtenues sur la photo</Titre>
       <DetailsVisible>1</DetailsVisible>
       <DetailsVideVisible>1</DetailsVideVisible>
@@ -19,7 +19,7 @@ la hauteur des barres obtenues sur la photo</Titre>
           <StyleLien>2</StyleLien>
           <PreAssertion>matriceContoursObjets</PreAssertion>
           <PostAssertion>listeObjets</PostAssertion>
-          <Titre>Récupération des hauteurs 
+          <Titre>Récupération des hauteurs &#xd;
 et positions des objets</Titre>
           <DetailsVisible>1</DetailsVisible>
           <DetailsVideVisible>1</DetailsVideVisible>
@@ -50,7 +50,7 @@ et positions des objets</Titre>
               <StyleLien>2</StyleLien>
               <PreAssertion>listeObjets</PreAssertion>
               <PostAssertion>listeObjets</PostAssertion>
-              <Titre>Parcours complet de listeObjet 
+              <Titre>Parcours complet de listeObjet &#xd;
 avec traitement systématique</Titre>
               <DetailsVisible>1</DetailsVisible>
               <DetailsVideVisible>1</DetailsVideVisible>
@@ -58,8 +58,8 @@ avec traitement systématique</Titre>
                 <Iteration>
                   <Position>605.5;514.5</Position>
                   <StyleLien>1</StyleLien>
-                  <Titre>pour objetCourant de 0 à
-matriceContoursObjets
+                  <Titre>pour objetCourant de 0 à&#xd;
+matriceContoursObjets&#xd;
 .length-1</Titre>
                   <IterationFixe>1</IterationFixe>
                   <Enfants>
@@ -68,7 +68,7 @@ matriceContoursObjets
                       <StyleLien>2</StyleLien>
                       <PreAssertion>∅</PreAssertion>
                       <PostAssertion>∅</PostAssertion>
-                      <Titre>Parcours complet des points de l'objet
+                      <Titre>Parcours complet des points de l'objet&#xd;
 courant avec traitement systématique</Titre>
                       <DetailsVisible>0</DetailsVisible>
                       <DetailsVideVisible>1</DetailsVideVisible>
@@ -76,19 +76,19 @@ courant avec traitement systématique</Titre>
                         <Iteration>
                           <Position>558.5;742.5</Position>
                           <StyleLien>1</StyleLien>
-                          <Titre>pour point de 0 à
-matriceContoursObjets[objetCourant]
+                          <Titre>pour point de 0 à&#xd;
+matriceContoursObjets[objetCourant]&#xd;
 .length-1</Titre>
                           <IterationFixe>1</IterationFixe>
                           <Enfants>
                             <Action>
                               <Position>63;840</Position>
                               <StyleLien>2</StyleLien>
-                              <PreAssertion>ymin,
-ymax,
+                              <PreAssertion>ymin,&#xd;
+ymax,&#xd;
 xpos</PreAssertion>
-                              <PostAssertion>ymin,
-ymax,
+                              <PostAssertion>ymin,&#xd;
+ymax,&#xd;
 xpos</PostAssertion>
                               <Titre>Initialisation des variables</Titre>
                               <DetailsVisible>1</DetailsVisible>
@@ -99,9 +99,9 @@ xpos</PostAssertion>
                                   <StyleLien>1</StyleLien>
                                   <PreAssertion>∅</PreAssertion>
                                   <PostAssertion>∅</PostAssertion>
-                                  <Titre>ymin ← matriceContoursObjets[objetCourant] [point] [1]
-ymax ← matriceContoursObjets[objetCourant] [point] [1]
-xpos ← matriceContoursObjets[objetCourant] [point] [0]
+                                  <Titre>ymin ← matriceContoursObjets[objetCourant] [point] [1]&#xd;
+ymax ← matriceContoursObjets[objetCourant] [point] [1]&#xd;
+xpos ← matriceContoursObjets[objetCourant] [point] [0]&#xd;
 </Titre>
                                   <DetailsVisible>0</DetailsVisible>
                                   <DetailsVideVisible>1</DetailsVideVisible>
@@ -112,8 +112,8 @@ xpos ← matriceContoursObjets[objetCourant] [point] [0]
                             <Action>
                               <Position>1568;838</Position>
                               <StyleLien>2</StyleLien>
-                              <PreAssertion>listeObjets,
-hauteur,
+                              <PreAssertion>listeObjets,&#xd;
+hauteur,&#xd;
 xpos</PreAssertion>
                               <PostAssertion>listeObjets</PostAssertion>
                               <Titre>Remplissage listeObjets</Titre>
@@ -135,8 +135,8 @@ xpos</PreAssertion>
                             <Action>
                               <Position>1158;839</Position>
                               <StyleLien>2</StyleLien>
-                              <PreAssertion>hauteur,
-ymin,
+                              <PreAssertion>hauteur,&#xd;
+ymin,&#xd;
 ymax</PreAssertion>
                               <PostAssertion>hauteur</PostAssertion>
                               <Titre>Calcul de la hauteur de la barre</Titre>
@@ -233,8 +233,8 @@ ymax</PreAssertion>
           <StyleLien>1</StyleLien>
           <PreAssertion>listeObjets</PreAssertion>
           <PostAssertion>listeObjetsTrié</PostAssertion>
-          <Titre>Tri croissant de listeObjets en
-fonction de la clé abscisse x
+          <Titre>Tri croissant de listeObjets en&#xd;
+fonction de la clé abscisse x&#xd;
 </Titre>
           <DetailsVisible>1</DetailsVisible>
           <DetailsVideVisible>1</DetailsVideVisible>
@@ -254,7 +254,7 @@ fonction de la clé abscisse x
               <StyleLien>1</StyleLien>
               <PreAssertion>hauteurReference</PreAssertion>
               <PostAssertion>hauteurReference</PostAssertion>
-              <Titre>Affectation de la hauteur référence 
+              <Titre>Affectation de la hauteur référence &#xd;
 à la hauteur du premier objet</Titre>
               <DetailsVisible>1</DetailsVisible>
               <DetailsVideVisible>1</DetailsVideVisible>
@@ -263,10 +263,10 @@ fonction de la clé abscisse x
             <Action>
               <Position>1497;386</Position>
               <StyleLien>2</StyleLien>
-              <PreAssertion>hauteurReference,
+              <PreAssertion>hauteurReference,&#xd;
 listeObjetsTrié</PreAssertion>
               <PostAssertion>listeRatios</PostAssertion>
-              <Titre>Parcours complet de tous les objets 
+              <Titre>Parcours complet de tous les objets &#xd;
 de la liste avec traitement systématique</Titre>
               <DetailsVisible>1</DetailsVisible>
               <DetailsVideVisible>1</DetailsVideVisible>
@@ -282,8 +282,8 @@ de la liste avec traitement systématique</Titre>
                       <StyleLien>2</StyleLien>
                       <PreAssertion>∅</PreAssertion>
                       <PostAssertion>∅</PostAssertion>
-                      <Titre>Division de la hauteur de l'objet courant
-par la hauteur référence et insertion dans
+                      <Titre>Division de la hauteur de l'objet courant&#xd;
+par la hauteur référence et insertion dans&#xd;
 la liste des ratios</Titre>
                       <DetailsVisible>0</DetailsVisible>
                       <DetailsVideVisible>1</DetailsVideVisible>
@@ -293,7 +293,7 @@ la liste des ratios</Titre>
                           <StyleLien>1</StyleLien>
                           <PreAssertion>∅</PreAssertion>
                           <PostAssertion>∅</PostAssertion>
-                          <Titre>listeRatios.push
+                          <Titre>listeRatios.push&#xd;
 ( listeObjetsTrié[ objetCourant ][ 1 ]/hauteurReference )</Titre>
                           <DetailsVisible>0</DetailsVisible>
                           <DetailsVideVisible>1</DetailsVideVisible>

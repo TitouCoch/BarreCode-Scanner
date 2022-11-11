@@ -2,12 +2,12 @@
 <!DOCTYPE Tabula_Rasa>
 <Algorithme>
   <nom>conversion en barres</nom>
-  <date_creation>8/11/2022 16:30</date_creation>
+  <date_creation>11/11/2022 16:14</date_creation>
   <Elements>
     <Action>
       <Position>594;49</Position>
       <StyleLien>2</StyleLien>
-      <PreAssertion>licenceGreyCode,
+      <PreAssertion>licenceGreyCode,&#xd;
 correspGreyCodeBarre</PreAssertion>
       <PostAssertion>listeBarres</PostAssertion>
       <Titre>Conversion du numéro de licenceGreyCode en liste de barres</Titre>
@@ -38,32 +38,32 @@ correspGreyCodeBarre</PreAssertion>
         <Action>
           <Position>747;177</Position>
           <StyleLien>2</StyleLien>
-          <PreAssertion>licenceGreyCode,
+          <PreAssertion>licenceGreyCode,&#xd;
 listeBarres</PreAssertion>
           <PostAssertion>listeBarres</PostAssertion>
-          <Titre>Parcours complet de licenceGreyCode 
-avec traitement systématique 
+          <Titre>Parcours complet de licenceGreyCode &#xd;
+avec traitement systématique &#xd;
 qui la transforme en liste de barres</Titre>
           <DetailsVisible>1</DetailsVisible>
           <DetailsVideVisible>1</DetailsVideVisible>
           <Enfants>
             <Iteration>
-              <Position>940.5;307.5</Position>
+              <Position>988.5;306.5</Position>
               <StyleLien>1</StyleLien>
-              <Titre>i de 0 à licenceGreyCode.lenght-1
+              <Titre>i de 0 à licenceGreyCode.lenght
 avec un pas de 3</Titre>
               <IterationFixe>1</IterationFixe>
               <Enfants>
                 <Action>
-                  <Position>731;393</Position>
+                  <Position>731;392</Position>
                   <StyleLien>2</StyleLien>
-                  <PreAssertion>licenceGreyCode,
-motBinaire,
-listeBarres,
+                  <PreAssertion>licenceGreyCode,&#xd;
+motBinaire,&#xd;
+listeBarres,&#xd;
 correspGreyCodeBarre</PreAssertion>
                   <PostAssertion>listeBarres</PostAssertion>
                   <Titre>Conversion motBinaire (3 bits) 
-en 2 barres</Titre>
+en taille de barre</Titre>
                   <DetailsVisible>1</DetailsVisible>
                   <DetailsVideVisible>1</DetailsVideVisible>
                   <Enfants>
@@ -98,74 +98,99 @@ en 2 barres</Titre>
                       <DetailsVideVisible>1</DetailsVideVisible>
                       <Enfants>
                         <Iteration>
-                          <Position>778.5;650.5</Position>
+                          <Position>872.5;652.5</Position>
                           <StyleLien>1</StyleLien>
                           <Titre>pour decalage de 1 à 3</Titre>
                           <IterationFixe>1</IterationFixe>
                           <Enfants>
                             <Action>
-                              <Position>679;730</Position>
-                              <StyleLien>1</StyleLien>
+                              <Position>680;713</Position>
+                              <StyleLien>2</StyleLien>
                               <PreAssertion>motBinaire</PreAssertion>
                               <PostAssertion>motBinaire</PostAssertion>
-                              <Titre>motBinaire.push 
-( licenceGreyCode[ i+decalage] )</Titre>
+                              <Titre>Ajout du bit courant dans la liste
+motBinaire[]</Titre>
                               <DetailsVisible>1</DetailsVisible>
                               <DetailsVideVisible>1</DetailsVideVisible>
-                              <Enfants/>
+                              <Enfants>
+                                <Action>
+                                  <Position>797;817</Position>
+                                  <StyleLien>1</StyleLien>
+                                  <PreAssertion>?</PreAssertion>
+                                  <PostAssertion>?</PostAssertion>
+                                  <Titre>motBinaire.push &#xd;
+( licenceGreyCode[ i+decalage] )</Titre>
+                                  <DetailsVisible>1</DetailsVisible>
+                                  <DetailsVideVisible>0</DetailsVideVisible>
+                                  <Enfants/>
+                                </Action>
+                              </Enfants>
                             </Action>
                           </Enfants>
                         </Iteration>
                       </Enfants>
                     </Action>
                     <Action>
-                      <Position>1165;528</Position>
+                      <Position>1158;537</Position>
                       <StyleLien>2</StyleLien>
                       <PreAssertion>∅</PreAssertion>
                       <PostAssertion>∅</PostAssertion>
-                      <Titre>Conversion motBinaire en 
-taille de barre avec une
+                      <Titre>Conversion motBinaire en &#xd;
+taille de barre avec une&#xd;
 recherche de première occurrence</Titre>
                       <DetailsVisible>0</DetailsVisible>
                       <DetailsVideVisible>1</DetailsVideVisible>
                       <Enfants>
                         <Iteration>
-                          <Position>1212.5;659.5</Position>
+                          <Position>1303.5;660.5</Position>
                           <StyleLien>1</StyleLien>
-                          <Titre>pour posCourante allant 
-de 1 à 
-correspGreyCodeBarre.size</Titre>
+                          <Titre>pour posCourante parcourant
+correspGreyCodeBarre</Titre>
                           <IterationFixe>1</IterationFixe>
                           <Enfants>
-                            <Condition>
-                              <Position>1196.5;751</Position>
-                              <StyleLien>1</StyleLien>
-                              <estUnique>1</estUnique>
-                              <operationsLogiques>
-                                <operation>
-                                  <Titre>correspGreyCodeBarre[ posCourante ] = motBinaire</Titre>
-                                  <Enfants>
-                                    <Action>
-                                      <Position>984;890</Position>
-                                      <StyleLien>1</StyleLien>
-                                      <PreAssertion>listeBarres</PreAssertion>
-                                      <PostAssertion>listeBarres</PostAssertion>
-                                      <Titre>listeBarres ← listeBarres + posCourante</Titre>
-                                      <DetailsVisible>1</DetailsVisible>
-                                      <DetailsVideVisible>1</DetailsVideVisible>
+                            <Action>
+                              <Position>1219;730</Position>
+                              <StyleLien>2</StyleLien>
+                              <PreAssertion>?</PreAssertion>
+                              <PostAssertion>?</PostAssertion>
+                              <Titre>Condition qui vérifie l'égalité entre 
+le motBinaire et le les valeurs du
+dictionnaire correspGrayCodeBarre</Titre>
+                              <DetailsVisible>1</DetailsVisible>
+                              <DetailsVideVisible>0</DetailsVideVisible>
+                              <Enfants>
+                                <Condition>
+                                  <Position>1156.5;841</Position>
+                                  <StyleLien>1</StyleLien>
+                                  <estUnique>1</estUnique>
+                                  <operationsLogiques>
+                                    <operation>
+                                      <Titre>correspGrayCodeBarre[ posCourante ] = motBinaire</Titre>
+                                      <Enfants>
+                                        <Action>
+                                          <Position>845;1011</Position>
+                                          <StyleLien>1</StyleLien>
+                                          <PreAssertion>listeBarres</PreAssertion>
+                                          <PostAssertion>listeBarres</PostAssertion>
+                                          <Titre>Affectation de la clé du dictionnaire correspondant dans listeBarre
+listeBarres ←  posCourante</Titre>
+                                          <DetailsVisible>1</DetailsVisible>
+                                          <DetailsVideVisible>1</DetailsVideVisible>
+                                          <Enfants/>
+                                        </Action>
+                                        <Sortie>
+                                          <Position>1498;1060</Position>
+                                        </Sortie>
+                                      </Enfants>
+                                    </operation>
+                                    <operation>
+                                      <Titre>Sinon</Titre>
                                       <Enfants/>
-                                    </Action>
-                                    <Sortie>
-                                      <Position>1535;919</Position>
-                                    </Sortie>
-                                  </Enfants>
-                                </operation>
-                                <operation>
-                                  <Titre>Sinon</Titre>
-                                  <Enfants/>
-                                </operation>
-                              </operationsLogiques>
-                            </Condition>
+                                    </operation>
+                                  </operationsLogiques>
+                                </Condition>
+                              </Enfants>
+                            </Action>
                           </Enfants>
                         </Iteration>
                       </Enfants>

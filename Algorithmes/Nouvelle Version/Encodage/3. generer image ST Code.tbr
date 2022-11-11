@@ -2,7 +2,7 @@
 <!DOCTYPE Tabula_Rasa>
 <Algorithme>
   <nom>generer image ST Code</nom>
-  <date_creation>8/11/2022 15:21</date_creation>
+  <date_creation>11/11/2022 16:14</date_creation>
   <Elements>
     <Action>
       <Position>613;46</Position>
@@ -43,20 +43,20 @@
           <DetailsVideVisible>0</DetailsVideVisible>
           <Enfants>
             <Action>
-              <Position>1175;293</Position>
+              <Position>1139;293</Position>
               <StyleLien>2</StyleLien>
-              <PreAssertion>∅</PreAssertion>
-              <PostAssertion>∅</PostAssertion>
-              <Titre>Parcours complet de listeBarres
+              <PreAssertion>listeBarre</PreAssertion>
+              <PostAssertion>?</PostAssertion>
+              <Titre>Parcours complet de listeBarres&#xd;
  avec traitement systématique</Titre>
               <DetailsVisible>1</DetailsVisible>
-              <DetailsVideVisible>1</DetailsVideVisible>
+              <DetailsVideVisible>0</DetailsVideVisible>
               <Enfants>
                 <Iteration>
-                  <Position>1261.5;428.5</Position>
+                  <Position>1320.5;427.5</Position>
                   <StyleLien>1</StyleLien>
                   <Titre>pour i allant de 0
-à listeBarre.length -1</Titre>
+à listeBarre.length</Titre>
                   <IterationFixe>1</IterationFixe>
                   <Enfants>
                     <Action>
@@ -64,31 +64,31 @@
                       <StyleLien>2</StyleLien>
                       <PreAssertion>∅</PreAssertion>
                       <PostAssertion>∅</PostAssertion>
-                      <Titre>Affectation de la hauteur sur les 
+                      <Titre>Affectation de la hauteur sur les &#xd;
 éléments graphiques correspondant aux barres</Titre>
                       <DetailsVisible>0</DetailsVisible>
-                      <DetailsVideVisible>1</DetailsVideVisible>
+                      <DetailsVideVisible>0</DetailsVideVisible>
                       <Enfants>
                         <Action>
-                          <Position>874;640</Position>
+                          <Position>449;644</Position>
                           <StyleLien>1</StyleLien>
                           <PreAssertion>barreHTMLTemp</PreAssertion>
                           <PostAssertion>barreHTMLTemp</PostAssertion>
-                          <Titre>Affectation de l'élément graphique
+                          <Titre>Affectation de l'élément graphique&#xd;
 courante à une variable temporaire</Titre>
                           <DetailsVisible>1</DetailsVisible>
                           <DetailsVideVisible>1</DetailsVideVisible>
                           <Enfants/>
                         </Action>
                         <Action>
-                          <Position>1434;640</Position>
+                          <Position>1561;645</Position>
                           <StyleLien>1</StyleLien>
-                          <PreAssertion>∅</PreAssertion>
-                          <PostAssertion>∅</PostAssertion>
+                          <PreAssertion>hauteurBarreTemp</PreAssertion>
+                          <PostAssertion>?</PostAssertion>
                           <Titre>Affectation de la hauteur courante 
 à l'élément graphique</Titre>
-                          <DetailsVisible>0</DetailsVisible>
-                          <DetailsVideVisible>1</DetailsVideVisible>
+                          <DetailsVisible>1</DetailsVisible>
+                          <DetailsVideVisible>0</DetailsVideVisible>
                           <Enfants/>
                         </Action>
                       </Enfants>
@@ -100,6 +100,17 @@ courante à une variable temporaire</Titre>
           </Enfants>
         </Action>
       </Enfants>
+    </Action>
+    <Action>
+      <Position>989;648</Position>
+      <StyleLien>1</StyleLien>
+      <PreAssertion>hauteurBarreTemp</PreAssertion>
+      <PostAssertion>hauteurBarreTemp</PostAssertion>
+      <Titre>Affectation de la hauteur dans une 
+variable temporaire</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>1</DetailsVideVisible>
+      <Enfants/>
     </Action>
   </Elements>
   <Dictionary/>
