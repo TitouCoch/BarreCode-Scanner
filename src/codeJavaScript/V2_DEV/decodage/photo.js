@@ -49,7 +49,6 @@ class Photo{
         var coordonneeY = ci.data32S[j + 1]; //Récupération de la coordonnée y
         //matriceContoursObjets[i][j] = new Array();
         matriceContoursObjets[i].push([coordonneeX,coordonneeY]);
-        console.log(matriceContoursObjets[i]);
         // remplissage de l'objet courant avec un tableau contenant x et y
     }
 }
@@ -59,24 +58,23 @@ return matriceContoursObjets;
     recuperationRatio(matriceContourObjet){
         // INITIALISATION 
         var listeObjets = new Array();
-        for(var objetCourant = 0; objetCourant < matriceContourObjet.length-1; objetCourant++){
+        for(var objetCourant = 0; objetCourant < matriceContourObjet.length; objetCourant++){
             //intialisation des variables
                 var ymin = matriceContourObjet[objetCourant][0][1];
                 var ymax = matriceContourObjet[objetCourant][0][1];
                 var xpos = matriceContourObjet[objetCourant][0][0];
-            for(var point = 0; point < matriceContourObjet[objetCourant].length-1; point++){
-                console.log(matriceContourObjet[objetCourant][point]);
+            for(var point = 0; point < matriceContourObjet[objetCourant].length; point++){
                 if(matriceContourObjet[objetCourant][point][1] > ymax){
                     ymax = matriceContourObjet[objetCourant][point][1];
                 }
                 if(matriceContourObjet[objetCourant][point][1] < ymin){
                     ymin = matriceContourObjet[objetCourant][point][1];
                 }
-                // calcule de la hauteur de la barre
-                var hauteur = ymax - ymin;
-                // ajout de la hauteur et de posx dans la listeObjets
-                listeObjets[objetCourant] = new Array(xpos,hauteur);
             }
+            // calcule de la hauteur de la barre
+            var hauteur = ymax - ymin;
+            // ajout de la hauteur et de posx dans la listeObjets
+            listeObjets.push([xpos,hauteur]);
         }
         // Tri de la liste Objet par posx
         listeObjets.sort(fonctionTri);
@@ -86,20 +84,21 @@ return matriceContoursObjets;
                 return 0;
             }
             else {
-                if(a[0] < b[0]){
+                if(a[0] > b[0]){
                     return 1;
                 }
                 else{
                     return -1;
                 }
             }
-            for(var i=0; i < listeObjetTrie.length;i++){
-                console.log(listeObjetTrie[i]);
-            }
             
-}
+        }
+        var listeObjetsTrie = listeObjets;
+        for(var i=0; i < listeObjetsTrie.length;i++){
+            console.log(listeObjetsTrie[i]);
+        }
 
-        var listeObjetTrie = listeObjet;
+    
 
 
     };
