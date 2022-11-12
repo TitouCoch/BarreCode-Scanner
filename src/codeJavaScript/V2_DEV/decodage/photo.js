@@ -1,132 +1,131 @@
-class Photo{CONSTRUCTEU
+class Photo {
+    CONSTRUCTEU
     //ATTRIBUTS et CONSTRUCTEUR
-    constructor(matriceImage){
-    this.matriceImage = matriceImage;
-    // ENCAPSULATION
+    constructor(matriceImage) {
+        this.matriceImage = matriceImage;
+        // ENCAPSULATION
     };
-    setMatriceImage(matriceImage){
+    setMatriceImage(matriceImage) {
         this.matriceImage = matriceImage;
     };
-    getMatriceImage(){
+    getMatriceImage() {
         return this.matriceImage;
     };
     // METHODES SPECIFIQUES
-    recuperationContourObjets(){
-// Methode: matriceImage >> recuperationContourObjets >> matriceContoursObjet
-// INITIALISATION
-   let src = cv.imread(this.matriceImage);
-   var matriceCountoursObjets = new Array();
-   // Passage en niveau de gris
-  cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
-  //detection bordures
-  cv.Canny(src,src, 50, 200, 3, false);
-   // creation des matrices contours et hierarchy
-   let contours = new cv.MatVector();
-   let hierarchy = new cv.Mat();
-//RECUPERATION D'UNE LISTE DE VECTEURS REPRESENTANTS LES POINTS DES CONTOURS
-   cv.findContours(src, contours, hierarchy, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_NONE); 
-// MISE SOUS FORME DE MATRICE DE DIMENSION 3
-  var matriceContoursObjets = new Array();
-  // parcours complet de la liste d'objets
-  for (var i = 0; i < contours.size(); ++i) 
-{   
-    matriceContoursObjets[i] = new Array();
-    var ci = contours.get(i);  //Récupération de l'objet courant dans une variable
-    // parcours des points du contours de l'objet
-    for (var j = 0; j < ci.data32S.length; j += 2)
-    {
-        var coordonneeX = ci.data32S[j]; //Récupération de la coordonnée x
-        var coordonneeY = ci.data32S[j + 1]; //Récupération de la coordonnée y
-        // Insertion du point sous forme de liste contenant x et y
-        matriceContoursObjets[i].push([coordonneeX,coordonneeY]);
-    }
-}
-return matriceContoursObjets;
-};
+    recuperationContourObjets() {
+        // Methode: matriceImage >> recuperationContourObjets >> matriceContoursObjet
+        // INITIALISATION
+        let src = cv.imread(this.matriceImage);
+        var matriceCountoursObjets = new Array();
+        // Passage en niveau de gris
+        cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
+        //detection bordures
+        cv.Canny(src, src, 50, 200, 3, false);
+        // creation des matrices contours et hierarchy
+        let contours = new cv.MatVector();
+        let hierarchy = new cv.Mat();
+        //RECUPERATION D'UNE LISTE DE VECTEURS REPRESENTANTS LES POINTS DES CONTOURS
+        cv.findContours(src, contours, hierarchy, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_NONE);
+        // MISE SOUS FORME DE MATRICE DE DIMENSION 3
+        var matriceContoursObjets = new Array();
+        // parcours complet de la liste d'objets
+        for (var i = 0; i < contours.size(); ++i) {
+            matriceContoursObjets[i] = new Array();
+            var ci = contours.get(i);  //Récupération de l'objet courant dans une variable
+            // parcours des points du contours de l'objet
+            for (var j = 0; j < ci.data32S.length; j += 2) {
+                var coordonneeX = ci.data32S[j]; //Récupération de la coordonnée x
+                var coordonneeY = ci.data32S[j + 1]; //Récupération de la coordonnée y
+                // Insertion du point sous forme de liste contenant x et y
+                matriceContoursObjets[i].push([coordonneeX, coordonneeY]);
+            }
+        }
+        return matriceContoursObjets;
+    };
 
-    recuperationRatio(matriceContourObjet){
-        // INITIALISATION 
-        var listeObjets = new Array();
-        for(var objetCourant = 0; objetCourant < matriceContourObjet.length; objetCourant++){
-            //intialisation des variables
-                var ymin = matriceContourObjet[objetCourant][0][1];
-                var ymax = matriceContourObjet[objetCourant][0][1];
-                var xpos = matriceContourObjet[objetCourant][0][0];
-            for(var point = 0; point < matriceContourObjet[objetCourant].length; point++){
-                if(matriceContourObjet[objetCourant][point][1] > ymax){
+    //Méthode : matriceContoursObjets << Récupération du ratio en fonction de la hauteur des barres obtenues sur la photo << listeRatios
+    recuperationRatio(matriceContourObjet) {
+        //matriceContoursObjet << RECUPERATION DES HAUTEURS ET POSITIONS DES OBJETS << listeObjet
+        // listeObjets << Initialisation << listeObjets
+        var listeObjets = [];
+        //listeObjets << Parcours complet de la matrice des contours objets avec traitement systématique << listeObjets
+        for (var objetCourant = 0; objetCourant < matriceContourObjet.length; objetCourant++) {
+            //ymin, ymax, xpos << Intialisation des variables avec le premier point de contours de lo'objet << ymin, ymax, ypos
+            var ymin = matriceContourObjet[objetCourant][0][1];
+            var ymax = matriceContourObjet[objetCourant][0][1];
+            var xpos = matriceContourObjet[objetCourant][0][0];
+
+            //ymin, ymax, xpos << Parcours complet des points de contours de l'objet courant avec traitement systématique << listeObjet
+            for (var point = 0; point < matriceContourObjet[objetCourant].length; point++) {
+                //ymin, ymax << Recherche des coordonnée Ymin et Ymax << ymin, ymax
+                if (matriceContourObjet[objetCourant][point][1] > ymax) {
                     ymax = matriceContourObjet[objetCourant][point][1];
                 }
-                if(matriceContourObjet[objetCourant][point][1] < ymin){
+                if (matriceContourObjet[objetCourant][point][1] < ymin) {
                     ymin = matriceContourObjet[objetCourant][point][1];
                 }
             }
-            // calcule de la hauteur de la barre
+            // ymin, ymax, hauteur << Calcule de la hauteur de la barre << hauteur
             var hauteur = ymax - ymin;
-            // ajout de la hauteur et de posx dans la listeObjets
-            listeObjets.push([xpos,hauteur]);
+            // listeObjets, hauteurn xpos << Ajout de la hauteur et de posx dans la listeObjets << listeObjets
+            listeObjets.push([xpos, hauteur]);
         }
-        // Tri de la liste Objet par posx
+
+        // listeObjet << TRIE DE LA LISTEOBJETS PAR POSX << listeObjetTrie
         listeObjets.sort(fonctionTri);
-        // creation de la fonction pour le tri
+        //creation de la fonction pour le tri
         function fonctionTri(a, b) {
             if (a[0] === b[0]) {
                 return 0;
             }
             else {
-                if(a[0] > b[0]){
+                if (a[0] > b[0]) {
                     return 1;
                 }
-                else{
+                else {
                     return -1;
                 }
             }
-            
         }
         var listeObjetsTrie = listeObjets;
-        /*for(var i=0; i < listeObjetsTrie.length;i++){
-            console.log(listeObjetsTrie[i]);
-        }
-        */
-        // CALCUL DES RATIOS
-        // initialisation
-        // affectation de  la hauteur du premier objet a la hauteur reference
+
+        // listeObjetTrie << CALCUL DES RATIOS << listeRatios
+        // hauteurReference << Affectation de  la hauteur du premier objet a la hauteur reference << hauteurReference
         var hauteurReference = listeObjetsTrie[0][1];
-        //parcours et calcul de chaques ratios
-        var listeRatio=[];
-        for(var objetCourant = 1 ;objetCourant < listeObjetsTrie.length;objetCourant++){
-            var dividende = listeObjetsTrie[objetCourant][1];
-            var ratio = (dividende/hauteurReference);   
-            listeRatio.push(ratio);
+        // hauteurReference, listeObjetsTrie << Parcours et calcul de chaques ratios << listeRatios
+        // listeRatios << Initialisation variable << listeRatios
+        var listeRatios = [];
+        for (var objetCourant = 1; objetCourant < listeObjetsTrie.length; objetCourant++) {
+            // listeRatios, hauteurReference, listeObjetTrie <<Division de la hauteur de l'objet courant par la hauteur référence et insertion dans la liste des ratios << listeRatios
+            var ratio = (listeObjetsTrie[objetCourant][1] / hauteurReference);
+            listeRatios.push(ratio);
         }
-        console.log(listeRatio)
-        return listeRatio;
+        return listeRatios;
     };
+
     conversionGrayCode(listeRatios) {
-        var licenceGrayCode="";
-        function valeurAbsolue(a){
-            if(a<0){return -a}
-            else{return a};
+        var licenceGrayCode = "";
+        function valeurAbsolue(a) {
+            if (a < 0) { return -a }
+            else { return a };
         }
         //Parcours complet de listeRatios avec traitement systématique
-        for (var i = 0; i < listeRatios.length; i++) 
-    {
+        for (var i = 0; i < listeRatios.length; i++) {
             //Recherche de la première occurence du ratio dans la variable global TABLE_DECODAGE
             //recherche de la valeur la plus proche du ratio
             // initialisation
             var min = 1;
             var indicePlusProche;
-            for (var ligne=0; ligne < TABLE_DECODAGE.length; ligne++) 
-            {
-                if (valeurAbsolue(listeRatios[i]-TABLE_DECODAGE[ligne][0])<min) 
-                {
-                    min = valeurAbsolue(listeRatios[i]-TABLE_DECODAGE[ligne][0])
+            for (var ligne = 0; ligne < TABLE_DECODAGE.length; ligne++) {
+                if (valeurAbsolue(listeRatios[i] - TABLE_DECODAGE[ligne][0]) < min) {
+                    min = valeurAbsolue(listeRatios[i] - TABLE_DECODAGE[ligne][0])
                     indicePlusProche = ligne;
                 }
             }
-            for (var bit =0; bit < 3; bit++) {
-                licenceGrayCode+=TABLE_DECODAGE[indicePlusProche][1][bit];
+            for (var bit = 0; bit < 3; bit++) {
+                licenceGrayCode += TABLE_DECODAGE[indicePlusProche][1][bit];
+            }
         }
-    }
         console.log(licenceGrayCode);
         return licenceGrayCode;
     };
@@ -139,7 +138,7 @@ return matriceContoursObjets;
                 break;
             }
             for (var decalage = 0; decalage < 6; decalage++) {
-                motBinaire+=licenceGreyCode[bit + decalage];
+                motBinaire += licenceGreyCode[bit + decalage];
             }
 
             // insertion du caractere correspondant au motBinaire dans numLicence
@@ -151,15 +150,15 @@ return matriceContoursObjets;
         }
         return numLicence;
     }
-    testerLicence(numLicence){
+    testerLicence(numLicence) {
 
     }
-    decodage(){
-            var matriceContourObjet = this.recuperationContourObjets(this.matriceImage);
-            var listeRatios = this.recuperationRatio(matriceContourObjet);
-            var licenceGrayCode = this.conversionGrayCode(listeRatios);
-            var numLicence = this.conversionLicence(licenceGrayCode);
-            this.testerLicence(numLicence);
-            //afficher info joueurs
+    decodage() {
+        var matriceContourObjet = this.recuperationContourObjets(this.matriceImage);
+        var listeRatios = this.recuperationRatio(matriceContourObjet);
+        var licenceGrayCode = this.conversionGrayCode(listeRatios);
+        var numLicence = this.conversionLicence(licenceGrayCode);
+        this.testerLicence(numLicence);
+        //afficher info joueurs
     }
 };
