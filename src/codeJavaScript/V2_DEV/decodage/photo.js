@@ -43,21 +43,21 @@ class Photo {
         return matriceContoursObjets;
     };
 
-    //Méthode : matriceContoursObjets << Récupération du ratio en fonction de la hauteur des barres obtenues sur la photo << listeRatios
+    //Méthode : matriceContoursObjets >> Récupération du ratio en fonction de la hauteur des barres obtenues sur la photo >> listeRatios
     recuperationRatio(matriceContourObjet) {
-        //matriceContoursObjet << RECUPERATION DES HAUTEURS ET POSITIONS DES OBJETS << listeObjet
-        // listeObjets << Initialisation << listeObjets
+        //matriceContoursObjet >> RECUPERATION DES HAUTEURS ET POSITIONS DES OBJETS >> listeObjet
+        // listeObjets >> Initialisation >> listeObjets
         var listeObjets = [];
-        //listeObjets << Parcours complet de la matrice des contours objets avec traitement systématique << listeObjets
+        //listeObjets >> Parcours complet de la matrice des contours objets avec traitement systématique >> listeObjets
         for (var objetCourant = 0; objetCourant < matriceContourObjet.length; objetCourant++) {
-            //ymin, ymax, xpos << Intialisation des variables avec le premier point de contours de lo'objet << ymin, ymax, ypos
+            //ymin, ymax, xpos >> Intialisation des variables avec le premier point de contours de lo'objet >> ymin, ymax, ypos
             var ymin = matriceContourObjet[objetCourant][0][1];
             var ymax = matriceContourObjet[objetCourant][0][1];
             var xpos = matriceContourObjet[objetCourant][0][0];
 
-            //ymin, ymax, xpos << Parcours complet des points de contours de l'objet courant avec traitement systématique << listeObjet
+            //ymin, ymax, xpos >> Parcours complet des points de contours de l'objet courant avec traitement systématique >> listeObjet
             for (var point = 0; point < matriceContourObjet[objetCourant].length; point++) {
-                //ymin, ymax << Recherche des coordonnée Ymin et Ymax << ymin, ymax
+                //ymin, ymax >> Recherche des coordonnée Ymin et Ymax >> ymin, ymax
                 if (matriceContourObjet[objetCourant][point][1] > ymax) {
                     ymax = matriceContourObjet[objetCourant][point][1];
                 }
@@ -65,13 +65,13 @@ class Photo {
                     ymin = matriceContourObjet[objetCourant][point][1];
                 }
             }
-            // ymin, ymax, hauteur << Calcule de la hauteur de la barre << hauteur
+            // ymin, ymax, hauteur >> Calcule de la hauteur de la barre >> hauteur
             var hauteur = ymax - ymin;
-            // listeObjets, hauteurn xpos << Ajout de la hauteur et de posx dans la listeObjets << listeObjets
+            // listeObjets, hauteurn xpos >> Ajout de la hauteur et de posx dans la listeObjets >> listeObjets
             listeObjets.push([xpos, hauteur]);
         }
 
-        // listeObjet << TRIE DE LA LISTEOBJETS PAR POSX << listeObjetTrie
+        // listeObjet >> TRIE DE LA LISTEOBJETS PAR POSX >> listeObjetTrie
         listeObjets.sort(fonctionTri);
         //creation de la fonction pour le tri
         function fonctionTri(a, b) {
@@ -89,14 +89,14 @@ class Photo {
         }
         var listeObjetsTrie = listeObjets;
 
-        // listeObjetTrie << CALCUL DES RATIOS << listeRatios
-        // hauteurReference << Affectation de  la hauteur du premier objet a la hauteur reference << hauteurReference
+        // listeObjetTrie >> CALCUL DES RATIOS >> listeRatios
+        // hauteurReference >> Affectation de  la hauteur du premier objet a la hauteur reference >> hauteurReference
         var hauteurReference = listeObjetsTrie[0][1];
-        // hauteurReference, listeObjetsTrie << Parcours et calcul de chaques ratios << listeRatios
-        // listeRatios << Initialisation variable << listeRatios
+        // hauteurReference, listeObjetsTrie >> Parcours et calcul de chaques ratios >> listeRatios
+        // listeRatios >> Initialisation variable >> listeRatios
         var listeRatios = [];
         for (var objetCourant = 1; objetCourant < listeObjetsTrie.length; objetCourant++) {
-            // listeRatios, hauteurReference, listeObjetTrie <<Division de la hauteur de l'objet courant par la hauteur référence et insertion dans la liste des ratios << listeRatios
+            // listeRatios, hauteurReference, listeObjetTrie >> Division de la hauteur de l'objet courant par la hauteur référence et insertion dans la liste des ratios >> listeRatios
             var ratio = (listeObjetsTrie[objetCourant][1] / hauteurReference);
             listeRatios.push(ratio);
         }
