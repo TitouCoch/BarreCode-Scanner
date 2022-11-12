@@ -26,7 +26,7 @@ if(count($res)==1){
         //Le mot de passe est bon
         //On démarre la session
         $_SESSION['user'] = $mail;
-        header('location: landing.php');
+        header('location: accueil.php');
         exit;
     }else{
         //Le mot de passe est faux
