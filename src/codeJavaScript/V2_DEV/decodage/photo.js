@@ -136,11 +136,15 @@ class Photo {
     };
 
     conversionLicence(licenceGreyCode) {
-        // licenceGrayCode >> 
+         // licenceGrayCode >> conversion licenceGrayCode en chaine de caracteres >> numLicence
+         // initialisation des variables >> numLicence, motBinaire
         var numLicence = "";
-        // recuperation d'un mot binaire de 6bits de longueurs
+        var motBinaire = "";
+        // licenceGrayCode, motBinaire >> Parcours complet de licenceGrayCode avec traitement systematique
+        // licenceGrayCode, motBinaire >> recuperation de 6 bits de la liste dans un motBinaire temporaire >> motBinaire
         for (var bit = 0; bit < licenceGreyCode.length - 1; bit += 6) {
-            var motBinaire = "";
+            //motBinaire >> remise de mot binaire en liste vide >> motBinaire
+            motBinaire = "";
             if (licenceGreyCode.length - bit < 6) {
                 break;
             }
@@ -148,9 +152,10 @@ class Photo {
                 motBinaire += licenceGreyCode[bit + decalage];
             }
 
-            // insertion du caractere correspondant au motBinaire dans numLicence
+            // motBinaire, licenceGrayCode, numLicence >> recherche de premiere occurence dans la variable globale TABLE_ENCODAGE_GRAY_CODE >> numLicence
             for (var cle in TABLE_ENCODAGE_GRAY_CODE) {
                 if (JSON.stringify(motBinaire) == JSON.stringify(TABLE_ENCODAGE_GRAY_CODE[cle])) {
+                    // numLicence >> Ajout du caractere correspondait dans numLicence >> numLicence
                     numLicence += cle;
                 }
             }
