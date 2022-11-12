@@ -2,14 +2,14 @@
 <!DOCTYPE Tabula_Rasa>
 <Algorithme>
   <nom>1. image process</nom>
-  <date_creation>8/11/2022 15:45</date_creation>
+  <date_creation>12/11/2022 15:54</date_creation>
   <Elements>
     <Action>
       <Position>629;100</Position>
       <StyleLien>2</StyleLien>
       <PreAssertion>matriceImage</PreAssertion>
       <PostAssertion>matriceContoursObjets</PostAssertion>
-      <Titre>Traitement image : analyse de l'image 
+      <Titre>Traitement image : analyse de l'image &#xd;
 pour en récupérer les contours de chaque objet</Titre>
       <DetailsVisible>1</DetailsVisible>
       <DetailsVideVisible>1</DetailsVideVisible>
@@ -19,39 +19,38 @@ pour en récupérer les contours de chaque objet</Titre>
           <StyleLien>2</StyleLien>
           <PreAssertion>matriceImage</PreAssertion>
           <PostAssertion>matriceContoursObjets</PostAssertion>
-          <Titre>Modification de l'image pour
+          <Titre>Modification de l'image pour&#xd;
 pouvoir la rendre utilisable</Titre>
           <DetailsVisible>1</DetailsVisible>
           <DetailsVideVisible>1</DetailsVideVisible>
           <Enfants>
             <Action>
-              <Position>613;365</Position>
+              <Position>-36;346</Position>
               <StyleLien>1</StyleLien>
-              <PreAssertion>∅</PreAssertion>
-              <PostAssertion>∅</PostAssertion>
-              <Titre>Convertion image en 
-niveaux de gris</Titre>
-              <DetailsVisible>0</DetailsVisible>
+              <PreAssertion>matriceImage</PreAssertion>
+              <PostAssertion>matriceImageNiveauDeGris</PostAssertion>
+              <Titre>Convertion image en niveaux de gris</Titre>
+              <DetailsVisible>1</DetailsVisible>
               <DetailsVideVisible>1</DetailsVideVisible>
               <Enfants/>
             </Action>
             <Action>
-              <Position>775;365</Position>
+              <Position>536;348</Position>
               <StyleLien>1</StyleLien>
-              <PreAssertion>∅</PreAssertion>
-              <PostAssertion>∅</PostAssertion>
-              <Titre>Détection des bords des objets</Titre>
-              <DetailsVisible>0</DetailsVisible>
+              <PreAssertion>matriceImageNiveauDeGris</PreAssertion>
+              <PostAssertion>matriceImageAvecContours</PostAssertion>
+              <Titre>detection des bords des objets </Titre>
+              <DetailsVisible>1</DetailsVisible>
               <DetailsVideVisible>1</DetailsVideVisible>
               <Enfants/>
             </Action>
             <Action>
-              <Position>991;365</Position>
+              <Position>1186;348</Position>
               <StyleLien>1</StyleLien>
-              <PreAssertion>∅</PreAssertion>
-              <PostAssertion>∅</PostAssertion>
-              <Titre>Récupérations des contours de chaque objet</Titre>
-              <DetailsVisible>0</DetailsVisible>
+              <PreAssertion>matriceImageAvecContours</PreAssertion>
+              <PostAssertion>matriceContoursObjets</PostAssertion>
+              <Titre>Récupération des contours de chaque objets</Titre>
+              <DetailsVisible>1</DetailsVisible>
               <DetailsVideVisible>1</DetailsVideVisible>
               <Enfants/>
             </Action>
