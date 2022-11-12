@@ -3,7 +3,7 @@
 //Table Encodage gray code
 
 //Initialisation des variables
-var tableEncodageGrayCode ={'a':'000000',
+var TABLE_ENCODAGE ={'a':'000000',
                     'b':'000001',
                     'c':'000011',
                     'd':'000010',
@@ -66,7 +66,7 @@ var tableEncodageGrayCode ={'a':'000000',
                     8:'100010',
                     9:'100011'};
 
-var correspGrayCodeBarre = {1:[0,0,0],
+var CORRESP_GRAYCODE_BARRE = {1:[0,0,0],
                 2:[0,0,1],
                 3:[0,1,1],
                 4:[1,1,1],
