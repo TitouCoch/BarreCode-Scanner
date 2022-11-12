@@ -103,32 +103,38 @@ class Photo {
         return listeRatios;
     };
 
+    //Méthode : listeRatios >> Conversion barres en grey code >> licenceGrayCode
     conversionGrayCode(listeRatios) {
+        //licenceGrayCode >> INITIALISATION VARIABLE >> licenceGrayCode
         var licenceGrayCode = "";
         function valeurAbsolue(a) {
             if (a < 0) { return -a }
             else { return a };
         }
-        //Parcours complet de listeRatios avec traitement systématique
+        //listeRatios, licenceGrayCode >> Parcours complet de listeRatios avec traitement systématique >> licenceGrayCode
         for (var i = 0; i < listeRatios.length; i++) {
-            //Recherche de la première occurence du ratio dans la variable global TABLE_DECODAGE
-            //recherche de la valeur la plus proche du ratio
-            // initialisation
+            
+            //listeRatios, licenceGrayCode >> Recherche de la valeur la plus proche du ratio >> licenceGrayCode
+            // min, inidicePlusProche >> Initialisation variable >> min, indicePlusProche
             var min = 1;
             var indicePlusProche;
+            //licenceGrayCode, listeRatios, min, indicePlusProche >> Recherche de la première occurence du ratio dans la variable global TABLE_DECODAGE >> licenceGrayCode
             for (var ligne = 0; ligne < TABLE_DECODAGE.length; ligne++) {
+                //Si la différence entre la valeur courante de liste ratio et la valeur reference de la table d'encodage est inférieur à min
                 if (valeurAbsolue(listeRatios[i] - TABLE_DECODAGE[ligne][0]) < min) {
+                    //min, indicePlusProche >> Affectation de l'indice de la TABLE_DECODAGE le plus proche de la valeur courante de listeRatios >> min, indicePlusProche
                     min = valeurAbsolue(listeRatios[i] - TABLE_DECODAGE[ligne][0])
                     indicePlusProche = ligne;
                 }
             }
+            //licenceGrayCode, indicePlusProche >>Parcours et ajout de la correspondance en gray code dans licenceGrayCode >> licenceGrayCode
             for (var bit = 0; bit < 3; bit++) {
                 licenceGrayCode += TABLE_DECODAGE[indicePlusProche][1][bit];
             }
         }
-        console.log(licenceGrayCode);
         return licenceGrayCode;
     };
+
     conversionLicence(licenceGreyCode) {
         // licenceGrayCode >> 
         var numLicence = "";
