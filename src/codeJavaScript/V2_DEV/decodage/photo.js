@@ -166,10 +166,15 @@ class Photo {
 
     }
     decodage() {
+        // matriceImage >> Traitement Image: analyse de l'image pour en recuperer les contours de chaque objets >> matriceContourObjet 
         var matriceContourObjet = this.recuperationContourObjets(this.matriceImage);
+        // matriceContourObjet >> recuperation des ratios en fonction de la hauteur des barres obtenues sur la photo >> listeRatios
         var listeRatios = this.recuperationRatio(matriceContourObjet);
+        // listeRatios >> conversion licenceGrayCode en chaine de caractères >> 
         var licenceGrayCode = this.conversionGrayCode(listeRatios);
+        // listeRatio >> conversion ratios en graycode >> licenceGrayCode
         var numLicence = this.conversionLicence(licenceGrayCode);
+        // licenceGrayCode >> tester la licence dans une requete
         this.testerLicence(numLicence);
         //afficher info joueurs
     }
