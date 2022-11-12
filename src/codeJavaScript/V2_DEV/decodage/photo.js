@@ -15,18 +15,18 @@ class Photo {
     recuperationContourObjets() {
         // Methode: matriceImage >> recuperationContourObjets >> matriceContoursObjet
         // INITIALISATION
-        let src = cv.imread(this.matriceImage);
+        let matriceImage = cv.imread(this.matriceImage);
         var matriceCountoursObjets = new Array();
-        // Passage en niveau de gris
-        cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
-        //detection bordures
-        cv.Canny(src, src, 50, 200, 3, false);
-        // creation des matrices contours et hierarchy
+        // matriceImage >> conversion image en niveaux de gris >> matriceImageNiveauDeGris
+        cv.cvtColor(matriceImage, matriceImageNiveauDeGris, cv.COLOR_RGBA2GRAY, 0);
+        //matriceImageNiveauDeGris >>detection des bords des objets >> matriceImageAvecContours
+        cv.Canny(matriceImageNiveauDeGris,matriceImageAvecContours, 50, 200, 3, false);
+        // creation des matrices et liste de vecteurs  contours et hierarchy
         let contours = new cv.MatVector();
         let hierarchy = new cv.Mat();
-        //RECUPERATION D'UNE LISTE DE VECTEURS REPRESENTANTS LES POINTS DES CONTOURS
-        cv.findContours(src, contours, hierarchy, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_NONE);
-        // MISE SOUS FORME DE MATRICE DE DIMENSION 3
+        // matriceImageAvecContours >> récupération des contours de chaques objets >> matriceContoursObjets
+        cv.findContours(matriceImageAvecContours, contours, hierarchy, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_NONE);
+        //mise sous forme de matrice de dimension 3
         var matriceContoursObjets = new Array();
         // parcours complet de la liste d'objets
         for (var i = 0; i < contours.size(); ++i) {
