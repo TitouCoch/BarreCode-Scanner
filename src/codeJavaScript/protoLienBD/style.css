@@ -1,60 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 *{
+    font-family: Oswald;
     margin: 0;
+    padding: 0;
+}
+
+/* Enlever le outline par défaut sur les input */
+input:focus{
+    outline:none;
+}
+
+a{
+    text-decoration: none;
+    color: #F8B232;
 }
 
 body{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     height: 100vh;
 }
 
-#logo{
-    height: 100px;
-    
-}
+/* Header de la page */
 
-form{
+header{
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+#logoPage{
+    width: 10%;
+    margin-bottom: 1%;
+}
+
+#sepHeader{
+    width: 97%;
+    background-color: #F8B232;
+    height: 2px;
+    border: none;
+}
+
+#barreNav{
+    margin-top: 2%;
+    width: 70%;
+    border-radius: 12px;
+}
+
+#barreNav ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+.elementBarreNav{
+    font-size: 25px;
+    list-style: none;
+    text-align: center;
+}
+
+.elementBarreNav a{
+    text-decoration: none;
+    color: black;
+}
+
+/* Fin Header */
+
+/* Main */
+/*Général*/
+main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10%;
+}
+
+.sectionTitre{
+    display: flex;
     justify-content: center;
-    background-color: rgb(211, 211, 211);
-    width: 40%;
-    height: 60%;
 }
 
-label{
-    font-size: 20px;
+.titrePage{
+    font-size: 50px;
+    text-align: center;
 }
 
-input{
-    margin-bottom: 5%;
+button{
+    cursor: pointer;
+    width: 25%;
+    background-color: #F8B232;
+    padding-top:8px;
+    padding-bottom:8px;
+    border-radius: 10px;
+    border: none;
+    font-size: 17px;
+}
+
+
+/*Spécifique à connexion et inscription*/
+.sectionPage{
     width: 50%;
-    height: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.formulaire{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }
 
 .inputElement{
     border: none;
-    border-radius: 2px;
-}
-
-.erreur{
-    font-weight: bolder;
-    color: red;
-}
-
-#carteDeProfil{
-    background-color:rgb(211, 211, 211);
+    background-color: rgb(242, 242, 242);
+    padding: 10px;
+    margin: 10px;
     width: 50%;
-    height: 50%;
-    font-size: 20px;
+    border-radius: 10px;
+}
+
+.validConditionContainer{
+    display: flex;
+}
+
+.checkBox{
+    margin-right: 5px;
+}
+
+.buttonFormulaire{
+    margin-top: 50px;
+    margin-bottom: 30px;
+    cursor: pointer;
+    width: 25%;
+    background-color: #F8B232;
+    padding-top:8px;
+    padding-bottom:8px;
+    border-radius: 10px;
+    border: none;
+    font-size: 17px;
+}
+.messageLinkToAnother{
+    text-align: center;
+}
+
+.linkToAnother a{
+    text-decoration: none;
+    color:#F8B232;
+    text-decoration: underline;
+}
+/* FIN Spécifique à connexion et inscription*/
+
+/*Spécifique à accueil*/
+#sectionSTCODE{
+    display: flex;
+    margin-top: 50px;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.divBarres{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    width:40%;
+    height:100px;
+    border-radius: 12px;
+}
+
+#imageLogoST{
+    height: 80px;
+    margin-right: 10px;
+}
+
+#licenceHiding{
+    visibility: hidden;
+}
+
+/* Footer */
+footer{
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+#sectionMention{
+    width: 33%;
+    display: flex;
+    justify-content:center ;
+    align-items: center;
+}
+
+.lienFooter{
+    color:#F8B232;
+    text-decoration: underline #F8B232;
+    margin: 10px;
+    text-align: center;
+}
+
+#sectionLogoFooter{
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#footerLogo{
+    width: 100px;
+}
+
+#newsLetterSection{
+    width: 33%;
     display: flex;
     flex-direction: column;
+    padding: 10px;
 }
 
-.infoJoueur{
+#titreNewsLetter{
+    font-size: 20px;
     margin-bottom: 2%;
-    margin-left: 1%;
+}
+
+.inputNewsLetter{
+    border: none;
+    background-color: rgb(242, 242, 242);
+    padding: 10px;
+    width: 50%;
+    border-radius: 5px;
+    margin-bottom: 2%;
+}
+
+.texteConditionNewsLetter{
+    font-size: 10px;
+}
+
+#buttonFormulaireNewsLetter{
+    margin-top: 2%;
+    cursor: pointer;
+    width: 50%;
+    background-color: #F8B232;
+    padding-top:5px;
+    padding-bottom:5px;
+    border-radius: 10px;
+    border: none;
+    font-size: 17px;
+}
+
+@media screen and (max-width: 735px)
+{
+    /* header*/
+    #barreNav ul{
+        flex-direction: column;
+    }
+
+    /*main */
+    /* Général*/
+    button{
+        width: 50%;
+    }
+
+    /* Spécifique à connexion inscription */
+    .inputElement{
+        width: 80%;
+    }
+
+    .buttonFormulaire{
+        width: 60%;
+    }
+    /* FIN Spécifique à connexion inscription */
+
+    /* Spécifique Accueil */
+    .divBarres{
+        width: 90%;
+    }
+    /*Fin Spécifique Accueil */
+
+    /* Footer */
+    footer{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #sectionMention{
+        flex-direction: column;
+        width: 80%;
+    }
+
+    #newsLetterSection{
+        align-items: center;
+        text-align: center;
+        width: 80%;
+    }
+
+    .texteConditionNewsLetter{
+        text-align: left;
+    }
+
+    #buttonFormulaireNewsLetter{
+        width: 80%;
+    }
 }
