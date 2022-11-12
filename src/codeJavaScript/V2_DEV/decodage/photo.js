@@ -130,6 +130,7 @@ class Photo {
         return licenceGrayCode;
     };
     conversionLicence(licenceGreyCode) {
+        // licenceGrayCode >> 
         var numLicence = "";
         // recuperation d'un mot binaire de 6bits de longueurs
         for (var bit = 0; bit < licenceGreyCode.length - 1; bit += 6) {
