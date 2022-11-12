@@ -1,4 +1,4 @@
-class Photo{
+class Photo{CONSTRUCTEU
     //ATTRIBUTS et CONSTRUCTEUR
     constructor(matriceImage){
     this.matriceImage = matriceImage;
@@ -12,10 +12,9 @@ class Photo{
     };
     // METHODES SPECIFIQUES
     recuperationContourObjets(){
-    
+// Methode: matriceImage >> recuperationContourObjets >> matriceContoursObjet
 // INITIALISATION
    let src = cv.imread(this.matriceImage);
-   let dst = cv.Mat.zeros(src.rows, src.cols, cv.CV_8UC3);
    var matriceCountoursObjets = new Array();
    // Passage en niveau de gris
   cv.cvtColor(src, src, cv.COLOR_RGBA2GRAY, 0);
@@ -24,32 +23,22 @@ class Photo{
    // creation des matrices contours et hierarchy
    let contours = new cv.MatVector();
    let hierarchy = new cv.Mat();
-    // remplissages des matrices avec les contours 
-   cv.findContours(src, contours, hierarchy, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_NONE);
-   // dessin des contours dans differentes couleurs
-   for (let i = 0; i < contours.size(); ++i) {
-       let color = new cv.Scalar(Math.round(Math.random() * 255), Math.round(Math.random() * 255),
-                               Math.round(Math.random() * 255));
-       cv.drawContours(dst, contours, i, color, 1, cv.LINE_8, hierarchy, 100);
-   }
-   // suppresion des matrices plus utiles
-  //ANALYSE OBJET DANS L'IMAGE 
-
-  const dicObjet = {} //Création d'une variable dictionnaire 
-  //Boucle qui parcours tous les contours de l'image
-  // creation de la matrice des contours des objets 
+//RECUPERATION D'UNE LISTE DE VECTEURS REPRESENTANTS LES POINTS DES CONTOURS
+   cv.findContours(src, contours, hierarchy, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_NONE); 
+// MISE SOUS FORME DE MATRICE DE DIMENSION 3
   var matriceContoursObjets = new Array();
+  // parcours complet de la liste d'objets
   for (var i = 0; i < contours.size(); ++i) 
 {   
     matriceContoursObjets[i] = new Array();
-    var ci = contours.get(i);  //Récupération du contours courant dans une variable
+    var ci = contours.get(i);  //Récupération de l'objet courant dans une variable
+    // parcours des points du contours de l'objet
     for (var j = 0; j < ci.data32S.length; j += 2)
     {
         var coordonneeX = ci.data32S[j]; //Récupération de la coordonnée x
         var coordonneeY = ci.data32S[j + 1]; //Récupération de la coordonnée y
-        //matriceContoursObjets[i][j] = new Array();
+        // Insertion du point sous forme de liste contenant x et y
         matriceContoursObjets[i].push([coordonneeX,coordonneeY]);
-        // remplissage de l'objet courant avec un tableau contenant x et y
     }
 }
 return matriceContoursObjets;
@@ -121,21 +110,21 @@ return matriceContoursObjets;
         //Parcours complet de listeRatios avec traitement systématique
         for (var i = 0; i < listeRatios.length; i++) 
     {
-            //Recherche de la première occurence du ratio dans la variable global tableDecodage
+            //Recherche de la première occurence du ratio dans la variable global TABLE_DECODAGE
             //recherche de la valeur la plus proche du ratio
             // initialisation
             var min = 1;
             var indicePlusProche;
-            for (var ligne=0; ligne < tableDecodage.length; ligne++) 
+            for (var ligne=0; ligne < TABLE_DECODAGE.length; ligne++) 
             {
-                if (valeurAbsolue(listeRatios[i]-tableDecodage[ligne][0])<min) 
+                if (valeurAbsolue(listeRatios[i]-TABLE_DECODAGE[ligne][0])<min) 
                 {
-                    min = valeurAbsolue(listeRatios[i]-tableDecodage[ligne][0])
+                    min = valeurAbsolue(listeRatios[i]-TABLE_DECODAGE[ligne][0])
                     indicePlusProche = ligne;
                 }
             }
             for (var bit =0; bit < 3; bit++) {
-                licenceGrayCode+=tableDecodage[indicePlusProche][1][bit];
+                licenceGrayCode+=TABLE_DECODAGE[indicePlusProche][1][bit];
         }
     }
         console.log(licenceGrayCode);
@@ -154,8 +143,8 @@ return matriceContoursObjets;
             }
 
             // insertion du caractere correspondant au motBinaire dans numLicence
-            for (var cle in tableEncodageGrayCode) {
-                if (JSON.stringify(motBinaire) == JSON.stringify(tableEncodageGrayCode[cle])) {
+            for (var cle in TABLE_ENCODAGE_GRAY_CODE) {
+                if (JSON.stringify(motBinaire) == JSON.stringify(TABLE_ENCODAGE_GRAY_CODE[cle])) {
                     numLicence += cle;
                 }
             }

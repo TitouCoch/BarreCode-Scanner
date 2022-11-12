@@ -6,7 +6,7 @@
 
 //MODIFICATION IMAGE
 // VARIABLES GLOBALES
-var tableEncodageGrayCode ={'a':'000000',
+const TABLE_ENCODAGE_GRAY_CODE ={'a':'000000',
                     'b':'000001',
                     'c':'000011',
                     'd':'000010',
@@ -69,7 +69,7 @@ var tableEncodageGrayCode ={'a':'000000',
                     8:'100010',
                     9:'100011'};
 
-  var tableDecodage=[[0.125,[0,0,0]],
+  const TABLE_DECODAGE=[[0.125,[0,0,0]],
   [0.250,[0,0,1]],
   [0.375,[0,1,1]],
   [0.500,[1,1,1]],
