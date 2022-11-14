@@ -17,9 +17,11 @@ class Photo {
         // INITIALISATION
         let matriceImage = cv.imread(this.matriceImage);
         var matriceCountoursObjets = new Array();
+        var matriceImageNiveauDeGris = matriceImage.clone()
         // matriceImage >> conversion image en niveaux de gris >> matriceImageNiveauDeGris
         cv.cvtColor(matriceImage, matriceImageNiveauDeGris, cv.COLOR_RGBA2GRAY, 0);
         //matriceImageNiveauDeGris >>detection des bords des objets >> matriceImageAvecContours
+        var matriceImageAvecContours = matriceImageNiveauDeGris.clone()
         cv.Canny(matriceImageNiveauDeGris,matriceImageAvecContours, 50, 200, 3, false);
         // creation des matrices et liste de vecteurs  contours et hierarchy
         let contours = new cv.MatVector();
