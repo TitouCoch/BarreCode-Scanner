@@ -185,6 +185,6 @@ class Photo {
         var numLicence = this.conversionLicence(licenceGrayCode);
         // licenceGrayCode >> tester la licence dans une requete
         this.testerLicence(numLicence);
-        //afficher info joueurs
+        //afficher info joueur
     }
 };
