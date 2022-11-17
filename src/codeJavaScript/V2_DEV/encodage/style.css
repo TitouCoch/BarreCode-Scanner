@@ -20,6 +20,15 @@ body{
     height:100px;
 }
 
+#barreReference{
+    background:white;
+    border-radius:50%;
+    width:10px;
+    height:10px;
+    margin-left:5px;
+    border:2px solid white; 
+}
+
 img{
     height: 80px;
     margin-right: 10px;
