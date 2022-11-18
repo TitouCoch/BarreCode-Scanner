@@ -84,10 +84,13 @@ const TABLE_ENCODAGE_GRAY_CODE ={'a':'000000',
 const parametres = { video:true, audio:false};
 var video = document.getElementById("player");
 const photo = document.getElementById('canvas');
-const hiddenCanva = document.getElementById('hiddenCanvas');
+const hiddenCanvas = document.getElementById('hiddenCanvas');
 const context = photo.getContext('2d');
 const boutonPhoto = document.getElementById('photo');
 navigator.mediaDevices.getUserMedia(parametres).then(function(stream){player.srcObject = stream;});
+//
+const output2= document.getElementById('output2');
+var contx = output2.getContext('2d');
 // affichage de la video de la webcam
 
 function drawImg(){

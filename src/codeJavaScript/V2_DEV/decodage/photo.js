@@ -21,14 +21,14 @@ class Photo {
         cv.cvtColor(matriceImage, matriceImageNiveauDeGris, cv.COLOR_RGBA2GRAY, 0);
         //afficher image:
         //
-        cv.imshow (output1,matriceImageNiveauDeGris);
+        cv.imshow(output1, matriceImageNiveauDeGris);
         //
         //matriceImageNiveauDeGris >>detection des bords des objets >> matriceImageAvecContours
         var matriceImageAvecContours = matriceImageNiveauDeGris.clone()
-        cv.Canny(matriceImageNiveauDeGris,matriceImageAvecContours, 50, 200, 3, false);
+        cv.Canny(matriceImageNiveauDeGris, matriceImageAvecContours, 50, 200, 3, false);
         //afficher image:
         //
-        cv.imshow (output2,matriceImageAvecContours);
+        cv.imshow(output2, matriceImageAvecContours);
         //
         // creation des matrices et liste de vecteurs  contours et hierarchy
         let contours = new cv.MatVector();
@@ -80,39 +80,28 @@ class Photo {
             }
             // calcule de la hauteur de la barre
             var hauteur = ymax - ymin;
-            var largeur = xmax-xmin;
+            var largeur = xmax - xmin;
             // ajout de la hauteur et de posx dans la listeObjets
-            listeObjets.push([xmin,xmax,ymin,ymax,hauteur,largeur]);
+            listeObjets.push([xmin, xmax, ymin, ymax, hauteur, largeur]);
         }
-        
+
         //Fonction qui trouve les objets références dans l'image
-        function trouverReferences(listeObjets=[]){
-            var listeReferences =[];
+        function trouverReferences(listeObjets = []) {
+            var listeReferences = [];
             for (var i = 0; i < listeObjets.length; i++) {
                 var marge = 3;
                 var hauteurTemp = listeObjets[i][4];
-                if(hauteurTemp-marge<= listeObjets[i][5] && listeObjets[i][5]<=hauteurTemp+marge){
+                if (hauteurTemp - marge <= listeObjets[i][5] && listeObjets[i][5] <= hauteurTemp + marge) {
                     listeReferences.push(listeObjets[i]);
                 }
             }
             return listeReferences;
         }
-        
-        //Appelle de la fonction trouverReferences
-        var listeObjReference=trouverReferences(listeObjets);
-        var deuxiemeBouleReference=listeObjReference[0];
-        var premiereBouleReference=listeObjReference[1];
-        var logoReference=listeObjReference[2];
-        console.log(listeObjReference)
-        console.log(logoReference)
-        console.log(premiereBouleReference)
-        console.log(deuxiemeBouleReference)
-
-        var bouleVirtuelle=[deuxiemeBouleReference[0],premiereBouleReference[3]]
-        console.log(bouleVirtuelle);
 
 
-        
+
+
+
         listeObjets.sort(fonctionTri);
         //creation de la fonction pour le tri
         function fonctionTri(a, b) {
@@ -130,6 +119,66 @@ class Photo {
         }
         var listeObjetsTrie = listeObjets;
 
+        //Appel de la fonction trouverReferences
+        var listeObjReference = trouverReferences(listeObjetsTrie);
+        console.log(listeObjReference)
+        var logo = listeObjReference[0];
+        var boule1 = listeObjReference[1];
+        var boule2 = listeObjReference[2];
+        
+        console.log("listeObjReference", listeObjReference);
+        console.log("logo", logo);
+        console.log("boule1", boule1);
+        console.log("boule2", boule2);
+
+        function distance(a, b) {
+            return Math.sqrt((b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2)
+        }
+        function calculerAngle(boule1, boule2) {
+            // initialisation des points
+            var pointA = [boule1[0] + boule1[4] / 2, boule1[2] + boule1[5] / 2];
+            var pointB = [boule2[0] + boule2[4] / 2, boule2[2] + boule2[5] / 2];
+            var pointVirtuel = [pointB[0], pointA[1]];
+            //
+            contx.strokeStyle = '#f00';
+            contx.beginPath();
+            contx.moveTo(pointA[0], pointA[1]);
+            contx.lineTo(pointB[0], pointB[1]);
+            contx.stroke();
+            contx.strokeStyle = '#f00';
+            contx.beginPath();
+            contx.moveTo(pointA[0], pointA[1]);
+            contx.lineTo(pointVirtuel[0], pointVirtuel[1]);
+            contx.stroke();
+            //
+            console.log("pointA", pointA);
+            console.log("pointB", pointB);
+            console.log("pointViruel :", pointVirtuel);
+
+            // calcul des distance
+            var hypothenuse = distance(pointA, pointB);
+            var adjacent = distance(pointA, pointVirtuel);
+            console.log("h:", hypothenuse, "adj:", adjacent);
+            var angle = Math.acos(adjacent / hypothenuse);
+            if(Math.sin(angle)>0)
+            {
+                console.log("angle positif")
+            }
+            else
+            {
+                console.log("angle negatif")
+            }
+            return angle;
+        }
+        console.log(calculerAngle(boule1, boule2));
+
+        function rotationEnsemble(centre,matrice)
+        {
+            function rotation(angle,point)
+            {
+                return [point[0]*Math.cos(angle)+point[1]*Math.sin(angle) , -(point[0]*Math.sin(angle))+point[1]*Math.cos(angle)]
+            }
+        }
         // listeObjetTrie >> CALCUL DES RATIOS >> listeRatios
         // hauteurReference >> Affectation de  la hauteur du premier objet a la hauteur reference >> hauteurReference
         var hauteurReference = listeObjetsTrie[0][1];
@@ -192,7 +241,7 @@ class Photo {
 
 
 
-    
+
     //Méthode : listeRatios >> Conversion barres en grey code >> licenceGrayCode
     conversionGrayCode(listeRatios) {
         //licenceGrayCode >> INITIALISATION VARIABLE >> licenceGrayCode
@@ -203,7 +252,7 @@ class Photo {
         }
         //listeRatios, licenceGrayCode >> Parcours complet de listeRatios avec traitement systématique >> licenceGrayCode
         for (var i = 0; i < listeRatios.length; i++) {
-            
+
             //listeRatios, licenceGrayCode >> Recherche de la valeur la plus proche du ratio >> licenceGrayCode
             // min, inidicePlusProche >> Initialisation variable >> min, indicePlusProche
             var min = 1;
@@ -227,8 +276,8 @@ class Photo {
 
 
     conversionLicence(licenceGreyCode) {
-         // licenceGrayCode >> conversion licenceGrayCode en chaine de caracteres >> numLicence
-         // initialisation des variables >> numLicence, motBinaire
+        // licenceGrayCode >> conversion licenceGrayCode en chaine de caracteres >> numLicence
+        // initialisation des variables >> numLicence, motBinaire
         var numLicence = "";
         var motBinaire = "";
         // licenceGrayCode, motBinaire >> Parcours complet de licenceGrayCode avec traitement systematique
