@@ -62,25 +62,57 @@ class Photo {
             //ymin, ymax, xpos >> Intialisation des variables avec le premier point de contours de lo'objet >> ymin, ymax, ypos
             var ymin = matriceContourObjet[objetCourant][0][1];
             var ymax = matriceContourObjet[objetCourant][0][1];
-            var xpos = matriceContourObjet[objetCourant][0][0];
-
-            //ymin, ymax, xpos >> Parcours complet des points de contours de l'objet courant avec traitement systématique >> listeObjet
+            var xmin = matriceContourObjet[objetCourant][0][0];
+            var xmax = matriceContourObjet[objetCourant][0][0];
             for (var point = 0; point < matriceContourObjet[objetCourant].length; point++) {
-                //ymin, ymax >> Recherche des coordonnée Ymin et Ymax >> ymin, ymax
                 if (matriceContourObjet[objetCourant][point][1] > ymax) {
                     ymax = matriceContourObjet[objetCourant][point][1];
                 }
                 if (matriceContourObjet[objetCourant][point][1] < ymin) {
                     ymin = matriceContourObjet[objetCourant][point][1];
                 }
+                if (matriceContourObjet[objetCourant][point][0] > xmax) {
+                    xmax = matriceContourObjet[objetCourant][point][0];
+                }
+                if (matriceContourObjet[objetCourant][point][0] < xmin) {
+                    xmin = matriceContourObjet[objetCourant][point][0];
+                }
             }
-            // ymin, ymax, hauteur >> Calcule de la hauteur de la barre >> hauteur
+            // calcule de la hauteur de la barre
             var hauteur = ymax - ymin;
-            // listeObjets, hauteurn xpos >> Ajout de la hauteur et de posx dans la listeObjets >> listeObjets
-            listeObjets.push([xpos, hauteur]);
+            var largeur = xmax-xmin;
+            // ajout de la hauteur et de posx dans la listeObjets
+            listeObjets.push([xmin,xmax,ymin,ymax,hauteur,largeur]);
         }
+        
+        //Fonction qui trouve les objets références dans l'image
+        function trouverReferences(listeObjets=[]){
+            var listeReferences =[];
+            for (var i = 0; i < listeObjets.length; i++) {
+                var marge = 3;
+                var hauteurTemp = listeObjets[i][4];
+                if(hauteurTemp-marge<= listeObjets[i][5] && listeObjets[i][5]<=hauteurTemp+marge){
+                    listeReferences.push(listeObjets[i]);
+                }
+            }
+            return listeReferences;
+        }
+        
+        //Appelle de la fonction trouverReferences
+        var listeObjReference=trouverReferences(listeObjets);
+        var deuxiemeBouleReference=listeObjReference[0];
+        var premiereBouleReference=listeObjReference[1];
+        var logoReference=listeObjReference[2];
+        console.log(listeObjReference)
+        console.log(logoReference)
+        console.log(premiereBouleReference)
+        console.log(deuxiemeBouleReference)
 
-        // listeObjet >> TRIE DE LA LISTEOBJETS PAR POSX >> listeObjetTrie
+        var bouleVirtuelle=[deuxiemeBouleReference[0],premiereBouleReference[3]]
+        console.log(bouleVirtuelle);
+
+
+        
         listeObjets.sort(fonctionTri);
         //creation de la fonction pour le tri
         function fonctionTri(a, b) {
@@ -112,6 +144,55 @@ class Photo {
         return listeRatios;
     };
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
     //Méthode : listeRatios >> Conversion barres en grey code >> licenceGrayCode
     conversionGrayCode(listeRatios) {
         //licenceGrayCode >> INITIALISATION VARIABLE >> licenceGrayCode
@@ -143,6 +224,7 @@ class Photo {
         }
         return licenceGrayCode;
     };
+
 
     conversionLicence(licenceGreyCode) {
          // licenceGrayCode >> conversion licenceGrayCode en chaine de caracteres >> numLicence
