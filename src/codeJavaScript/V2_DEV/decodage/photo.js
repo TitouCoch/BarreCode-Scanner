@@ -80,7 +80,7 @@ class Photo {
             }
             // calcule de la hauteur de la barre
             var hauteur = ymax - ymin;
-            var largeur = xmax-xmin;
+            var largeur = xmax - xmin;
             // ajout de la hauteur et de posx dans la listeObjets
             listeObjets.push([xmin,xmax,ymin,ymax,hauteur,largeur]);
         }
@@ -98,19 +98,6 @@ class Photo {
             return listeReferences;
         }
         
-        //Appelle de la fonction trouverReferences
-        var listeObjReference=trouverReferences(listeObjets);
-        var deuxiemeBouleReference=listeObjReference[0];
-        var premiereBouleReference=listeObjReference[1];
-        var logoReference=listeObjReference[2];
-        console.log(listeObjReference)
-        console.log(logoReference)
-        console.log(premiereBouleReference)
-        console.log(deuxiemeBouleReference)
-
-        var bouleVirtuelle=[deuxiemeBouleReference[0],premiereBouleReference[3]]
-        console.log(bouleVirtuelle);
-
 
         
         listeObjets.sort(fonctionTri);
@@ -129,6 +116,45 @@ class Photo {
             }
         }
         var listeObjetsTrie = listeObjets;
+
+
+        //Appelle de la fonction trouverReferences
+        var listeObjReference=trouverReferences(listeObjetsTrie);
+        var deuxiemeBouleReference=listeObjReference[2];
+        var premiereBouleReference=listeObjReference[1];
+        var logoReference=listeObjReference[0];
+        //var bouleVirtuelle=[deuxiemeBouleReference[0],premiereBouleReference[3]]
+
+        function filtrerObjet(listeObjets=[],logoReference=[],deuxiemeRondReference=[],premiereBouleReference=[]){
+            var marge=10
+            var valeurXmin = premiereBouleReference[0];
+            var valeurXmax = deuxiemeRondReference[0];
+            var valeurYmin = logoReference[2];
+            var valeurYmax = logoReference[3];
+
+            for(var i=1;i<listeObjets.length;i++){
+                if(listeObjets[i][0] <= valeurXmin){
+                    //console.log(i,"L'objet est avant le logo sur l'axe x")
+                    listeObjets.splice(i,1);
+                }
+                else if(listeObjets[i][0] >= valeurXmax){
+                    //console.log(i,"L'objet est après le logo sur l'axe x")
+                    listeObjets.splice(i,1);
+                }
+                else if(listeObjets[i][2] < valeurYmin-10){
+                    //console.log(i,"L'objet est avant le logo sur l'axe y")
+                    listeObjets.splice(i,1);
+                }
+                else if(listeObjets[i][3] > valeurYmax+10){
+                    //console.log(i,"L'objet est après le logo sur l'axe y")
+                    listeObjets.splice(i,1);
+                }
+            }
+            //listeObjets.splice(0,1);
+            return listeObjets
+        }
+        var listeObjet2=filtrerObjet(listeObjets,logoReference,deuxiemeBouleReference,premiereBouleReference)
+        console.log("Liste objet2",listeObjet2)
 
         // listeObjetTrie >> CALCUL DES RATIOS >> listeRatios
         // hauteurReference >> Affectation de  la hauteur du premier objet a la hauteur reference >> hauteurReference
