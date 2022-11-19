@@ -99,9 +99,6 @@ class Photo {
         }
 
 
-
-
-
         listeObjets.sort(fonctionTri);
         //creation de la fonction pour le tri
         function fonctionTri(a, b) {
@@ -119,12 +116,47 @@ class Photo {
         }
         var listeObjetsTrie = listeObjets;
 
-        //Appel de la fonction trouverReferences
+
+         //Appel de la fonction trouverReferences
         var listeObjReference = trouverReferences(listeObjetsTrie);
         console.log(listeObjReference)
         var logo = listeObjReference[0];
         var boule1 = listeObjReference[1];
         var boule2 = listeObjReference[2];
+        
+        function filtrerObjet(listeObjets=[],logoReference=[],deuxiemeRondReference=[],premiereBouleReference=[]){
+            var marge=10
+            var valeurXmin = boule1[0];
+            var valeurXmax = boule2[0];
+            var valeurYmin = logo[2];
+            var valeurYmax = logo[3];
+
+            for(var i=1;i<listeObjets.length;i++){
+                if(listeObjets[i][0] <= valeurXmin){
+                    //console.log(i,"L'objet est avant le logo sur l'axe x")
+                    listeObjets.splice(i,1);
+                }
+                else if(listeObjets[i][0] >= valeurXmax){
+                    //console.log(i,"L'objet est après le logo sur l'axe x")
+                    listeObjets.splice(i,1);
+                }
+                else if(listeObjets[i][2] < valeurYmin-10){
+                    //console.log(i,"L'objet est avant le logo sur l'axe y")
+                    listeObjets.splice(i,1);
+                }
+                else if(listeObjets[i][3] > valeurYmax+10){
+                    //console.log(i,"L'objet est après le logo sur l'axe y")
+                    listeObjets.splice(i,1);
+                }
+            }
+            //listeObjets.splice(0,1);
+            return listeObjets
+        }
+        var listeObjet2=filtrerObjet(listeObjets,logoReference,deuxiemeBouleReference,premiereBouleReference)
+        console.log("Liste objet2",listeObjet2)
+
+
+       
         
         console.log("listeObjReference", listeObjReference);
         console.log("logo", logo);
@@ -179,6 +211,7 @@ class Photo {
                 return [point[0]*Math.cos(angle)+point[1]*Math.sin(angle) , -(point[0]*Math.sin(angle))+point[1]*Math.cos(angle)]
             }
         }
+ decodageAmelioration
         // listeObjetTrie >> CALCUL DES RATIOS >> listeRatios
         // hauteurReference >> Affectation de  la hauteur du premier objet a la hauteur reference >> hauteurReference
         var hauteurReference = listeObjetsTrie[0][1];
