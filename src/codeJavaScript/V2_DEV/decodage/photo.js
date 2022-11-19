@@ -140,20 +140,22 @@ class Photo {
         function distance(a, b) {
             return Math.sqrt((b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2)
         }
+        function toDegree(a)
+        {
+            return a * 180/Math.PI;
+        }
+        
+        function toRadian(a)
+        {
+            return a/(180/Math.PI);
+        }
         function calculerAngle(boule1, boule2) {
-            function toDegree(a)
-            {
-                return a * 180/Math.PI;
-            }
-            function toRadian(a)
-            {
-                return a/(180/Math.PI);
-            }
+           
             // initialisation des points
             var pointA = [boule1[0] + boule1[4] / 2, boule1[2] + boule1[5] / 2];
             var pointB = [boule2[0] + boule2[4] / 2, boule2[2] + boule2[5] / 2];
             var pointVirtuel = [pointB[0], pointA[1]];
-            //
+            //afficher les droites
             contx.strokeStyle = '#f00';
             contx.beginPath();
             contx.moveTo(pointA[0], pointA[1]);
@@ -189,13 +191,26 @@ class Photo {
         }
         console.log(calculerAngle(boule1, boule2));
 
+        function rotationPoint(angle,x,y)
+        {
+            var angleRadian = toRadian(angle)
+            return [x*Math.cos(angleRadian)+y*-1*Math.sin(angleRadian) ,x*Math.sin(angleRadian)+y*Math.cos(angleRadian)]
+        }
         function rotationEnsemble(centre,matrice)
         {
-            function rotation(angle,point)
-            {
-                return [point[0]*Math.cos(angle)+point[1]*Math.sin(angle) , -(point[0]*Math.sin(angle))+point[1]*Math.cos(angle)]
+           for(var objet=0; objet < matrice.length; objet++){
+            for(var point=0; point < matrice[objet].length;point++){
+            var XRepereCentre = point[0] - centre[0]+centre[5]/2; // le x du point dans un repere cartesien de centre "centre"
+            var YRepereCentre = point[0] - centre[1]+centre[4]/2;    // le y du point dans un repere cartesien de centre "centre"
+                var nouveauPoint = rotationPoint(20,XRepereCentre,YRepereCentre);
+            var Xpoint = nouveauPoint[0] + centre[0]+centre[5]/2;
+            var Ypoint = nouveauPoint[1] + centre[1]+centre[4]/2;
             }
+           }
         }
+        console.log(" rotation de (10,10) de 90 degree:",rotationPoint(2,10,10));
+        console.log(listeObjetsTrie.length);
+        rotationEnsemble(logo,listeObjetsTrie);
         // listeObjetTrie >> CALCUL DES RATIOS >> listeRatios
         // hauteurReference >> Affectation de  la hauteur du premier objet a la hauteur reference >> hauteurReference
         var hauteurReference = listeObjetsTrie[0][1];
@@ -207,6 +222,8 @@ class Photo {
             var ratio = (listeObjetsTrie[objetCourant][1] / hauteurReference);
             listeRatios.push(ratio);
         }
+
+        
         return listeRatios;
     };
 
