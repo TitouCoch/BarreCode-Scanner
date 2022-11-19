@@ -90,9 +90,14 @@ class Photo {
             var listeReferences = [];
             for (var i = 0; i < listeObjets.length; i++) {
                 var marge = 3;
+                var XmaxLogo = -1;
                 var hauteurTemp = listeObjets[i][4];
-                if (hauteurTemp - marge <= listeObjets[i][5] && listeObjets[i][5] <= hauteurTemp + marge) {
+                if (hauteurTemp - marge <= listeObjets[i][5] && listeObjets[i][5] <= hauteurTemp + marge && listeObjets[i][0]>XmaxLogo && hauteurTemp != 0) {
                     listeReferences.push(listeObjets[i]);
+                    if(hauteurTemp >= 20){
+                        console.log("hauteurLogo:",hauteurTemp)
+                        XmaxLogo = listeObjets[i][1]
+                    }
                 }
             }
             return listeReferences;
@@ -125,7 +130,8 @@ class Photo {
         var logo = listeObjReference[0];
         var boule1 = listeObjReference[1];
         var boule2 = listeObjReference[2];
-        
+        var limiteX = logo[1]
+                
         console.log("listeObjReference", listeObjReference);
         console.log("logo", logo);
         console.log("boule1", boule1);
@@ -135,6 +141,14 @@ class Photo {
             return Math.sqrt((b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2)
         }
         function calculerAngle(boule1, boule2) {
+            function toDegree(a)
+            {
+                return a * 180/Math.PI;
+            }
+            function toRadian(a)
+            {
+                return a/(180/Math.PI);
+            }
             // initialisation des points
             var pointA = [boule1[0] + boule1[4] / 2, boule1[2] + boule1[5] / 2];
             var pointB = [boule2[0] + boule2[4] / 2, boule2[2] + boule2[5] / 2];
@@ -160,15 +174,18 @@ class Photo {
             var adjacent = distance(pointA, pointVirtuel);
             console.log("h:", hypothenuse, "adj:", adjacent);
             var angle = Math.acos(adjacent / hypothenuse);
-            if(Math.sin(angle)>0)
+            angle = toDegree(angle);
+            if(pointVirtuel[1]<pointB[1])
             {
-                console.log("angle positif")
+                console.log("angle positif");
+                return angle;
             }
             else
             {
-                console.log("angle negatif")
+                console.log("angle negatif");
+                return -angle;
             }
-            return angle;
+            
         }
         console.log(calculerAngle(boule1, boule2));
 
