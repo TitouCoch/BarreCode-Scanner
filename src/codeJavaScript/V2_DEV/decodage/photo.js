@@ -198,23 +198,56 @@ class Photo {
         }
         function rotationEnsemble(centre,matrice)
         {
-           for(var objet=0; objet < matrice.length; objet++){
-            for(var point=0; point < matrice[objet].length;point++){
-            var XRepereCentre = point[0] - centre[0]+centre[5]/2; // le x du point dans un repere cartesien de centre "centre"
-            var YRepereCentre = point[0] - centre[1]+centre[4]/2;    // le y du point dans un repere cartesien de centre "centre"
-                var nouveauPoint = rotationPoint(20,XRepereCentre,YRepereCentre);
-            var Xpoint = nouveauPoint[0] + centre[0]+centre[5]/2;
-            var Ypoint = nouveauPoint[1] + centre[1]+centre[4]/2;
+           for(var objet=0; objet < matrice.length; objet++)
+           {
+            for(var point=0; point < matrice[objet].length;point++)
+            {
+                var XRepereCentre = point[0] - centre[0]+centre[5]/2; // le x du point dans un repere cartesien de centre "centre"
+                var YRepereCentre = point[0] - centre[1]+centre[4]/2;    // le y du point dans un repere cartesien de centre "centre"
+                    var nouveauPoint = rotationPoint(20,XRepereCentre,YRepereCentre);
+                var Xpoint = nouveauPoint[0] + centre[0]+centre[5]/2;
+                var Ypoint = nouveauPoint[1] + centre[1]+centre[4]/2;
+                // remplacer le point par le nouveau point apres rotation
+                listeObjetsTrie[objets][point][0] = Xpoint;
+                listeObjetsTrie[objets][point][1] = Ypoint;
             }
+            
            }
+           return listeObjetsTrie
         }
         console.log(" rotation de (10,10) de 90 degree:",rotationPoint(2,10,10));
         console.log(listeObjetsTrie.length);
-        rotationEnsemble(logo,listeObjetsTrie);
+        var listeObjetApresRotation =  rotationEnsemble(logo,listeObjetsTrie);
         // listeObjetTrie >> CALCUL DES RATIOS >> listeRatios
         // hauteurReference >> Affectation de  la hauteur du premier objet a la hauteur reference >> hauteurReference
-        var hauteurReference = listeObjetsTrie[0][1];
+        var hauteurReference = logo[4]
         // hauteurReference, listeObjetsTrie >> Parcours et calcul de chaques ratios >> listeRatios
+        for (var objetCourant = 0; objetCourant < listeObjetApresRotation.length; objetCourant++) {
+            //ymin, ymax, xpos >> Intialisation des variables avec le premier point de contours de lo'objet >> ymin, ymax, ypos
+            var ymin = matriceContourObjet[objetCourant][0][1];
+            var ymax = matriceContourObjet[objetCourant][0][1];
+            var xmin = matriceContourObjet[objetCourant][0][0];
+            var xmax = matriceContourObjet[objetCourant][0][0];
+            for (var point = 0; point < matriceContourObjet[objetCourant].length; point++) {
+                if (matriceContourObjet[objetCourant][point][1] > ymax) {
+                    ymax = matriceContourObjet[objetCourant][point][1];
+                }
+                if (matriceContourObjet[objetCourant][point][1] < ymin) {
+                    ymin = matriceContourObjet[objetCourant][point][1];
+                }
+                if (matriceContourObjet[objetCourant][point][0] > xmax) {
+                    xmax = matriceContourObjet[objetCourant][point][0];
+                }
+                if (matriceContourObjet[objetCourant][point][0] < xmin) {
+                    xmin = matriceContourObjet[objetCourant][point][0];
+                }
+            }
+            // calcule de la hauteur de la barre
+            var hauteur = ymax - ymin;
+            var largeur = xmax - xmin;
+            // ajout de la hauteur et de posx dans la listeObjets
+            listeObjets.push([xmin, xmax, ymin, ymax, hauteur, largeur]);
+        }
         // listeRatios >> Initialisation variable >> listeRatios
         var listeRatios = [];
         for (var objetCourant = 1; objetCourant < listeObjetsTrie.length; objetCourant++) {
@@ -223,6 +256,7 @@ class Photo {
             listeRatios.push(ratio);
         }
 
+        for (var objet=0; objet<listeObjetsTrie)
         
         return listeRatios;
     };
