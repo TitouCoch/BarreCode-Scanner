@@ -1,0 +1,36 @@
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: rgb(0, 0, 0);
+    justify-content: center;
+    align-items: center;
+}
+
+.titrePage{
+    color: rgb(255, 255, 255);
+}
+
+.divBarres{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    width:500px;
+    height:100px;
+}
+
+img{
+    height: 90px;
+}
+
+#vertical{
+    margin-left: 10px;
+    height: 10px;
+    border-left:4px solid #fff;
+    display:inline-block;
+    border-radius: 5px;
+}
+
+
+
