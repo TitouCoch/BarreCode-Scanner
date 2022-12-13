@@ -178,7 +178,7 @@ boutonPhoto.addEventListener('click', () => {
   var uneListeRatios = new ListeRatios(recuperationRatio(desContoursObjets));
   var licenceEnGrayCode = new GrayCode(conversionGrayCode(uneListeRatios));
   var uneLicence = new Licence(conversionLicence(licenceEnGrayCode));
-  //testerLicence(uneLicence);
+  testerLicence(uneLicence).then((n)=>{console.log(n)});
   /*    erreur = false;
     }
     catch (e) {
@@ -458,39 +458,40 @@ function conversionLicence(licenceGreyCode) {
 
 
 function testerLicence(numLicence) {
-  // Crée un nouvel objet XMLHttpRequest
-  const xhr = new XMLHttpRequest();
-  // Définit l'URL du fichier PHP à appeler
-  const url = '../php/api.php';
+  return new Promise((resolve) => {
+    // Crée un nouvel objet XMLHttpRequest
+    const xhr = new XMLHttpRequest();
+    // Définit l'URL du fichier PHP à appeler
+    const url = '../php/api.php';
 
-  // Définit la méthode HTTP à utiliser (POST dans ce cas)
-  xhr.open('POST', url);
+    // Définit la méthode HTTP à utiliser (POST dans ce cas)
+    xhr.open('POST', url);
 
-  // Définit les en-têtes de la requête
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    // Définit les en-têtes de la requête
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 
-  // Définit les données à envoyer au fichier PHP
-  const data = 'license=' + numLicence.getNumLicence();
+    // Définit les données à envoyer au fichier PHP
+    const data = 'license=' + numLicence.getNumLicence();
 
-  console.log(data)
-  // Envoie la requête
-  xhr.send(data);
+    console.log(data)
+    // Envoie la requête
+    xhr.send(data);
 
-  // Traite la réponse
-  xhr.onreadystatechange = function () {
-    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-      // Parse la réponse en tant que JSON
-      const response = JSON.parse(this.responseText);
-      console.log(response.licenseExists)
-      // Vérifie si la licence existe
-      if (response.licenseExists) {
-        // La licence existe
-        console.log("Existe")
-      } else {
-        // La licence n'existe pas
-        console.log("Existe pas")
-
+    // Traite la réponse
+    xhr.onreadystatechange = function () {
+      if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+        // Parse la réponse en tant que JSON
+        const response = JSON.parse(this.responseText);
+        console.log(response.licenseExists)
+        // Vérifie si la licence existe
+        if (response.licenseExists) {
+          // La licence existe
+          resolve(true);
+        } else {
+          // La licence n'existe pas
+          resolve(false);
+        }
       }
-    }
-  };
+    };
+  });
 }
