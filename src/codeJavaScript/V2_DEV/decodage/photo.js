@@ -54,35 +54,40 @@ class Photo {
 
     //Méthode : matriceContoursObjets >> Récupération du ratio en fonction de la hauteur des barres obtenues sur la photo >> listeRatios
     recuperationRatio(matriceContourObjet) {
-        //matriceContoursObjet >> RECUPERATION DES HAUTEURS ET POSITIONS DES OBJETS >> listeObjet
-        // listeObjets >> Initialisation >> listeObjets
-        var listeObjets = [];
-        //listeObjets >> Parcours complet de la matrice des contours objets avec traitement systématique >> listeObjets
-        for (var objetCourant = 0; objetCourant < matriceContourObjet.length; objetCourant++) {
-            //ymin, ymax, xpos >> Intialisation des variables avec le premier point de contours de lo'objet >> ymin, ymax, ypos
-            var ymin = matriceContourObjet[objetCourant][0][1];
-            var ymax = matriceContourObjet[objetCourant][0][1];
-            var xmin = matriceContourObjet[objetCourant][0][0];
-            var xmax = matriceContourObjet[objetCourant][0][0];
-            for (var point = 0; point < matriceContourObjet[objetCourant].length; point++) {
-                if (matriceContourObjet[objetCourant][point][1] > ymax) {
-                    ymax = matriceContourObjet[objetCourant][point][1];
+
+        function recupererListeObjets(matrice){
+            //matriceContoursObjet >> RECUPERATION DES HAUTEURS ET POSITIONS DES OBJETS >> listeObjet
+            // listeObjets >> Initialisation >> listeObjets
+            var listeObjets = [];
+            //listeObjets >> Parcours complet de la matrice des contours objets avec traitement systématique >> listeObjets
+            for (var objetCourant = 0; objetCourant < matrice.length; objetCourant++)
+            {
+                //ymin, ymax, xpos >> Intialisation des variables avec le premier point de contours de lo'objet >> ymin, ymax, ypos
+                var ymin = matrice[objetCourant][0][1];
+                var ymax = matrice[objetCourant][0][1];
+                var xmin = matrice[objetCourant][0][0];
+                var xmax = matrice[objetCourant][0][0];
+                for (var point = 0; point < matrice[objetCourant].length; point++) {
+                    if (matrice[objetCourant][point][1] > ymax) {
+                        ymax = matrice[objetCourant][point][1];
+                    }
+                    if (matrice[objetCourant][point][1] < ymin) {
+                        ymin = matrice[objetCourant][point][1];
+                    }
+                    if (matrice[objetCourant][point][0] > xmax) {
+                        xmax = matrice[objetCourant][point][0];
+                    }
+                    if (matrice[objetCourant][point][0] < xmin) {
+                        xmin = matrice[objetCourant][point][0];
+                    }
                 }
-                if (matriceContourObjet[objetCourant][point][1] < ymin) {
-                    ymin = matriceContourObjet[objetCourant][point][1];
-                }
-                if (matriceContourObjet[objetCourant][point][0] > xmax) {
-                    xmax = matriceContourObjet[objetCourant][point][0];
-                }
-                if (matriceContourObjet[objetCourant][point][0] < xmin) {
-                    xmin = matriceContourObjet[objetCourant][point][0];
-                }
+                // calcule de la hauteur de la barre
+                var hauteur = ymax - ymin;
+                var largeur = xmax - xmin;
+                // ajout de la hauteur et de posx dans la listeObjets
+                listeObjets.push([xmin, xmax, ymin, ymax, hauteur, largeur]);
             }
-            // calcule de la hauteur de la barre
-            var hauteur = ymax - ymin;
-            var largeur = xmax - xmin;
-            // ajout de la hauteur et de posx dans la listeObjets
-            listeObjets.push([xmin, xmax, ymin, ymax, hauteur, largeur]);
+            return listeObjets;
         }
 
         //Fonction qui trouve les objets références dans l'image
@@ -100,7 +105,10 @@ class Photo {
                     }
                 }
             }
-            return listeReferences;
+            var logo = listeObjReference[0];
+            var boule1 = listeObjReference[1];
+            var boule2 = listeObjReference[2];
+            return logo,boule1,boule2;
         }
 
 
@@ -127,10 +135,7 @@ class Photo {
         //Appel de la fonction trouverReferences
         var listeObjReference = trouverReferences(listeObjetsTrie);
         console.log(listeObjReference)
-        var logo = listeObjReference[0];
-        var boule1 = listeObjReference[1];
-        var boule2 = listeObjReference[2];
-        var limiteX = logo[1]
+       
                 
         console.log("listeObjReference", listeObjReference);
         console.log("logo", logo);
@@ -191,63 +196,91 @@ class Photo {
         }
         console.log(calculerAngle(boule1, boule2));
 
-        function rotationPoint(angle,x,y)
+        function rotationPoint(x,y,angle)
         {
             var angleRadian = toRadian(angle)
             return [x*Math.cos(angleRadian)+y*-1*Math.sin(angleRadian) ,x*Math.sin(angleRadian)+y*Math.cos(angleRadian)]
         }
-        function rotationEnsemble(centre,matrice)
+        function rotationEnsemble(centre,matrice,angle)
         {
+            var matriceApresRotation = [];
+            console.log(matrice);
            for(var objet=0; objet < matrice.length; objet++)
            {
+            matriceApresRotation.push([])
             for(var point=0; point < matrice[objet].length;point++)
-            {
-                var XRepereCentre = point[0] - centre[0]+centre[5]/2; // le x du point dans un repere cartesien de centre "centre"
-                var YRepereCentre = point[0] - centre[1]+centre[4]/2;    // le y du point dans un repere cartesien de centre "centre"
-                    var nouveauPoint = rotationPoint(20,XRepereCentre,YRepereCentre);
-                var Xpoint = nouveauPoint[0] + centre[0]+centre[5]/2;
-                var Ypoint = nouveauPoint[1] + centre[1]+centre[4]/2;
+            {   
+                // le y du point dans un repere cartesien de centre "centre"
+                var XRepereCentre = matrice[objet][point][0] - centre[0];
+                var YRepereCentre = matrice[objet][point][1] - centre[1];
+                // rotation des coordonées du point
+                var nouveauPoint = rotationPoint(XRepereCentre,YRepereCentre,angle);
+                // remettre les points dans le plan d'origine
+                var XRepereOrigine = matrice[objet][point][0] + centre[0];
+                var YRepereOrigine = matrice[objet][point][1] + centre[1];
                 // remplacer le point par le nouveau point apres rotation
-                listeObjetsTrie[objets][point][0] = Xpoint;
-                listeObjetsTrie[objets][point][1] = Ypoint;
+                matriceApresRotation[objet].push([XRepereOrigine,YRepereOrigine])
             }
-            
            }
-           return listeObjetsTrie
+           return matriceApresRotation
         }
         console.log(" rotation de (10,10) de 90 degree:",rotationPoint(2,10,10));
         console.log(listeObjetsTrie.length);
-        var listeObjetApresRotation =  rotationEnsemble(logo,listeObjetsTrie);
+        var matriceApresRotation =  rotationEnsemble(logo,matriceContourObjet,20);
+        console.log("matriceApresRotation:",matriceApresRotation);
         // listeObjetTrie >> CALCUL DES RATIOS >> listeRatios
         // hauteurReference >> Affectation de  la hauteur du premier objet a la hauteur reference >> hauteurReference
-        var hauteurReference = logo[4]
-        // hauteurReference, listeObjetsTrie >> Parcours et calcul de chaques ratios >> listeRatios
-        for (var objetCourant = 0; objetCourant < listeObjetApresRotation.length; objetCourant++) {
-            //ymin, ymax, xpos >> Intialisation des variables avec le premier point de contours de lo'objet >> ymin, ymax, ypos
-            var ymin = matriceContourObjet[objetCourant][0][1];
-            var ymax = matriceContourObjet[objetCourant][0][1];
-            var xmin = matriceContourObjet[objetCourant][0][0];
-            var xmax = matriceContourObjet[objetCourant][0][0];
-            for (var point = 0; point < matriceContourObjet[objetCourant].length; point++) {
-                if (matriceContourObjet[objetCourant][point][1] > ymax) {
-                    ymax = matriceContourObjet[objetCourant][point][1];
+        function calculerLesRatios(matrice){
+            var hauteurReference = logo[4];
+            var listeObjetsApresRotation = [];
+            // hauteurReference, listeObjetsTrie >> Parcours et calcul de chaques ratios >> listeRatios
+            for (var objetCourant = 0; objetCourant < matrice.length; objetCourant++) {
+                //ymin, ymax, xpos >> Intialisation des variables avec le premier point de contours de lo'objet >> ymin, ymax, ypos
+                var ymin = matrice[objetCourant][0][1];
+                var ymax = matrice[objetCourant][0][1];
+                var xmin = matrice[objetCourant][0][0];
+                var xmax = matrice[objetCourant][0][0];
+                listeObjetsApresRotation.push([]);
+                for (var point = 0; point < matrice[objetCourant].length; point++) 
+                {
+                    if (matrice[objetCourant][point][1] > ymax) {
+                        ymax = matrice[objetCourant][point][1];
+                    }
+                    if (matrice[objetCourant][point][1] < ymin) {
+                        ymin = matrice[objetCourant][point][1];
+                    }
+                    if (matrice[objetCourant][point][0] > xmax) {
+                        xmax = matrice[objetCourant][point][0];
+                    }
+                    if (matrice[objetCourant][point][0] < xmin) {
+                        xmin = matrice[objetCourant][point][0];
+                    }
+                
                 }
-                if (matriceContourObjet[objetCourant][point][1] < ymin) {
-                    ymin = matriceContourObjet[objetCourant][point][1];
-                }
-                if (matriceContourObjet[objetCourant][point][0] > xmax) {
-                    xmax = matriceContourObjet[objetCourant][point][0];
-                }
-                if (matriceContourObjet[objetCourant][point][0] < xmin) {
-                    xmin = matriceContourObjet[objetCourant][point][0];
+                // calcule de la hauteur de la barre
+                var hauteur = ymax - ymin;
+                // ajout de la hauteur et de posx dans la listeObjets
+                listeObjetsApresRotation[objetCourant].push(xmin,xmax,ymin,ymax,hauteur);
+            }
+    }
+        function filtreObjet(liste)
+        {
+            var listeObjetFiltreApresRotation = [];
+            var limiteXmax = boule2[1];
+            var limiteXmin = boule1[0];
+            for (var i = 0; i < liste.length; i++)
+            {
+                var objetCourant = liste[i];
+                if(objetCourant[0]>=limiteXmin && objetCourant[1]<=limiteXmax)
+                {
+                    listeObjetFiltreApresRotation.push(objetCourant)
                 }
             }
-            // calcule de la hauteur de la barre
-            var hauteur = ymax - ymin;
-            var largeur = xmax - xmin;
-            // ajout de la hauteur et de posx dans la listeObjets
-            listeObjets.push([xmin, xmax, ymin, ymax, hauteur, largeur]);
+        return listeObjetFiltreApresRotation;
         }
+
+        console.log("liste Objet Avant Filtrage",listeObjetsApresRotation);
+        console.log("liste Objet Apres Filtrage",filtreObjet(listeObjetsApresRotation));
         // listeRatios >> Initialisation variable >> listeRatios
         var listeRatios = [];
         for (var objetCourant = 1; objetCourant < listeObjetsTrie.length; objetCourant++) {
@@ -256,68 +289,35 @@ class Photo {
             listeRatios.push(ratio);
         }
 
-        for (var objet=0; objet<listeObjetsTrie)
+        //for (var objet=0; objet<listeObjetsTrie)
         
+        var listeObjets = recupererListeObjets(matriceContourObjet);
+        var logo,boule1,boule2 = trouverReferences(listeObjets);
+        listeObjetsTrie = listeObjets.sort(fonctionTri);
+        rotationEnsemble(centre,matriceContoursObjets,angle)
+        filtreObjet(liste,logo,boule1,boule2)
+        calculerLesRatios(matrice)
+
+
         return listeRatios;
     };
 
 
 
+    
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //Méthode : listeRatios >> Conversion barres en grey code >> licenceGrayCode
     conversionGrayCode(listeRatios) {
-        //licenceGrayCode >> INITIALISATION VARIABLE >> licenceGrayCode
-        var licenceGrayCode = "";
         function valeurAbsolue(a) {
             if (a < 0) { return -a }
             else { return a };
         }
+        //licenceGrayCode >> INITIALISATION VARIABLE >> licenceGrayCode
+        var licenceGrayCode = "";
+        
         //listeRatios, licenceGrayCode >> Parcours complet de listeRatios avec traitement systématique >> licenceGrayCode
         for (var i = 0; i < listeRatios.length; i++) {
 
