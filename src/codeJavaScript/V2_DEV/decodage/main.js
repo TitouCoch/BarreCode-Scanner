@@ -171,7 +171,7 @@ boutonPhoto.addEventListener('click', () => {
     var listeRatio = photoWebcam.recuperationRatio(matriceContoursObjet);
     var graycode = photoWebcam.conversionGrayCode(listeRatio);
     var licence = photoWebcam.conversionLicence(graycode);
-    console.log(licence)
+    console.log(licence);
     
 
 });

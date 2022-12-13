@@ -54,11 +54,10 @@ class Photo {
 
     //Méthode : matriceContoursObjets >> Récupération du ratio en fonction de la hauteur des barres obtenues sur la photo >> listeRatios
     recuperationRatio(matriceContourObjet) {
-
         function recupererListeObjets(matrice){
             //matriceContoursObjet >> RECUPERATION DES HAUTEURS ET POSITIONS DES OBJETS >> listeObjet
             // listeObjets >> Initialisation >> listeObjets
-            var listeObjets = [];
+            var liste = [];
             //listeObjets >> Parcours complet de la matrice des contours objets avec traitement systématique >> listeObjets
             for (var objetCourant = 0; objetCourant < matrice.length; objetCourant++)
             {
@@ -85,32 +84,31 @@ class Photo {
                 var hauteur = ymax - ymin;
                 var largeur = xmax - xmin;
                 // ajout de la hauteur et de posx dans la listeObjets
-                listeObjets.push([xmin, xmax, ymin, ymax, hauteur, largeur]);
+                liste.push([xmin, xmax, ymin, ymax, hauteur, largeur]);
             }
-            return listeObjets;
+            return liste;
         }
 
         //Fonction qui trouve les objets références dans l'image
         function trouverReferences(listeObjets) {
             var listeReferences = [];
+            var marge = 3;
+            var XmaxLogo = -1;
             for (var i = 0; i < listeObjets.length; i++) 
-            {
-                var marge = 3;
-                var XmaxLogo = -1;
+            {   
                 var hauteurTemp = listeObjets[i][4];
                 if (hauteurTemp - marge <= listeObjets[i][5] && listeObjets[i][5] <= hauteurTemp + marge && listeObjets[i][0]>XmaxLogo && hauteurTemp != 0) 
                 {
+                    console.log(listeObjets[i])
                     listeReferences.push(listeObjets[i]);
                     if(hauteurTemp >= 20)
                     {
+                        console.log(listeObjets[i])
                         XmaxLogo = listeObjets[i][1]
                     }
                 }
-            }
-            var logo = listeReferences[0];
-            var boule1 = listeReferences[1];
-            var boule2 = listeReferences[2];
-            return logo,boule1,boule2;
+           }
+        return listeReferences
         }
 
 
@@ -190,7 +188,6 @@ class Photo {
         function rotationEnsemble(centre,matrice,angle)
         {   
             var matriceApresRotation = [];
-            console.log(matrice);
            for(var objet=0; objet < matrice.length; objet++)
            {
             matriceApresRotation.push([])
@@ -221,12 +218,12 @@ class Photo {
             {
                 {
                 // listeRatios, hauteurReference, listeObjetTrie >> Division de la hauteur de l'objet courant par la hauteur référence et insertion dans la liste des ratios >> listeRatios
-                var ratio = (listeObjets[objetCourant][1] / hauteurReference);
+                var ratio = (listeObjets[objetCourant][4] / hauteurReference);
                 listeRatios.push(ratio);
                 }
 
             }
-            return ratio;
+            return listeRatios;
         }
         function filtreObjet(liste)
         {
@@ -243,32 +240,36 @@ class Photo {
             }
         return listeObjetFiltreApresRotation;
         }
-
-
-
         //for (var objet=0; objet<listeObjetsTrie)
         
         var listeObjets = recupererListeObjets(matriceContourObjet);
-        
         var listeObjetsTrie = listeObjets.sort(fonctionTri);
-        var logo,boule1,boule2 = trouverReferences(listeObjetsTrie);
+        console.log(listeObjetsTrie);
+        var listeReferences = trouverReferences(listeObjetsTrie);
+        var logo = listeReferences[0];
+        var boule1 = listeReferences[1];
+        var boule2 = listeReferences[2];
         console.log("logo : ", logo);
         console.log("boule1 : ", boule1);
         console.log("boule2 : ", boule2);
 
         var centreLogo = [logo[0]+(logo[1]-logo[2])/2,logo[2]+(logo[3]-logo[2])/2];
         var angleRotation = calculerAngle(boule1,boule2);
-        var matriceObjetsApresRotation = rotationEnsemble(centreLogo,matriceContoursObjets,angleRotation);
+        var matriceObjetsApresRotation = rotationEnsemble(centreLogo,matriceContourObjet,angleRotation);
+        console.log("matrice Avant Filtrage",matriceObjetsApresRotation);
 
         var listeObjetsApresRotation = recupererListeObjets(matriceObjetsApresRotation);
         console.log("liste Objet Avant Filtrage",listeObjetsApresRotation);
 
-        var listeObjetsTrieApresRotation = filtreObjet(listeObjetsApresRotation,logo,boule1,boule2);
-        console.log("liste Objet Apres Filtrage",listeObjetsTrieApresRotation);
+        var listeObjetsFiltreApresRotation = filtreObjet(listeObjetsApresRotation,logo,boule1,boule2);
+        console.log("liste Objet Apres Filtrage",listeObjetsFiltreApresRotation);
 
-        var listeRatios = calculerLesRatios(listeObjetsTrieApresRotation);
+        var listeObjetsFiltreEtTrieApresRotation = listeObjetsFiltreApresRotation.sort(fonctionTri);
+        console.log("liste Objet Apres trie",listeObjetsFiltreEtTrieApresRotation);
 
+        var listeRatios = calculerLesRatios(listeObjetsFiltreEtTrieApresRotation);
 
+        console.log(listeRatios)
         return listeRatios;
     };
 
