@@ -195,7 +195,6 @@ function recuperationContourObjets(uneMatriceImage) {
   // Methode: matriceImage >> recuperationContourObjets >> matriceContoursObjet
   // INITIALISATION
   let matriceImage = cv.imread(uneMatriceImage);
-  var matriceCountoursObjets = new Array();
   var matriceImageNiveauDeGris = matriceImage.clone()
   // matriceImage >> conversion image en niveaux de gris >> matriceImageNiveauDeGris
   cv.cvtColor(matriceImage, matriceImageNiveauDeGris, cv.COLOR_RGBA2GRAY, 0);
