@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!DOCTYPE Tabula_Rasa>
+<Algorithme>
+  <nom>5. Decodage dans main</nom>
+  <date_creation>13/12/2022 11:05</date_creation>
+  <Elements>
+    <Action>
+      <Position>995;26</Position>
+      <StyleLien>2</StyleLien>
+      <PreAssertion>numLicence</PreAssertion>
+      <PostAssertion>indicateur</PostAssertion>
+      <Titre>Tester licence</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>1</DetailsVideVisible>
+      <Enfants>
+        <Action>
+          <Position>456;162</Position>
+          <StyleLien>1</StyleLien>
+          <PreAssertion>?</PreAssertion>
+          <PostAssertion>xhr</PostAssertion>
+          <Titre>Création d'un objet de liaison avec
+le serveur</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>0</DetailsVideVisible>
+          <Enfants/>
+        </Action>
+        <Action>
+          <Position>784;164</Position>
+          <StyleLien>1</StyleLien>
+          <PreAssertion>?</PreAssertion>
+          <PostAssertion>url</PostAssertion>
+          <Titre>Instanciation de l'url de liason</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>0</DetailsVideVisible>
+          <Enfants/>
+        </Action>
+        <Action>
+          <Position>1102;158</Position>
+          <StyleLien>1</StyleLien>
+          <PreAssertion>xhr, url</PreAssertion>
+          <PostAssertion>?</PostAssertion>
+          <Titre>Ouverture de la liaison</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>0</DetailsVideVisible>
+          <Enfants/>
+        </Action>
+        <Action>
+          <Position>1371;156</Position>
+          <StyleLien>1</StyleLien>
+          <PreAssertion>?</PreAssertion>
+          <PostAssertion>indicateur</PostAssertion>
+          <Titre>Envoi et teste de la licence au serveur</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>0</DetailsVideVisible>
+          <Enfants/>
+        </Action>
+      </Enfants>
+    </Action>
+  </Elements>
+  <Dictionary/>
+</Algorithme>

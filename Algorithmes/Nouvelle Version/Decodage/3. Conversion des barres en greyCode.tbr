@@ -2,98 +2,173 @@
 <!DOCTYPE Tabula_Rasa>
 <Algorithme>
   <nom>3. Conversion des barres en greyCode</nom>
-  <date_creation>9/11/2022 10:39</date_creation>
+  <date_creation>12/11/2022 16:28</date_creation>
   <Elements>
     <Action>
       <Position>602;71</Position>
       <StyleLien>2</StyleLien>
       <PreAssertion>listeRatios</PreAssertion>
-      <PostAssertion>licenceGreyCode</PostAssertion>
-      <Titre>Conversion barres en grey code</Titre>
+      <PostAssertion>licenceGrayCode</PostAssertion>
+      <Titre>Conversion barres en gray code</Titre>
       <DetailsVisible>1</DetailsVisible>
       <DetailsVideVisible>1</DetailsVideVisible>
       <Enfants>
         <Action>
-          <Position>706;185</Position>
+          <Position>870;202</Position>
           <StyleLien>2</StyleLien>
-          <PreAssertion>∅</PreAssertion>
-          <PostAssertion>∅</PostAssertion>
-          <Titre>Parcours complet de listeRatios 
+          <PreAssertion>licenceGrayCode
+listeRatios</PreAssertion>
+          <PostAssertion>licenceGrayCode</PostAssertion>
+          <Titre>Parcours complet de listeRatios &#xd;
 avec traitement systématique</Titre>
-          <DetailsVisible>0</DetailsVisible>
+          <DetailsVisible>1</DetailsVisible>
           <DetailsVideVisible>1</DetailsVideVisible>
           <Enfants>
             <Iteration>
-              <Position>716.5;327.5</Position>
+              <Position>1088.5;305.5</Position>
               <StyleLien>1</StyleLien>
-              <Titre>pour i allant de 0
+              <Titre>pour i allant de 0&#xd;
 à listeRatios.length -1</Titre>
               <IterationFixe>1</IterationFixe>
               <Enfants>
                 <Action>
-                  <Position>654;406</Position>
+                  <Position>870;378</Position>
                   <StyleLien>2</StyleLien>
-                  <PreAssertion>∅</PreAssertion>
-                  <PostAssertion>∅</PostAssertion>
-                  <Titre>Recherche de première occurrence dans 
-la variable globale tableDecodage</Titre>
-                  <DetailsVisible>0</DetailsVisible>
+                  <PreAssertion>licenceGrayCode
+listeRatios</PreAssertion>
+                  <PostAssertion>licenceGrayCode</PostAssertion>
+                  <Titre>Recherche de la valeur la plus 
+proche du ratio</Titre>
+                  <DetailsVisible>1</DetailsVisible>
                   <DetailsVideVisible>1</DetailsVideVisible>
                   <Enfants>
-                    <Iteration>
-                      <Position>706.5;537.5</Position>
+                    <Action>
+                      <Position>467;521</Position>
                       <StyleLien>1</StyleLien>
-                      <Titre>Pour ligne de 0 à 
-tableDecodage.length -1</Titre>
-                      <IterationFixe>1</IterationFixe>
+                      <PreAssertion>min
+indicePlusProche</PreAssertion>
+                      <PostAssertion>min
+indicePlusProche</PostAssertion>
+                      <Titre>Initialisation variable</Titre>
+                      <DetailsVisible>1</DetailsVisible>
+                      <DetailsVideVisible>1</DetailsVideVisible>
+                      <Enfants/>
+                    </Action>
+                    <Action>
+                      <Position>1034;529</Position>
+                      <StyleLien>2</StyleLien>
+                      <PreAssertion>min, indicePlusProche
+listeRatios
+licenceGrayCode</PreAssertion>
+                      <PostAssertion>licenceGrayCode</PostAssertion>
+                      <Titre>Recherche de la valeur
+la plus proche dans la variable
+globale TABLE_DECODAGE</Titre>
+                      <DetailsVisible>1</DetailsVisible>
+                      <DetailsVideVisible>1</DetailsVideVisible>
                       <Enfants>
-                        <Condition>
-                          <Position>632.5;628</Position>
+                        <Iteration>
+                          <Position>1283.5;650.5</Position>
                           <StyleLien>1</StyleLien>
-                          <estUnique>1</estUnique>
-                          <operationsLogiques>
-                            <operation>
-                              <Titre>tableDecodage[ligne][0] &lt; listeRatios[ i ]
-et listeRatios[ i ] &lt;= tableDecodage[ligne][1]</Titre>
+                          <Titre>Pour ligne de 0 à &#xd;
+tableDecodage.length -1</Titre>
+                          <IterationFixe>1</IterationFixe>
+                          <Enfants>
+                            <Action>
+                              <Position>1178;722</Position>
+                              <StyleLien>2</StyleLien>
+                              <PreAssertion>?</PreAssertion>
+                              <PostAssertion>?</PostAssertion>
+                              <Titre>Si la différence entre la valeur
+courante de liste ratio et la valeur reference
+de la table d'encodage est inférieur à min</Titre>
+                              <DetailsVisible>1</DetailsVisible>
+                              <DetailsVideVisible>0</DetailsVideVisible>
                               <Enfants>
-                                <Iteration>
-                                  <Position>699.5;767.5</Position>
+                                <Condition>
+                                  <Position>1128.5;833</Position>
                                   <StyleLien>1</StyleLien>
-                                  <Titre>pour bit de 0 à 2</Titre>
-                                  <IterationFixe>1</IterationFixe>
-                                  <Enfants>
-                                    <Action>
-                                      <Position>304;859</Position>
-                                      <StyleLien>1</StyleLien>
-                                      <PreAssertion>licenceGreyCode,
-tableDecodage</PreAssertion>
-                                      <PostAssertion>licenceGreyCode</PostAssertion>
-                                      <Titre>licenceGreyCode ← 
-licenceGreyCode + tablDencodage[ligne][2][bit]</Titre>
-                                      <DetailsVisible>1</DetailsVisible>
-                                      <DetailsVideVisible>1</DetailsVideVisible>
+                                  <estUnique>1</estUnique>
+                                  <operationsLogiques>
+                                    <operation>
+                                      <Titre>listeRatios[i] -TABLE_ENCODAGE[ valeurReference] &lt; min</Titre>
+                                      <Enfants>
+                                        <Action>
+                                          <Position>1040;940</Position>
+                                          <StyleLien>1</StyleLien>
+                                          <PreAssertion>min
+indicePlusProche</PreAssertion>
+                                          <PostAssertion>min
+indicePlusProche</PostAssertion>
+                                          <Titre>Affectation de l'indice de la 
+TABLE_DECODAGE le plus proche de 
+la valeur courante de listeRatios</Titre>
+                                          <DetailsVisible>1</DetailsVisible>
+                                          <DetailsVideVisible>1</DetailsVideVisible>
+                                          <Enfants/>
+                                        </Action>
+                                      </Enfants>
+                                    </operation>
+                                    <operation>
+                                      <Titre>Sinon</Titre>
                                       <Enfants/>
-                                    </Action>
-                                  </Enfants>
-                                </Iteration>
-                                <Sortie>
-                                  <Position>911;780</Position>
-                                </Sortie>
+                                    </operation>
+                                  </operationsLogiques>
+                                </Condition>
                               </Enfants>
-                            </operation>
-                            <operation>
-                              <Titre>Sinon</Titre>
-                              <Enfants/>
-                            </operation>
-                          </operationsLogiques>
-                        </Condition>
+                            </Action>
+                          </Enfants>
+                        </Iteration>
                       </Enfants>
-                    </Iteration>
+                    </Action>
+                    <Action>
+                      <Position>1674;542</Position>
+                      <StyleLien>2</StyleLien>
+                      <PreAssertion>licenceGrayCode
+indicePlusProche</PreAssertion>
+                      <PostAssertion>licenceGrayCode</PostAssertion>
+                      <Titre>Parcours et ajout de la correspondance en
+gray code dans licenceGrayCode</Titre>
+                      <DetailsVisible>1</DetailsVisible>
+                      <DetailsVideVisible>1</DetailsVideVisible>
+                      <Enfants>
+                        <Iteration>
+                          <Position>1901.5;656.5</Position>
+                          <StyleLien>1</StyleLien>
+                          <Titre>pour bit de 0 à 2</Titre>
+                          <IterationFixe>1</IterationFixe>
+                          <Enfants>
+                            <Action>
+                              <Position>1585;722</Position>
+                              <StyleLien>1</StyleLien>
+                              <PreAssertion>licenceGreyCode,&#xd;
+tableDecodage</PreAssertion>
+                              <PostAssertion>licenceGreyCode</PostAssertion>
+                              <Titre>licenceGreyCode ← 
+licenceGreyCode + TABLE_DECODAGE[indicePlusProche][1][bit]</Titre>
+                              <DetailsVisible>1</DetailsVisible>
+                              <DetailsVideVisible>1</DetailsVideVisible>
+                              <Enfants/>
+                            </Action>
+                          </Enfants>
+                        </Iteration>
+                      </Enfants>
+                    </Action>
                   </Enfants>
                 </Action>
               </Enfants>
             </Iteration>
           </Enfants>
+        </Action>
+        <Action>
+          <Position>343;207</Position>
+          <StyleLien>1</StyleLien>
+          <PreAssertion>licenceGrayCode</PreAssertion>
+          <PostAssertion>licenceGrayCode</PostAssertion>
+          <Titre>Initialisation variable</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants/>
         </Action>
       </Enfants>
     </Action>

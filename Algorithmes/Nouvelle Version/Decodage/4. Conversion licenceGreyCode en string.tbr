@@ -2,14 +2,14 @@
 <!DOCTYPE Tabula_Rasa>
 <Algorithme>
   <nom>4. Conversion licenceGreyCode en string</nom>
-  <date_creation>12/11/2022 17:05</date_creation>
+  <date_creation>13/12/2022 10:52</date_creation>
   <Elements>
     <Action>
       <Position>613;17</Position>
       <StyleLien>2</StyleLien>
       <PreAssertion>licenceGreyCode</PreAssertion>
       <PostAssertion>numLicence</PostAssertion>
-      <Titre>Conversion licenceGreyCode en &#xd;
+      <Titre>Conversion licenceGreyCode en &#xd;&#xd;
 chaine de caractère</Titre>
       <DetailsVisible>1</DetailsVisible>
       <DetailsVideVisible>1</DetailsVideVisible>
@@ -19,7 +19,7 @@ chaine de caractère</Titre>
           <StyleLien>2</StyleLien>
           <PreAssertion>licenceGreyCode</PreAssertion>
           <PostAssertion>numLicence</PostAssertion>
-          <Titre>Parcours complet de licenceGreyCode &#xd;
+          <Titre>Parcours complet de licenceGreyCode &#xd;&#xd;
 avec traitement systématique</Titre>
           <DetailsVisible>1</DetailsVisible>
           <DetailsVideVisible>1</DetailsVideVisible>
@@ -27,16 +27,67 @@ avec traitement systématique</Titre>
             <Iteration>
               <Position>766.5;272.5</Position>
               <StyleLien>1</StyleLien>
-              <Titre>pour bit de 0 à licenceGreyCode.length-1&#xd;
+              <Titre>pour bit de 0 à licenceGreyCode.length-1&#xd;&#xd;
 avec un pas de 6</Titre>
               <IterationFixe>1</IterationFixe>
               <Enfants>
                 <Action>
+                  <Position>282;376</Position>
+                  <StyleLien>2</StyleLien>
+                  <PreAssertion>licenceGreyCode</PreAssertion>
+                  <PostAssertion>motBinaire</PostAssertion>
+                  <Titre>Récupération de 6 bits de la liste &#xd;&#xd;
+dans un motBinaire temporaire</Titre>
+                  <DetailsVisible>1</DetailsVisible>
+                  <DetailsVideVisible>1</DetailsVideVisible>
+                  <Enfants>
+                    <Iteration>
+                      <Position>775.5;508.5</Position>
+                      <StyleLien>1</StyleLien>
+                      <Titre>pour decalage de 0 à 5</Titre>
+                      <IterationFixe>1</IterationFixe>
+                      <Enfants>
+                        <Action>
+                          <Position>472;617</Position>
+                          <StyleLien>1</StyleLien>
+                          <PreAssertion>licenceGreyCode,&#xd;&#xd;
+motBinaire</PreAssertion>
+                          <PostAssertion>motBinaire</PostAssertion>
+                          <Titre>motBinaire ← motBinaire + licenceGreyCode[bit+decalage]</Titre>
+                          <DetailsVisible>1</DetailsVisible>
+                          <DetailsVideVisible>1</DetailsVideVisible>
+                          <Enfants/>
+                        </Action>
+                      </Enfants>
+                    </Iteration>
+                    <Action>
+                      <Position>78;503</Position>
+                      <StyleLien>2</StyleLien>
+                      <PreAssertion>?</PreAssertion>
+                      <PostAssertion>motBinaire</PostAssertion>
+                      <Titre>Initialisation motBinaire</Titre>
+                      <DetailsVisible>1</DetailsVisible>
+                      <DetailsVideVisible>0</DetailsVideVisible>
+                      <Enfants>
+                        <Action>
+                          <Position>127;622</Position>
+                          <StyleLien>1</StyleLien>
+                          <PreAssertion>?</PreAssertion>
+                          <PostAssertion>motBinaire</PostAssertion>
+                          <Titre>motBinaire = ""</Titre>
+                          <DetailsVisible>1</DetailsVisible>
+                          <DetailsVideVisible>0</DetailsVideVisible>
+                          <Enfants/>
+                        </Action>
+                      </Enfants>
+                    </Action>
+                  </Enfants>
+                </Action>
+                <Action>
                   <Position>1006;385</Position>
                   <StyleLien>2</StyleLien>
-                  <PreAssertion>motBinaire
-licenceGrayCode
-numLicence</PreAssertion>
+                  <PreAssertion>motBinaire&#xd;
+licenceGrayCode</PreAssertion>
                   <PostAssertion>numLicence</PostAssertion>
                   <Titre>Recherche de premiere occurence dans la variable globale TABLE_ENCODAGE_GRAY_CODE</Titre>
                   <DetailsVisible>1</DetailsVisible>
@@ -61,12 +112,12 @@ numLicence</PreAssertion>
                                   <StyleLien>2</StyleLien>
                                   <PreAssertion>numLicence</PreAssertion>
                                   <PostAssertion>numLicence</PostAssertion>
-                                  <Titre>Ajout du caractère correspondant dans numLicence</Titre>
+                                  <Titre>Ajout du caractère correspondant à la chaine de caractères numLicence</Titre>
                                   <DetailsVisible>1</DetailsVisible>
                                   <DetailsVideVisible>1</DetailsVideVisible>
                                   <Enfants>
                                     <Action>
-                                      <Position>1202;884</Position>
+                                      <Position>1198;884</Position>
                                       <StyleLien>1</StyleLien>
                                       <PreAssertion>∅</PreAssertion>
                                       <PostAssertion>∅</PostAssertion>
@@ -92,83 +143,8 @@ numLicence</PreAssertion>
                     </Iteration>
                   </Enfants>
                 </Action>
-                <Action>
-                  <Position>348;387</Position>
-                  <StyleLien>2</StyleLien>
-                  <PreAssertion>licenceGrayCode
-motBinaire</PreAssertion>
-                  <PostAssertion>motBinaire</PostAssertion>
-                  <Titre>Récupération de 6 bits de la liste dans un motBinaire temporaire</Titre>
-                  <DetailsVisible>1</DetailsVisible>
-                  <DetailsVideVisible>1</DetailsVideVisible>
-                  <Enfants>
-                    <Action>
-                      <Position>204;552</Position>
-                      <StyleLien>2</StyleLien>
-                      <PreAssertion>?</PreAssertion>
-                      <PostAssertion>motBinaire</PostAssertion>
-                      <Titre>remise de motBinaire en listeVide</Titre>
-                      <DetailsVisible>1</DetailsVisible>
-                      <DetailsVideVisible>0</DetailsVideVisible>
-                      <Enfants>
-                        <Action>
-                          <Position>255;670</Position>
-                          <StyleLien>1</StyleLien>
-                          <PreAssertion>?</PreAssertion>
-                          <PostAssertion>motBinaire</PostAssertion>
-                          <Titre>motBinaire = ""</Titre>
-                          <DetailsVisible>1</DetailsVisible>
-                          <DetailsVideVisible>0</DetailsVideVisible>
-                          <Enfants/>
-                        </Action>
-                      </Enfants>
-                    </Action>
-                    <Iteration>
-                      <Position>859.5;528.5</Position>
-                      <StyleLien>1</StyleLien>
-                      <Titre>pour decalage de 0 à 5</Titre>
-                      <IterationFixe>1</IterationFixe>
-                      <Enfants>
-                        <Action>
-                          <Position>559;631</Position>
-                          <StyleLien>1</StyleLien>
-                          <PreAssertion>licenceGreyCode,&#xd;
-motBinaire</PreAssertion>
-                          <PostAssertion>motBinaire</PostAssertion>
-                          <Titre>motBinaire ← motBinaire + licenceGreyCode[bit+decalage]</Titre>
-                          <DetailsVisible>1</DetailsVisible>
-                          <DetailsVideVisible>1</DetailsVideVisible>
-                          <Enfants/>
-                        </Action>
-                      </Enfants>
-                    </Iteration>
-                  </Enfants>
-                </Action>
               </Enfants>
             </Iteration>
-            <Action>
-              <Position>38;279</Position>
-              <StyleLien>2</StyleLien>
-              <PreAssertion>?</PreAssertion>
-              <PostAssertion>numLicence
-motBinaire</PostAssertion>
-              <Titre>initialisationde des variables</Titre>
-              <DetailsVisible>1</DetailsVisible>
-              <DetailsVideVisible>0</DetailsVideVisible>
-              <Enfants>
-                <Action>
-                  <Position>67;392</Position>
-                  <StyleLien>1</StyleLien>
-                  <PreAssertion>?</PreAssertion>
-                  <PostAssertion>numLicence
-motBinaire</PostAssertion>
-                  <Titre>numLicence = ""</Titre>
-                  <DetailsVisible>1</DetailsVisible>
-                  <DetailsVideVisible>0</DetailsVideVisible>
-                  <Enfants/>
-                </Action>
-              </Enfants>
-            </Action>
           </Enfants>
         </Action>
       </Enfants>
