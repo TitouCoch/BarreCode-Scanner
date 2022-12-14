@@ -92,7 +92,7 @@ class Photo {
         //Fonction qui trouve les objets références dans l'image
         function trouverReferences(listeObjets) {
             var listeReferences = [];
-            var marge = 3;
+            var marge = 2;
             var XmaxLogo = -1;
             for (var i = 0; i < listeObjets.length; i++) 
             {   
