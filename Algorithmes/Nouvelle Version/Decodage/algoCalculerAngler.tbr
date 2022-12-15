@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!DOCTYPE Tabula_Rasa>
+<Algorithme>
+  <nom>algoCalculerAngler</nom>
+  <date_creation>15/12/2022 09:24</date_creation>
+  <Elements>
+    <Action>
+      <Position>500;19</Position>
+      <StyleLien>1</StyleLien>
+      <PreAssertion>boule1
+boule2</PreAssertion>
+      <PostAssertion>angle</PostAssertion>
+      <Titre>calculerAngle</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>1</DetailsVideVisible>
+      <Enfants/>
+    </Action>
+    <Action>
+      <Position>65;167</Position>
+      <StyleLien>2</StyleLien>
+      <PreAssertion>boule1
+boule2</PreAssertion>
+      <PostAssertion>pointA
+pointB
+pointVirtuel</PostAssertion>
+      <Titre>initialisation des points
+ et calcul du point de la droite parrales a l'axe des abscisses</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>1</DetailsVideVisible>
+      <Enfants>
+        <Action>
+          <Position>54;305</Position>
+          <StyleLien>1</StyleLien>
+          <PreAssertion>boule1
+boule2</PreAssertion>
+          <PostAssertion>pointA
+pointB
+pointVirtuel</PostAssertion>
+          <Titre>pointA = [boule1[0] + boule1[4] / 2, boule1[2] + boule1[5] / 2];
+pointB = [boule2[0] + boule2[4] / 2, boule2[2] + boule2[5] / 2];
+pointVirtuel = [pointB[0], pointA[1]];</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants/>
+        </Action>
+      </Enfants>
+    </Action>
+    <Action>
+      <Position>529;812</Position>
+      <StyleLien>1</StyleLien>
+      <PreAssertion>matrice
+centre</PreAssertion>
+      <PostAssertion>XRepereCentre
+YRepereCentre</PostAssertion>
+      <Titre>placer les coordonées dans un reperes qui a pour origine le point centre</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>1</DetailsVideVisible>
+      <Enfants/>
+    </Action>
+    <Action>
+      <Position>750;163</Position>
+      <StyleLien>1</StyleLien>
+      <PreAssertion>∅</PreAssertion>
+      <PostAssertion>∅</PostAssertion>
+      <Titre>?</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>1</DetailsVideVisible>
+      <Enfants/>
+    </Action>
+  </Elements>
+  <Dictionary/>
+</Algorithme>

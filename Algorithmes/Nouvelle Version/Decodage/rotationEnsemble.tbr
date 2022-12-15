@@ -1,0 +1,218 @@
+<?xml version="1.0"?>
+<!DOCTYPE Tabula_Rasa>
+<Algorithme>
+  <nom>rotationEnsemble</nom>
+  <date_creation>15/12/2022 09:16</date_creation>
+  <Elements>
+    <Action>
+      <Position>798;4</Position>
+      <StyleLien>2</StyleLien>
+      <PreAssertion>centre
+matrice
+angle</PreAssertion>
+      <PostAssertion>matriceApresRotation</PostAssertion>
+      <Titre>rotationEnsemble</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>1</DetailsVideVisible>
+      <Enfants>
+        <Action>
+          <Position>541;146</Position>
+          <StyleLien>2</StyleLien>
+          <PreAssertion>?</PreAssertion>
+          <PostAssertion>pointA
+pointB
+matriceApresRotation[]</PostAssertion>
+          <Titre>initalisation
+</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>0</DetailsVideVisible>
+          <Enfants>
+            <Action>
+              <Position>491;295</Position>
+              <StyleLien>1</StyleLien>
+              <PreAssertion>?</PreAssertion>
+              <PostAssertion>matriceApresRotation[]</PostAssertion>
+              <Titre>matriceApresRotation[] = []</Titre>
+              <DetailsVisible>1</DetailsVisible>
+              <DetailsVideVisible>0</DetailsVideVisible>
+              <Enfants/>
+            </Action>
+          </Enfants>
+        </Action>
+        <Action>
+          <Position>893;157</Position>
+          <StyleLien>2</StyleLien>
+          <PreAssertion>matrice
+angle
+matriceApresRotation
+centre</PreAssertion>
+          <PostAssertion>matriceApresRotation</PostAssertion>
+          <Titre>Parcours de tous les objets de la matrice</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants>
+            <Iteration>
+              <Position>1169.5;276.5</Position>
+              <StyleLien>1</StyleLien>
+              <Titre>pour objet de 0 à matrice.length</Titre>
+              <IterationFixe>1</IterationFixe>
+              <Enfants>
+                <Action>
+                  <Position>913;356</Position>
+                  <StyleLien>2</StyleLien>
+                  <PreAssertion>matriceApresRotation</PreAssertion>
+                  <PostAssertion>matriceApresRotation</PostAssertion>
+                  <Titre>matriceApresRotation[].push([])</Titre>
+                  <DetailsVisible>1</DetailsVisible>
+                  <DetailsVideVisible>1</DetailsVideVisible>
+                  <Enfants>
+                    <Action>
+                      <Position>890;480</Position>
+                      <StyleLien>2</StyleLien>
+                      <PreAssertion>matrice
+angle
+matriceApresRotation
+centre</PreAssertion>
+                      <PostAssertion>matriceApresRotation</PostAssertion>
+                      <Titre>parcorus de tous les points de la matrice</Titre>
+                      <DetailsVisible>1</DetailsVisible>
+                      <DetailsVideVisible>1</DetailsVideVisible>
+                      <Enfants>
+                        <Iteration>
+                          <Position>1167.5;600.5</Position>
+                          <StyleLien>1</StyleLien>
+                          <Titre>pour point de 0 à matrice[objet].length</Titre>
+                          <IterationFixe>1</IterationFixe>
+                          <Enfants>
+                            <Action>
+                              <Position>892;688</Position>
+                              <StyleLien>2</StyleLien>
+                              <PreAssertion>matrice
+angle
+centre 
+matriceApresRotation</PreAssertion>
+                              <PostAssertion>matriceApresRotation</PostAssertion>
+                              <Titre>calcul des nouvelles coordonées du point</Titre>
+                              <DetailsVisible>1</DetailsVisible>
+                              <DetailsVideVisible>1</DetailsVideVisible>
+                              <Enfants>
+                                <Action>
+                                  <Position>517;821</Position>
+                                  <StyleLien>2</StyleLien>
+                                  <PreAssertion>matrice
+centre</PreAssertion>
+                                  <PostAssertion>XRepereCentre
+YRepereCentre</PostAssertion>
+                                  <Titre>placer les coordonées dans un reperes qui a pour origine le point centre</Titre>
+                                  <DetailsVisible>1</DetailsVisible>
+                                  <DetailsVideVisible>1</DetailsVideVisible>
+                                  <Enfants>
+                                    <Action>
+                                      <Position>544;927</Position>
+                                      <StyleLien>1</StyleLien>
+                                      <PreAssertion>matrice
+centre</PreAssertion>
+                                      <PostAssertion>XRepereCentre
+YRepereCentre</PostAssertion>
+                                      <Titre>var XRepereCentre ← matrice[objet][point][0] - centre[0];
+var YRepereCentre ← matrice[objet][point][1] - centre[1];</Titre>
+                                      <DetailsVisible>1</DetailsVisible>
+                                      <DetailsVideVisible>1</DetailsVideVisible>
+                                      <Enfants/>
+                                    </Action>
+                                  </Enfants>
+                                </Action>
+                                <Action>
+                                  <Position>1300;830</Position>
+                                  <StyleLien>2</StyleLien>
+                                  <PreAssertion>XRepereCentre
+YRepereCentre
+angle</PreAssertion>
+                                  <PostAssertion>nouveauPoint
+matriceApresRotation</PostAssertion>
+                                  <Titre>rotation du point</Titre>
+                                  <DetailsVisible>1</DetailsVisible>
+                                  <DetailsVideVisible>1</DetailsVideVisible>
+                                  <Enfants>
+                                    <Action>
+                                      <Position>1151;945</Position>
+                                      <StyleLien>1</StyleLien>
+                                      <PreAssertion>XRepereCentre
+YRepereCentre
+angle</PreAssertion>
+                                      <PostAssertion>nouveauPoint</PostAssertion>
+                                      <Titre>nouveauPoint  ← rotationPoint(XRepereCentre, YRepereCentre, angle);</Titre>
+                                      <DetailsVisible>1</DetailsVisible>
+                                      <DetailsVideVisible>1</DetailsVideVisible>
+                                      <Enfants/>
+                                    </Action>
+                                  </Enfants>
+                                </Action>
+                                <Action>
+                                  <Position>1850;823</Position>
+                                  <StyleLien>2</StyleLien>
+                                  <PreAssertion>centre
+nouveauPoint</PreAssertion>
+                                  <PostAssertion>XRepereOrigine
+YRepereOrigine</PostAssertion>
+                                  <Titre>se replacer dans le reperes d'origine</Titre>
+                                  <DetailsVisible>1</DetailsVisible>
+                                  <DetailsVideVisible>1</DetailsVideVisible>
+                                  <Enfants>
+                                    <Action>
+                                      <Position>1851;946</Position>
+                                      <StyleLien>1</StyleLien>
+                                      <PreAssertion>matrice
+centre</PreAssertion>
+                                      <PostAssertion>XRepereOrigine
+YRepereOrigine</PostAssertion>
+                                      <Titre>XRepereOrigine = nouveauPoint[0] + centre[0];
+YRepereOrigine = nouveauPoint[1] + centre[1];</Titre>
+                                      <DetailsVisible>1</DetailsVisible>
+                                      <DetailsVideVisible>1</DetailsVideVisible>
+                                      <Enfants/>
+                                    </Action>
+                                  </Enfants>
+                                </Action>
+                                <Action>
+                                  <Position>2420;820</Position>
+                                  <StyleLien>2</StyleLien>
+                                  <PreAssertion>XRepereOrigine
+YRepereOrigine
+matriceApresRotation</PreAssertion>
+                                  <PostAssertion>?</PostAssertion>
+                                  <Titre>Placer le point apres la rotation dans la matriceApresRotation</Titre>
+                                  <DetailsVisible>1</DetailsVisible>
+                                  <DetailsVideVisible>0</DetailsVideVisible>
+                                  <Enfants>
+                                    <Action>
+                                      <Position>2526;948</Position>
+                                      <StyleLien>1</StyleLien>
+                                      <PreAssertion>XRepereOrigine
+YRepereOrigine
+matriceApresRotation</PreAssertion>
+                                      <PostAssertion>?</PostAssertion>
+                                      <Titre>matriceApresRotation[objet].push([XRepresOrigines,YRepereOrigine])</Titre>
+                                      <DetailsVisible>1</DetailsVisible>
+                                      <DetailsVideVisible>0</DetailsVideVisible>
+                                      <Enfants/>
+                                    </Action>
+                                  </Enfants>
+                                </Action>
+                              </Enfants>
+                            </Action>
+                          </Enfants>
+                        </Iteration>
+                      </Enfants>
+                    </Action>
+                  </Enfants>
+                </Action>
+              </Enfants>
+            </Iteration>
+          </Enfants>
+        </Action>
+      </Enfants>
+    </Action>
+  </Elements>
+  <Dictionary/>
+</Algorithme>

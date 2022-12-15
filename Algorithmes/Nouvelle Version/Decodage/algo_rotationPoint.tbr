@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!DOCTYPE Tabula_Rasa>
+<Algorithme>
+  <nom>Algorithme</nom>
+  <date_creation>15/12/2022 11:51</date_creation>
+  <Elements>
+    <Action>
+      <Position>550;30</Position>
+      <StyleLien>2</StyleLien>
+      <PreAssertion>x
+y
+angle</PreAssertion>
+      <PostAssertion>x2
+y2</PostAssertion>
+      <Titre>rotationPoint</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>1</DetailsVideVisible>
+      <Enfants>
+        <Action>
+          <Position>425;179</Position>
+          <StyleLien>2</StyleLien>
+          <PreAssertion>∅</PreAssertion>
+          <PostAssertion>∅</PostAssertion>
+          <Titre>calcul des coordonnées apres rotation dans un reperes cartesien</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants>
+            <Action>
+              <Position>486;340</Position>
+              <StyleLien>1</StyleLien>
+              <PreAssertion>x
+y</PreAssertion>
+              <PostAssertion>x2
+y2</PostAssertion>
+              <Titre>x2 → x* cosinus(angle) +y*-1*sinus(angle)
+y2 →  x* sinus(angle) +y*cosinus(angle)	</Titre>
+              <DetailsVisible>1</DetailsVisible>
+              <DetailsVideVisible>1</DetailsVideVisible>
+              <Enfants/>
+            </Action>
+          </Enfants>
+        </Action>
+      </Enfants>
+    </Action>
+  </Elements>
+  <Dictionary/>
+</Algorithme>
