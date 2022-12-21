@@ -1,22 +1,29 @@
 <?php
 // Récupération du numéro de licence dans les données de la requête
-$license = $_POST['license'];
+$license = $_GET['license'];
 
 // Requête à la base de données pour vérifier si le numéro de licence existe
-$conn = new PDO('mysql:host=localhost;dbname=bd_sporttrack;charset=utf8','root','root');
-$req = "SELECT * FROM Joueur WHERE licence = :licence";
-$req = $conn->prepare($req);
-$req->execute(['licence'=>$license]);
-$res = $req->fetchAll();
 
+$bdd= "bd_sporttrack"; // Base de données
+$host= "localhost";
+$user= "root"; // Utilisateur
+$pass= "root"; // mp
+$nomtable= "Joueur"; /* Connection bdd */
+$link=mysqli_connect($host,$user,$pass,$bdd);
+$query = "SELECT * FROM $nomtable WHERE licence = '$license'";
+$result= mysqli_query($link,$query);
 // Vérification si le numéro de licence existe
-if (count($res) > 0) {
-  // Le numéro de licence existe
-  $response = ['licenseExists' => true];
-} else {
-  // Le numéro de licence n'existe pas
-  $response = ['licenseExists' => false];
+if (!$link) {}
+else
+{
+  if (mysqli_num_rows($result) > 0) {
+    // Le numéro de licence existe
+    $response = ['licenseExists' => true];
+  } else {
+    // Le numéro de licence n'existe pas
+    $response = ['licenseExists' => false];
+  }
+  // Retourne la réponse sous forme d'objet JSON
+  print(json_encode($response));
 }
-
-// Retourne la réponse sous forme d'objet JSON
-print(json_encode($response)); ?>
+?>
