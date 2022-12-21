@@ -10,10 +10,10 @@ class ContoursObjets {
     /**
      * Constructeur de l'objet ContoursObjets.
      *
-     * @param {} uneContoursObjets - Matrice de contour.
+     * @param {} unContoursObjets - Matrice de contour.
      */
-    constructor(uneContoursObjets) {
-        this.ContoursObjets = uneContoursObjets;
+    constructor(unContoursObjets) {
+        this.leContoursObjets = unContoursObjets;
         // ENCAPSULATION
     };
 
@@ -23,8 +23,8 @@ class ContoursObjets {
      * @param {} uneContoursObjets - Matrice de contour.
      * 
      */
-    setContoursObjets(uneContoursObjets) {
-        this.ContoursObjets = uneContoursObjets;
+    setContoursObjets(unContoursObjets) {
+        this.leContoursObjets = unContoursObjets;
     };
 
     //Fonction qui retourne l'attribut uneContoursObjets
@@ -34,7 +34,7 @@ class ContoursObjets {
      * @return {} Matrice de contour.
      */
     getContoursObjets() {
-        return this.ContoursObjets;
+        return this.leContoursObjets;
     };
     // METHODES SPECIFIQUES
 };

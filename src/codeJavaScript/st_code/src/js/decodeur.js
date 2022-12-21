@@ -1,7 +1,7 @@
 
-class decodeur {
+class Decodeur {
     //ATTRIBUTS et CONSTRUCTEUR
-    constructor(matriceImage,dictableEncodageGrayCode,correspGrayCodeBarre) {
+    constructor(matriceImage) {
         this.matriceImage = matriceImage;
         this.dictableEncodageGrayCode = {
             'a': '000000',
@@ -308,10 +308,10 @@ class decodeur {
         return listeObjetFiltreApresRotation;
         }
         //for (var objet=0; objet<listeObjetsTrie)
-        
         var listeObjets = recupererListeObjets(matriceContourObjet);
+        console.log("La liste objet non trié :" ,listeObjets);
         var listeObjetsTrie = listeObjets.sort(fonctionTri);
-        console.log(listeObjetsTrie);
+        console.log("La liste objet trié :",listeObjetsTrie);
         var listeReferences = trouverReferences(listeObjetsTrie);
         var logo = listeReferences[0];
         var boule1 = listeReferences[1];
