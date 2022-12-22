@@ -8,6 +8,12 @@
     <title>Algorithme</title>
 </head>
 <body>
+    <h1>Encodeur ST-Code</h1>
+    <div class="saisiText">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" maxlength="10" placeholder="Entrez votre licence">
+        <button onClick='mainEncodeur()' id="Submit">Ok</button>
+    </div>
     <div class="divBarres">
         <img src="../../img/image.png">
         <span id="barreReference"></span>
@@ -33,10 +39,12 @@
         <span id="vertical19"></span>
         <span id="vertical20"></span>
         <span id="barreReference"></span>
+    </div>
 
-        <script src="../js/licence.js"></script>
-        <script src="../js/grayCode.js"></script>
-        <script src="../js/listeBarre.js"></script>
-        <script src="../js/encodeur.js"></script>
-        <script src="../js/mainEncodeur.js"></script>
+    <button class="changePage" onclick="location.href='./decodeur.html'">Decodeur ST-CODE</button>
+        <script src="../js/classObjet/licence.js"></script>
+        <script src="../js/classObjet/grayCode.js"></script>
+        <script src="../js/classObjet/listeBarre.js"></script>
+        <script src="../js/classMethod/encodeur.js"></script>
+        <script src="../js/main/mainEncodeur.js"></script>
 </body>

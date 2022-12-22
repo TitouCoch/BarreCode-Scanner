@@ -70,7 +70,6 @@ video.onplay = async function () {
 boutonPhoto.addEventListener('click', async () => {
   var trouve = false;
   while (true) {
-    console.log("dans la boucle");
     try {
       // Canva a partir de la video
       await context.drawImage(player, 0, 0, photo.width, photo.height);
@@ -92,15 +91,10 @@ boutonPhoto.addEventListener('click', async () => {
 
       let matriceImage = document.getElementById('hiddenCanvas');
       let ledecodeur = new Decodeur(matriceImage);
-      console.log("1");
       var matriceContoursObjet = new ContoursObjets(ledecodeur.recuperationContourObjets());
-      console.log(matriceContoursObjet);
       var uneListeRatio = new ListeRatios(ledecodeur.recuperationRatio(matriceContoursObjet.getContoursObjets()));
-      console.log("3");
       var unGraycode = new GrayCode(ledecodeur.conversionGrayCode(uneListeRatio.getListeRatios()));
-      console.log("4");
       var numLicence = new Licence(ledecodeur.conversionLicence(unGraycode.getGraycode()));
-
       const estValide = await ledecodeur.testerLicense(numLicence.getNumLicence());
       trouve = estValide;
     }
@@ -111,7 +105,11 @@ boutonPhoto.addEventListener('click', async () => {
       trouve = false;
     }
     if (trouve == true) {
-      console.log("license trouvée");
+      console.log("LICENCE TROUVE ! FIN");
+      var text = document.getElementById('text');
+      text.innerHTML = numLicence.getNumLicence(); //Afficher le numéro de licence sur la page
+      const container = document.getElementById('container');
+      container.innerHTML = "<a href='../../../src/php/joueur.php?license="+ numLicence.getNumLicence() + "'>Voir Joueur</a>";
       break;
     }
   };

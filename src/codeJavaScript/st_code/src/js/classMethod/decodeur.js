@@ -116,6 +116,7 @@ class Decodeur {
                 matriceContoursObjets[i].push([coordonneeX, coordonneeY]);
             }
         }
+        console.log("DEBUT : Récupère dans l'image une matrice de contours d'objet");
         return matriceContoursObjets;
     };
 
@@ -166,11 +167,9 @@ class Decodeur {
                 var hauteurTemp = listeObjets[i][4];
                 if (hauteurTemp - marge <= listeObjets[i][5] && listeObjets[i][5] <= hauteurTemp + marge && listeObjets[i][0]>XmaxLogo && hauteurTemp != 0) 
                 {
-                    console.log(listeObjets[i])
                     listeReferences.push(listeObjets[i]);
                     if(hauteurTemp >= 20)
                     {
-                        console.log(listeObjets[i])
                         XmaxLogo = listeObjets[i][1]
                     }
                 }
@@ -224,24 +223,24 @@ class Decodeur {
             contx.lineTo(pointVirtuel[0], pointVirtuel[1]);
             contx.stroke();
             //
-            console.log("pointA", pointA);
-            console.log("pointB", pointB);
-            console.log("pointViruel :", pointVirtuel);
+            console.log("Coordonnées boule référence 1 ", pointA);
+            console.log("Coordonnées boule référence 2 ", pointB);
+            console.log("Coordonnées boule virtuelle ", pointVirtuel);
 
             // calcul des distance
             var hypothenuse = distance(pointA, pointB);
             var adjacent = distance(pointA, pointVirtuel);
-            console.log("h:", hypothenuse, "adj:", adjacent);
+            console.log("Hypotenuse:", hypothenuse, "Adjacent:", adjacent);
             var angle = Math.acos(adjacent / hypothenuse);
             angle = toDegree(angle);
             if(pointVirtuel[1]<pointB[1])
             {
-                console.log("angle positif");
+                console.log("L'angle est positif");
                 return angle;
             }
             else
             {
-                console.log("angle negatif");
+                console.log("L'angle est negatif");
                 return -angle;
             }
             
@@ -307,36 +306,35 @@ class Decodeur {
             }
         return listeObjetFiltreApresRotation;
         }
-        //for (var objet=0; objet<listeObjetsTrie)
+
+
         var listeObjets = recupererListeObjets(matriceContourObjet);
-        console.log("La liste objet non trié :" ,listeObjets);
+        console.log("Récupère liste objet");
         var listeObjetsTrie = listeObjets.sort(fonctionTri);
-        console.log("La liste objet trié :",listeObjetsTrie);
+        console.log("Trie la liste Objet");
         var listeReferences = trouverReferences(listeObjetsTrie);
+        console.log("Trouve les références dans cette liste");
         var logo = listeReferences[0];
         var boule1 = listeReferences[1];
         var boule2 = listeReferences[2];
-        console.log("logo : ", logo);
-        console.log("boule1 : ", boule1);
-        console.log("boule2 : ", boule2);
-
         var centreLogo = [logo[0]+(logo[1]-logo[2])/2,logo[2]+(logo[3]-logo[2])/2];
         var angleRotation = calculerAngle(boule1,boule2);
         var matriceObjetsApresRotation = rotationEnsemble(centreLogo,matriceContourObjet,angleRotation);
-        console.log("matrice Avant Filtrage",matriceObjetsApresRotation);
+        console.log("Rotation de la matrice");
+        //console.log("matrice Avant Filtrage",matriceObjetsApresRotation);
 
         var listeObjetsApresRotation = recupererListeObjets(matriceObjetsApresRotation);
-        console.log("liste Objet Avant Filtrage",listeObjetsApresRotation);
+        //console.log("liste Objet Avant Filtrage",listeObjetsApresRotation);
 
         var listeObjetsFiltreApresRotation = filtreObjet(listeObjetsApresRotation,logo,boule1,boule2);
-        console.log("liste Objet Apres Filtrage",listeObjetsFiltreApresRotation);
-
+        //console.log("liste Objet Apres Filtrage",listeObjetsFiltreApresRotation);
+        console.log("Filtrage du bruit dans l'image");
         var listeObjetsFiltreEtTrieApresRotation = listeObjetsFiltreApresRotation.sort(fonctionTri);
-        console.log("liste Objet Apres trie",listeObjetsFiltreEtTrieApresRotation);
+        //console.log("liste Objet Apres trie",listeObjetsFiltreEtTrieApresRotation);
 
         var listeRatios = calculerLesRatios(listeObjetsFiltreEtTrieApresRotation);
 
-        console.log(listeRatios)
+        console.log("Calcul Liste Ratios :",listeRatios)
         return listeRatios;
     };
     conversionGrayCode(listeRatios) {
@@ -368,6 +366,7 @@ class Decodeur {
                 licenceGrayCode += this.correspGrayCodeBarre[indicePlusProche][1][bit];
             }
         }
+        console.log("Convertion en grayCode",licenceGrayCode)
         return licenceGrayCode;
     };
     conversionLicence(licenceGreyCode) {
@@ -395,7 +394,7 @@ class Decodeur {
                 }
             }
         }
-        console.log("numLicence:",numLicence);
+        console.log("Le numéro de licence est :",numLicence);
         return numLicence;
     }
   async testerLicense(numLicence)
@@ -423,4 +422,5 @@ class Decodeur {
       });
       return response
   }
+
 };

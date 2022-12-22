@@ -95,6 +95,7 @@ class Encodeur {
             licenceGrayCode += (this.TABLE_ENCODAGE[numLicence[caracCourant]]);
         }
         //Retourne la licence convertie en gray code
+        console.log(licenceGrayCode)
         return licenceGrayCode;
     }
 
