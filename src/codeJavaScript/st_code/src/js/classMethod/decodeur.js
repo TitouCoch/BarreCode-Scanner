@@ -158,19 +158,21 @@ class Decodeur {
         }
 
         //Fonction qui trouve les objets références dans l'image
+        // listeObjets >> trouverReferences >> listeReferences
         function trouverReferences(listeObjets) {
             var listeReferences = [];
-            var marge = 2;
+            var marge = 2; // marge d'erreur pour trouver des objets circulaires
             var XmaxLogo = -1;
-            for (var i = 0; i < listeObjets.length; i++) 
+            for (var i = 0; i < listeObjets.length; i++)  //parcours de tout les objets de l'image
             {   
-                var hauteurTemp = listeObjets[i][4];
+                var hauteurTemp = listeObjets[i][4]; // hauteur de l'objet courant 
                 if (hauteurTemp - marge <= listeObjets[i][5] && listeObjets[i][5] <= hauteurTemp + marge && listeObjets[i][0]>XmaxLogo && hauteurTemp != 0) 
+                // si l'objet courant est un cercle ( sa hauteur correspond a peu pres a sa longueur) et qu'il placé apres le logo 
                 {
-                    listeReferences.push(listeObjets[i]);
-                    if(hauteurTemp >= 20)
+                    listeReferences.push(listeObjets[i]); // on le met dans la liste des references ( petit cercle au debut et la fin du code)
+                    if(hauteurTemp >= 20)     // si c'est un cercle assez grand il est considéré comme le logo
                     {
-                        XmaxLogo = listeObjets[i][1]
+                        XmaxLogo = listeObjets[i][1]   // on precise le Xmax du logo
                     }
                 }
            }
@@ -193,25 +195,33 @@ class Decodeur {
             }
         }
        
+        //fonction pour calculer une distance euclidienne dans un repere cartesien (ici l'image)
         function distance(a, b) {
             return Math.sqrt((b[0] - a[0]) ** 2 + (b[1] - a[1]) ** 2)
         }
+        // fonction de conversion de radian à degré
+        // a >> toDegree >> a
         function toDegree(a)
         {
             return a * 180/Math.PI;
         }
-        
+        // fonction de conversion de degré à radian
+        // a >> toRadian >> a
         function toRadian(a)
         {
             return a/(180/Math.PI);
         }
+
+        // fonction qui calcule l'angle entre l'axe des abscisse et la ligne formée par les 2 boules de references du st_code
+        // boule1,boule2 >> calculerAnglet >> angle
         function calculerAngle(boule1, boule2) {
-           
+
             // initialisation des points
             var pointA = [boule1[0] + boule1[4] / 2, boule1[2] + boule1[5] / 2];
             var pointB = [boule2[0] + boule2[4] / 2, boule2[2] + boule2[5] / 2];
+            // definition d'un point virtuel qui formera avec le point A une droite parallele à l'axe des absciess
             var pointVirtuel = [pointB[0], pointA[1]];
-            //afficher les droites
+            //afficher les droites sur l'image
             contx.strokeStyle = '#f00';
             contx.beginPath();
             contx.moveTo(pointA[0], pointA[1]);
@@ -228,29 +238,37 @@ class Decodeur {
             console.log("Coordonnées boule virtuelle ", pointVirtuel);
 
             // calcul des distance
-            var hypothenuse = distance(pointA, pointB);
+            // calcul de la valeur de l'hypothenuse avec les points A et B
+            var hypothenuse = distance(pointA, pointB); 
+            // calcul de la valeur du coté adjacent avec le point A et le point Virtuel
             var adjacent = distance(pointA, pointVirtuel);
             console.log("Hypotenuse:", hypothenuse, "Adjacent:", adjacent);
+            // utilisation du calcul trigonometriques pour obtenir l'angle
             var angle = Math.acos(adjacent / hypothenuse);
             angle = toDegree(angle);
-            if(pointVirtuel[1]<pointB[1])
+            // selon la position du point virutel, on defini l'angle comme positif ou negatif
+            
+            if(pointVirtuel[1]<pointB[1]) // si le point virtuel est au dessus du point B, alors l'angle est positif
             {
                 console.log("L'angle est positif");
                 return angle;
             }
-            else
+            else                           // si le point virtuel est en dessous du point B, alors l'angle est negatif
             {
                 console.log("L'angle est negatif");
                 return -angle;
             }
             
         }
-
+        //fonction qui donne les coordonées d'un point apres une rotation d'un certain angle dans un repere cartesien
+        // x,y,angle >> rotationPoint >> [x,y]
         function rotationPoint(x,y,angle)
         {
             var angleRadian = toRadian(angle)
             return [x*Math.cos(angleRadian)+y*-1*Math.sin(angleRadian) ,x*Math.sin(angleRadian)+y*Math.cos(angleRadian)]
         }
+        //fonction qui renvoie un matrice de point apres une rotation d'un certain angle par rapport a un certain point qui est le centre autour duquel s'effectue la rotation
+        // centre,matrice,angle >> rotationEnsemble >> matriceApresRotation
         function rotationEnsemble(centre,matrice,angle)
         {   
             var matriceApresRotation = [];
@@ -291,6 +309,8 @@ class Decodeur {
             }
             return listeRatios;
         }
+        //fonction qui filtre les objets en fonction de leurs position et gardent seulement ceux dont la position est bien entre la boule1 et la boule2 (les reperes)
+        // liste >> filtreObjet >> listeObjetFiltreApresRotation
         function filtreObjet(liste)
         {
             var listeObjetFiltreApresRotation = [];
@@ -307,11 +327,15 @@ class Decodeur {
         return listeObjetFiltreApresRotation;
         }
 
+        // on utilise toutes les fonctions déclarées precedement
 
+        //on recupere la liste des objets de la matriceContourObjet
         var listeObjets = recupererListeObjets(matriceContourObjet);
         console.log("Récupère liste objet");
+        // on tri les objets dans l'ordre croissant des position en X
         var listeObjetsTrie = listeObjets.sort(fonctionTri);
         console.log("Trie la liste Objet");
+        // on recupere les objets qui sont les references du code
         var listeReferences = trouverReferences(listeObjetsTrie);
         console.log("Trouve les références dans cette liste");
         var logo = listeReferences[0];
