@@ -318,10 +318,48 @@ class Decodeur {
         //fonction qui filtre les objets en fonction de leurs position et gardent seulement ceux dont la position est bien entre la boule1 et la boule2 (les reperes)
         // liste >> filtreObjet >> listeObjetFiltreApresRotation
         function filtreObjet(liste)
-        {
+        {   
+            // initialisation des variables
             var listeObjetFiltreApresRotation = [];
-            var limiteXmax = boule2[1];
-            var limiteXmin = boule1[0];
+            var margeY = 5;
+            var margeX = 10;
+
+            // on recuperes les limites a partir des références
+            var limiteXmax = boule2[0] + margeX;
+            var limiteYmax = logo[3] + margeY;
+            // tracer la limite minimum en X sur le canva
+            contx3.strokeStyle = '#f00';
+            contx3.beginPath();
+            contx3.moveTo(limiteXmax, 0);
+            contx3.lineTo(limiteXmax, output3.height);
+            contx3.stroke();
+            
+            var limiteXmin = boule1[1] - margeX;
+            var limiteYmin = logo[2] - margeY;
+            // tracer la limite maximum en X sur le canva
+            contx3.strokeStyle = '#f00';
+            contx3.beginPath();
+            contx3.moveTo(limiteXmin, 0);
+            contx3.lineTo(limiteXmin, output3.height);
+            contx3.stroke();
+
+            // tracer la limite minimum en Y sur le canva 
+            contx3.strokeStyle = '#f00';
+            contx3.beginPath();
+            contx3.moveTo(0,limiteYmin);
+            contx3.lineTo(output3.width,limiteYmin);
+            contx3.stroke();
+
+
+            //tracer la limite maximum en Y sur le canva
+
+            contx3.strokeStyle = '#f00';
+            contx3.beginPath();
+            contx3.moveTo(0,limiteYmax);
+            contx3.lineTo(output3.width,limiteYmax);
+            contx3.stroke();
+
+
             for (var i = 0; i < liste.length; i++)
             {
                 var objetCourant = liste[i];
