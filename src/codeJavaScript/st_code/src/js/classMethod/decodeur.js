@@ -82,7 +82,7 @@ class Decodeur {
         // Methode: matriceImage >> recuperationContourObjets >> matriceContoursObjet
         // INITIALISATION
         let matriceImage = cv.imread(this.matriceImage);
-        var matriceCountoursObjets = new Array();
+        var matriceContoursObjets = new Array();
         var matriceImageNiveauDeGris = matriceImage.clone()
         // matriceImage >> conversion image en niveaux de gris >> matriceImageNiveauDeGris
         cv.cvtColor(matriceImage, matriceImageNiveauDeGris, cv.COLOR_RGBA2GRAY, 0);
@@ -103,7 +103,6 @@ class Decodeur {
         // matriceImageAvecContours >> récupération des contours de chaques objets >> matriceContoursObjets
         cv.findContours(matriceImageAvecContours, contours, hierarchy, cv.RETR_EXTERNAL, cv.CHAIN_APPROX_NONE);
         //mise sous forme de matrice de dimension 3
-        var matriceContoursObjets = new Array();
         // parcours complet de la liste d'objets
         for (var i = 0; i < contours.size(); ++i) {
             matriceContoursObjets[i] = new Array();
@@ -222,20 +221,20 @@ class Decodeur {
             // definition d'un point virtuel qui formera avec le point A une droite parallele à l'axe des absciess
             var pointVirtuel = [pointB[0], pointA[1]];
             //afficher les droites sur l'image
-            contx.strokeStyle = '#f00';
-            contx.beginPath();
-            contx.moveTo(pointA[0], pointA[1]);
-            contx.lineTo(pointB[0], pointB[1]);
-            contx.stroke();
-            contx.strokeStyle = '#f00';
-            contx.beginPath();
-            contx.moveTo(pointA[0], pointA[1]);
-            contx.lineTo(pointVirtuel[0], pointVirtuel[1]);
-            contx.stroke();
-            //
-            console.log("Coordonnées boule référence 1 ", pointA);
-            console.log("Coordonnées boule référence 2 ", pointB);
-            console.log("Coordonnées boule virtuelle ", pointVirtuel);
+            contx2.strokeStyle = '#f00';
+            contx2.beginPath();
+            contx2.moveTo(pointA[0], pointA[1]);
+            contx2.lineTo(pointB[0], pointB[1]);
+            contx2.stroke();
+            contx2.strokeStyle = '#f00';
+            contx2.beginPath();
+            contx2.moveTo(pointA[0], pointA[1]);
+            contx2.lineTo(pointVirtuel[0], pointVirtuel[1]);
+            contx2.stroke();
+
+            console.log("Coordonnées boule référence 1 : ", pointA);
+            console.log("Coordonnées boule référence 2 : ", pointB);
+            console.log("Coordonnées boule virtuelle : ", pointVirtuel);
 
             // calcul des distance
             // calcul de la valeur de l'hypothenuse avec les points A et B
@@ -248,15 +247,15 @@ class Decodeur {
             angle = toDegree(angle);
             // selon la position du point virutel, on defini l'angle comme positif ou negatif
             
-            if(pointVirtuel[1]<pointB[1]) // si le point virtuel est au dessus du point B, alors l'angle est positif
+            if(pointVirtuel[1]<pointB[1]) // si le point virtuel est au dessus du point B, alors l'angle est negatif
             {
-                console.log("L'angle est positif");
-                return angle;
-            }
-            else                           // si le point virtuel est en dessous du point B, alors l'angle est negatif
-            {
-                console.log("L'angle est negatif");
+                console.log("L'angle est positif:",-angle);
                 return -angle;
+            }
+            else                           // si le point virtuel est en dessous du point B, alors l'angle est positif
+            {
+                console.log("L'angle est positif:",angle);
+                return angle;
             }
             
         }
@@ -271,6 +270,9 @@ class Decodeur {
         // centre,matrice,angle >> rotationEnsemble >> matriceApresRotation
         function rotationEnsemble(centre,matrice,angle)
         {   
+            // on enleves les dessins du canvas 
+            contx3.clearRect(0, 0, output3.width, output3.height);
+
             var matriceApresRotation = [];
            for(var objet=0; objet < matrice.length; objet++)
            {
@@ -285,10 +287,14 @@ class Decodeur {
                 // remettre les points dans le plan d'origine
                 var XRepereOrigine = nouveauPoint[0] + centre[0];
                 var YRepereOrigine = nouveauPoint[1] + centre[1];
+                // dessin du point sur le canva
+                contx3.fillStyle = 'white';
+                contx3.fillRect(XRepereOrigine,YRepereOrigine, 1, 1);
                 // remplacer le point par le nouveau point apres rotation
                 matriceApresRotation[objet].push([XRepereOrigine,YRepereOrigine])
             }
            }
+           
            return matriceApresRotation
         }
         // listeObjetTrie >> CALCUL DES RATIOS >> listeRatios
@@ -338,18 +344,25 @@ class Decodeur {
         // on recupere les objets qui sont les references du code
         var listeReferences = trouverReferences(listeObjetsTrie);
         console.log("Trouve les références dans cette liste");
-        var logo = listeReferences[0];
-        var boule1 = listeReferences[1];
-        var boule2 = listeReferences[2];
+        var logo = listeReferences[0]; // la premiere reference est le logo
+        var boule1 = listeReferences[1]; // la deuxieme reference est la boule1
+        var boule2 = listeReferences[2]; // la troisieme reference est la boule2
+        //on va ensuite tourner le code de sorte à ce que les elements soient droit et que la ligne formée par les 2 boules references soit parallele à l'axe des abscisses
+        // le centre de rotation de sera le centre du logo
         var centreLogo = [logo[0]+(logo[1]-logo[2])/2,logo[2]+(logo[3]-logo[2])/2];
+        // on calcul l'angle de rotation pour remettre les éléments droit
         var angleRotation = calculerAngle(boule1,boule2);
+        // on effectue la rotation et on récupere la nouvelle matrice d'element droits
         var matriceObjetsApresRotation = rotationEnsemble(centreLogo,matriceContourObjet,angleRotation);
         console.log("Rotation de la matrice");
         //console.log("matrice Avant Filtrage",matriceObjetsApresRotation);
 
+
+        //on recupere ensuite la liste des objets a partir de la matrice
         var listeObjetsApresRotation = recupererListeObjets(matriceObjetsApresRotation);
         //console.log("liste Objet Avant Filtrage",listeObjetsApresRotation);
 
+        // on applique le filtre pour garder seulement les objets qui sont entres les boules references eliminée le bruit (element indesirables)
         var listeObjetsFiltreApresRotation = filtreObjet(listeObjetsApresRotation,logo,boule1,boule2);
         //console.log("liste Objet Apres Filtrage",listeObjetsFiltreApresRotation);
         console.log("Filtrage du bruit dans l'image");

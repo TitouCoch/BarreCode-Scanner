@@ -11,7 +11,10 @@ const boutonPhoto = document.getElementById('photo');
 navigator.mediaDevices.getUserMedia(parametres).then(function (stream) { player.srcObject = stream; });
 //
 const output2 = document.getElementById('output2');
-var contx = output2.getContext('2d');
+var contx2 = output2.getContext('2d');
+
+const output3 = document.getElementById('output3');
+var contx3 = output3.getContext('2d');
 // affichage de la video de la webcam
 
 async function drawImg() {
@@ -71,6 +74,8 @@ boutonPhoto.addEventListener('click', async () => {
   var trouve = false;
   while (true) {
     try {
+      // on enleve les dessin du canvas
+      contx3.fillRect(XRepereOrigine,YRepereOrigine, 1, 1);
       // Canva a partir de la video
       await context.drawImage(player, 0, 0, photo.width, photo.height);
       // arrete la video    
