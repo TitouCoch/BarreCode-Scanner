@@ -321,7 +321,7 @@ class Decodeur {
         {   
             // initialisation des variables
             var listeObjetFiltreApresRotation = [];
-            var margeY = 5;
+            var margeY = 10;
             var margeX = 10;
 
             // on recuperes les limites a partir des références
@@ -359,12 +359,14 @@ class Decodeur {
             contx3.lineTo(output3.width,limiteYmax);
             contx3.stroke();
 
-
+            // parcourir tout les objets de la liste
             for (var i = 0; i < liste.length; i++)
             {
                 var objetCourant = liste[i];
-                if(objetCourant[0]>=limiteXmin && objetCourant[1]<=limiteXmax)
+                // verifier si l'objet est entre Xmin et Xmax et Ymin et YMAX
+                if(objetCourant[0]>limiteXmin && objetCourant[1]<limiteXmax && objetCourant[2] > limiteYmin && objetCourant[3]<limiteYmax) 
                 {
+                    // si l'objet est bien dans la zone de recherche on l'ajoute a la listeObjetFiltreApresRotation
                     listeObjetFiltreApresRotation.push(objetCourant)
                 }
             }
