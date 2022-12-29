@@ -118,10 +118,13 @@ boutonPhoto.addEventListener('click', async () => {
       console.log("LICENCE TROUVE ! FIN");
       var text = document.getElementById('text');
       text.innerHTML = numLicence.getNumLicence(); //Afficher le numéro de licence sur la page
-      const container = document.getElementById('container');
-      container.innerHTML = "<a href='../../../src/php/joueur.php?license="+ numLicence.getNumLicence() + "'>Voir Joueur</a>";
       break;
     }
+    document.getElementById('boutonJoueur').style.display = 'block';
+    document.getElementById('boutonJoueur').addEventListener('click', function() {
+      window.location.assign('http://www.example.com/newpage.php');
+      
+    });
   };
 
 });
