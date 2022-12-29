@@ -116,15 +116,15 @@ boutonPhoto.addEventListener('click', async () => {
     }
     if (trouve == true) {
       console.log("LICENCE TROUVE ! FIN");
-      var text = document.getElementById('text');
-      text.innerHTML = numLicence.getNumLicence(); //Afficher le numéro de licence sur la page
       break;
     }
-    document.getElementById('boutonJoueur').style.display = 'block';
-    document.getElementById('boutonJoueur').addEventListener('click', function() {
-      window.location.assign('http://www.example.com/newpage.php');
-      
-    });
+
   };
+  
+  document.getElementById('boutonJoueur').style.display = 'block';
+  document.getElementById('boutonJoueur').addEventListener('click', function() {
+  window.location.assign('http://localhost:8888/SportTrack/src/codeJavaScript/st_code/src/php/joueur.php?licence='+numLicence.getNumLicence());
+
+  });
 
 });

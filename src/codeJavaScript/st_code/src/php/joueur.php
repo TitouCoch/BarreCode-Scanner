@@ -7,9 +7,9 @@
   $nomtable= "Joueur"; /* Connection bdd */
   $link=mysqli_connect($host,$user,$pass,$bdd);
   // Get the license number from the request data
-  $license = $_GET['license'];
+  $licence = $_GET['licence'];
   // Query the database to check if the license number exists
-  $query = "SELECT * FROM $nomtable WHERE licence = '$license'";
+  $query = "SELECT * FROM $nomtable WHERE licence = '$licence'";
   $result= mysqli_query($link,$query);
   // Check if the license number exists
   if (!$link) {}
