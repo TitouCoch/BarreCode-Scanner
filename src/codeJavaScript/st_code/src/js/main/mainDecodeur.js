@@ -11,7 +11,17 @@ const boutonPhoto = document.getElementById('photo');
 navigator.mediaDevices.getUserMedia(parametres).then(function (stream) { player.srcObject = stream; });
 //
 const output2 = document.getElementById('output2');
-var contx = output2.getContext('2d');
+var contx2 = output2.getContext('2d');
+
+const output3 = document.getElementById('output3');
+var contx3 = output3.getContext('2d');
+
+const output4 = document.getElementById('output4');
+var contx4 = output4.getContext('2d');
+
+const output5 = document.getElementById('output5');
+var contx5 = output5.getContext('2d');
+
 // affichage de la video de la webcam
 
 async function drawImg() {
@@ -106,12 +116,15 @@ boutonPhoto.addEventListener('click', async () => {
     }
     if (trouve == true) {
       console.log("LICENCE TROUVE ! FIN");
-      var text = document.getElementById('text');
-      text.innerHTML = numLicence.getNumLicence(); //Afficher le numéro de licence sur la page
-      const container = document.getElementById('container');
-      container.innerHTML = "<a href='../../../src/php/joueur.php?license="+ numLicence.getNumLicence() + "'>Voir Joueur</a>";
       break;
     }
+
   };
+  
+  document.getElementById('boutonJoueur').style.display = 'block';
+  document.getElementById('boutonJoueur').addEventListener('click', function() {
+  window.location.assign('http://localhost:8888/SportTrack/src/codeJavaScript/st_code/src/php/joueur.php?licence='+numLicence.getNumLicence());
+
+  });
 
 });
