@@ -2,13 +2,13 @@
 <!DOCTYPE Tabula_Rasa>
 <Algorithme>
   <nom>rotationEnsemble</nom>
-  <date_creation>15/12/2022 09:16</date_creation>
+  <date_creation>16/1/2023 12:05</date_creation>
   <Elements>
     <Action>
       <Position>798;4</Position>
       <StyleLien>2</StyleLien>
-      <PreAssertion>centre
-matrice
+      <PreAssertion>centre&#xd;
+matrice&#xd;
 angle</PreAssertion>
       <PostAssertion>matriceApresRotation</PostAssertion>
       <Titre>rotationEnsemble</Titre>
@@ -16,19 +16,19 @@ angle</PreAssertion>
       <DetailsVideVisible>1</DetailsVideVisible>
       <Enfants>
         <Action>
-          <Position>541;146</Position>
+          <Position>490;145</Position>
           <StyleLien>2</StyleLien>
           <PreAssertion>?</PreAssertion>
-          <PostAssertion>pointA
-pointB
+          <PostAssertion>pointA&#xd;
+pointB&#xd;
 matriceApresRotation[]</PostAssertion>
-          <Titre>initalisation
+          <Titre>initalisation&#xd;
 </Titre>
           <DetailsVisible>1</DetailsVisible>
           <DetailsVideVisible>0</DetailsVideVisible>
           <Enfants>
             <Action>
-              <Position>491;295</Position>
+              <Position>420;299</Position>
               <StyleLien>1</StyleLien>
               <PreAssertion>?</PreAssertion>
               <PostAssertion>matriceApresRotation[]</PostAssertion>
@@ -42,9 +42,9 @@ matriceApresRotation[]</PostAssertion>
         <Action>
           <Position>893;157</Position>
           <StyleLien>2</StyleLien>
-          <PreAssertion>matrice
-angle
-matriceApresRotation
+          <PreAssertion>matrice&#xd;
+angle&#xd;
+matriceApresRotation&#xd;
 centre</PreAssertion>
           <PostAssertion>matriceApresRotation</PostAssertion>
           <Titre>Parcours de tous les objets de la matrice</Titre>
@@ -58,7 +58,7 @@ centre</PreAssertion>
               <IterationFixe>1</IterationFixe>
               <Enfants>
                 <Action>
-                  <Position>913;356</Position>
+                  <Position>883;357</Position>
                   <StyleLien>2</StyleLien>
                   <PreAssertion>matriceApresRotation</PreAssertion>
                   <PostAssertion>matriceApresRotation</PostAssertion>
@@ -69,9 +69,9 @@ centre</PreAssertion>
                     <Action>
                       <Position>890;480</Position>
                       <StyleLien>2</StyleLien>
-                      <PreAssertion>matrice
-angle
-matriceApresRotation
+                      <PreAssertion>matrice&#xd;
+angle&#xd;
+matriceApresRotation&#xd;
 centre</PreAssertion>
                       <PostAssertion>matriceApresRotation</PostAssertion>
                       <Titre>parcorus de tous les points de la matrice</Titre>
@@ -87,9 +87,9 @@ centre</PreAssertion>
                             <Action>
                               <Position>892;688</Position>
                               <StyleLien>2</StyleLien>
-                              <PreAssertion>matrice
-angle
-centre 
+                              <PreAssertion>matrice&#xd;
+angle&#xd;
+centre &#xd;
 matriceApresRotation</PreAssertion>
                               <PostAssertion>matriceApresRotation</PostAssertion>
                               <Titre>calcul des nouvelles coordonées du point</Titre>
@@ -99,9 +99,9 @@ matriceApresRotation</PreAssertion>
                                 <Action>
                                   <Position>517;821</Position>
                                   <StyleLien>2</StyleLien>
-                                  <PreAssertion>matrice
+                                  <PreAssertion>matrice&#xd;
 centre</PreAssertion>
-                                  <PostAssertion>XRepereCentre
+                                  <PostAssertion>XRepereCentre&#xd;
 YRepereCentre</PostAssertion>
                                   <Titre>placer les coordonées dans un reperes qui a pour origine le point centre</Titre>
                                   <DetailsVisible>1</DetailsVisible>
@@ -110,11 +110,11 @@ YRepereCentre</PostAssertion>
                                     <Action>
                                       <Position>544;927</Position>
                                       <StyleLien>1</StyleLien>
-                                      <PreAssertion>matrice
+                                      <PreAssertion>matrice&#xd;
 centre</PreAssertion>
-                                      <PostAssertion>XRepereCentre
+                                      <PostAssertion>XRepereCentre&#xd;
 YRepereCentre</PostAssertion>
-                                      <Titre>var XRepereCentre ← matrice[objet][point][0] - centre[0];
+                                      <Titre>var XRepereCentre ← matrice[objet][point][0] - centre[0];&#xd;
 var YRepereCentre ← matrice[objet][point][1] - centre[1];</Titre>
                                       <DetailsVisible>1</DetailsVisible>
                                       <DetailsVideVisible>1</DetailsVideVisible>
@@ -125,10 +125,10 @@ var YRepereCentre ← matrice[objet][point][1] - centre[1];</Titre>
                                 <Action>
                                   <Position>1300;830</Position>
                                   <StyleLien>2</StyleLien>
-                                  <PreAssertion>XRepereCentre
-YRepereCentre
+                                  <PreAssertion>XRepereCentre&#xd;
+YRepereCentre&#xd;
 angle</PreAssertion>
-                                  <PostAssertion>nouveauPoint
+                                  <PostAssertion>nouveauPoint&#xd;
 matriceApresRotation</PostAssertion>
                                   <Titre>rotation du point</Titre>
                                   <DetailsVisible>1</DetailsVisible>
@@ -137,8 +137,8 @@ matriceApresRotation</PostAssertion>
                                     <Action>
                                       <Position>1151;945</Position>
                                       <StyleLien>1</StyleLien>
-                                      <PreAssertion>XRepereCentre
-YRepereCentre
+                                      <PreAssertion>XRepereCentre&#xd;
+YRepereCentre&#xd;
 angle</PreAssertion>
                                       <PostAssertion>nouveauPoint</PostAssertion>
                                       <Titre>nouveauPoint  ← rotationPoint(XRepereCentre, YRepereCentre, angle);</Titre>
@@ -151,9 +151,9 @@ angle</PreAssertion>
                                 <Action>
                                   <Position>1850;823</Position>
                                   <StyleLien>2</StyleLien>
-                                  <PreAssertion>centre
+                                  <PreAssertion>centre&#xd;
 nouveauPoint</PreAssertion>
-                                  <PostAssertion>XRepereOrigine
+                                  <PostAssertion>XRepereOrigine&#xd;
 YRepereOrigine</PostAssertion>
                                   <Titre>se replacer dans le reperes d'origine</Titre>
                                   <DetailsVisible>1</DetailsVisible>
@@ -162,11 +162,11 @@ YRepereOrigine</PostAssertion>
                                     <Action>
                                       <Position>1851;946</Position>
                                       <StyleLien>1</StyleLien>
-                                      <PreAssertion>matrice
+                                      <PreAssertion>matrice&#xd;
 centre</PreAssertion>
-                                      <PostAssertion>XRepereOrigine
+                                      <PostAssertion>XRepereOrigine&#xd;
 YRepereOrigine</PostAssertion>
-                                      <Titre>XRepereOrigine = nouveauPoint[0] + centre[0];
+                                      <Titre>XRepereOrigine = nouveauPoint[0] + centre[0];&#xd;
 YRepereOrigine = nouveauPoint[1] + centre[1];</Titre>
                                       <DetailsVisible>1</DetailsVisible>
                                       <DetailsVideVisible>1</DetailsVideVisible>
@@ -177,8 +177,8 @@ YRepereOrigine = nouveauPoint[1] + centre[1];</Titre>
                                 <Action>
                                   <Position>2420;820</Position>
                                   <StyleLien>2</StyleLien>
-                                  <PreAssertion>XRepereOrigine
-YRepereOrigine
+                                  <PreAssertion>XRepereOrigine&#xd;
+YRepereOrigine&#xd;
 matriceApresRotation</PreAssertion>
                                   <PostAssertion>?</PostAssertion>
                                   <Titre>Placer le point apres la rotation dans la matriceApresRotation</Titre>
@@ -188,8 +188,8 @@ matriceApresRotation</PreAssertion>
                                     <Action>
                                       <Position>2526;948</Position>
                                       <StyleLien>1</StyleLien>
-                                      <PreAssertion>XRepereOrigine
-YRepereOrigine
+                                      <PreAssertion>XRepereOrigine&#xd;
+YRepereOrigine&#xd;
 matriceApresRotation</PreAssertion>
                                       <PostAssertion>?</PostAssertion>
                                       <Titre>matriceApresRotation[objet].push([XRepresOrigines,YRepereOrigine])</Titre>

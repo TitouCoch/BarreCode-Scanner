@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<!DOCTYPE Tabula_Rasa>
+<Algorithme>
+  <nom>FiltreObjet</nom>
+  <date_creation>16/1/2023 12:06</date_creation>
+  <Elements>
+    <Action>
+      <Position>553;7</Position>
+      <StyleLien>2</StyleLien>
+      <PreAssertion>liste
+boule2
+logo</PreAssertion>
+      <PostAssertion>listeFiltrée</PostAssertion>
+      <Titre>filtreObjet</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>1</DetailsVideVisible>
+      <Enfants>
+        <Action>
+          <Position>227;143</Position>
+          <StyleLien>2</StyleLien>
+          <PreAssertion>liste</PreAssertion>
+          <PostAssertion>listeFiltrée
+limiteXmax
+limiteYmax
+limiteXmin
+limiteYmin</PostAssertion>
+          <Titre>initialisation </Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants>
+            <Action>
+              <Position>25;299</Position>
+              <StyleLien>1</StyleLien>
+              <PreAssertion>liste</PreAssertion>
+              <PostAssertion>listeFiltrée</PostAssertion>
+              <Titre>listeFiltrée ← []
+margeY ← 10
+margeX ← 10</Titre>
+              <DetailsVisible>1</DetailsVisible>
+              <DetailsVideVisible>1</DetailsVideVisible>
+              <Enfants/>
+            </Action>
+            <Action>
+              <Position>328;299</Position>
+              <StyleLien>1</StyleLien>
+              <PreAssertion>margeX
+margeY</PreAssertion>
+              <PostAssertion>limiteXmax
+limiteYmax
+limiteXmin
+limiteYmin</PostAssertion>
+              <Titre>limiteXmax ← boule2[0] + margeX
+limiteYmax ← logo[3] + margeY
+limiteXmin ← boule1[1] - margeX
+limiteYmin ← logo[2] - margeY</Titre>
+              <DetailsVisible>1</DetailsVisible>
+              <DetailsVideVisible>1</DetailsVideVisible>
+              <Enfants/>
+            </Action>
+          </Enfants>
+        </Action>
+        <Action>
+          <Position>804;153</Position>
+          <StyleLien>2</StyleLien>
+          <PreAssertion>limiteXmax
+limiteYmax
+limiteXmin
+limiteYmin</PreAssertion>
+          <PostAssertion>listeFiltrée</PostAssertion>
+          <Titre>filtrage de la liste</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants>
+            <Iteration>
+              <Position>952.5;272.5</Position>
+              <StyleLien>1</StyleLien>
+              <Titre>pour i de 0 à liste.length</Titre>
+              <IterationFixe>1</IterationFixe>
+              <Enfants>
+                <Action>
+                  <Position>786;353</Position>
+                  <StyleLien>2</StyleLien>
+                  <PreAssertion>liste
+limiteXmax
+limiteYmax
+limiteXmin
+limiteYmin</PreAssertion>
+                  <PostAssertion>listeFiltrée</PostAssertion>
+                  <Titre>objetCourant ← liste[i]</Titre>
+                  <DetailsVisible>1</DetailsVisible>
+                  <DetailsVideVisible>1</DetailsVideVisible>
+                  <Enfants>
+                    <Condition>
+                      <Position>625.5;486</Position>
+                      <StyleLien>1</StyleLien>
+                      <estUnique>1</estUnique>
+                      <operationsLogiques>
+                        <operation>
+                          <Titre>objetCourant[0]>limiteXmin &amp;&amp; objetCourant[1]&lt;limiteXmax &amp;&amp; objetCourant[2] > limiteYmin &amp;&amp; objetCourant[3]&lt;limiteYmax</Titre>
+                          <Enfants>
+                            <Action>
+                              <Position>749;599</Position>
+                              <StyleLien>1</StyleLien>
+                              <PreAssertion>listeFiltrée
+objetCourant</PreAssertion>
+                              <PostAssertion>listeFiltrée</PostAssertion>
+                              <Titre>listeFiltrée.push(objetCourant)</Titre>
+                              <DetailsVisible>1</DetailsVisible>
+                              <DetailsVideVisible>1</DetailsVideVisible>
+                              <Enfants/>
+                            </Action>
+                          </Enfants>
+                        </operation>
+                        <operation>
+                          <Titre>Sinon</Titre>
+                          <Enfants/>
+                        </operation>
+                      </operationsLogiques>
+                    </Condition>
+                  </Enfants>
+                </Action>
+              </Enfants>
+            </Iteration>
+          </Enfants>
+        </Action>
+      </Enfants>
+    </Action>
+  </Elements>
+  <Dictionary/>
+</Algorithme>

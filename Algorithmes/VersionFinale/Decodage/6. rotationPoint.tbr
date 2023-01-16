@@ -2,15 +2,15 @@
 <!DOCTYPE Tabula_Rasa>
 <Algorithme>
   <nom>Algorithme</nom>
-  <date_creation>15/12/2022 11:51</date_creation>
+  <date_creation>16/1/2023 12:04</date_creation>
   <Elements>
     <Action>
       <Position>550;30</Position>
       <StyleLien>2</StyleLien>
-      <PreAssertion>x
-y
+      <PreAssertion>x&#xd;
+y&#xd;
 angle</PreAssertion>
-      <PostAssertion>x2
+      <PostAssertion>x2&#xd;
 y2</PostAssertion>
       <Titre>rotationPoint</Titre>
       <DetailsVisible>1</DetailsVisible>
@@ -19,8 +19,11 @@ y2</PostAssertion>
         <Action>
           <Position>425;179</Position>
           <StyleLien>2</StyleLien>
-          <PreAssertion>∅</PreAssertion>
-          <PostAssertion>∅</PostAssertion>
+          <PreAssertion>x
+y
+angle</PreAssertion>
+          <PostAssertion>x2
+y2</PostAssertion>
           <Titre>calcul des coordonnées apres rotation dans un reperes cartesien</Titre>
           <DetailsVisible>1</DetailsVisible>
           <DetailsVideVisible>1</DetailsVideVisible>
@@ -28,11 +31,11 @@ y2</PostAssertion>
             <Action>
               <Position>486;340</Position>
               <StyleLien>1</StyleLien>
-              <PreAssertion>x
+              <PreAssertion>x&#xd;
 y</PreAssertion>
-              <PostAssertion>x2
+              <PostAssertion>x2&#xd;
 y2</PostAssertion>
-              <Titre>x2 → x* cosinus(angle) +y*-1*sinus(angle)
+              <Titre>x2 → x* cosinus(angle) +y*-1*sinus(angle)&#xd;
 y2 →  x* sinus(angle) +y*cosinus(angle)	</Titre>
               <DetailsVisible>1</DetailsVisible>
               <DetailsVideVisible>1</DetailsVideVisible>

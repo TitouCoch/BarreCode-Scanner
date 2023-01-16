@@ -1,0 +1,127 @@
+<?xml version="1.0"?>
+<!DOCTYPE Tabula_Rasa>
+<Algorithme>
+  <nom>algoCalculerAngler</nom>
+  <date_creation>16/1/2023 12:05</date_creation>
+  <Elements>
+    <Action>
+      <Position>500;19</Position>
+      <StyleLien>2</StyleLien>
+      <PreAssertion>boule1&#xd;
+boule2</PreAssertion>
+      <PostAssertion>angle</PostAssertion>
+      <Titre>calculerAngle</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>1</DetailsVideVisible>
+      <Enfants>
+        <Action>
+          <Position>26;163</Position>
+          <StyleLien>2</StyleLien>
+          <PreAssertion>boule1&#xd;
+boule2</PreAssertion>
+          <PostAssertion>pointA&#xd;
+pointB&#xd;
+pointVirtuel</PostAssertion>
+          <Titre>initialisation des points&#xd;
+ et calcul du point de la droite parrales a l'axe des abscisses</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants>
+            <Action>
+              <Position>11;307</Position>
+              <StyleLien>1</StyleLien>
+              <PreAssertion>boule1&#xd;
+boule2</PreAssertion>
+              <PostAssertion>pointA&#xd;
+pointB&#xd;
+pointVirtuel</PostAssertion>
+              <Titre>pointA ← [boule1[0] + boule1[4] / 2, boule1[2] + boule1[5] / 2];
+pointB ← [boule2[0] + boule2[4] / 2, boule2[2] + boule2[5] / 2];
+pointVirtuel ← [pointB[0], pointA[1]];</Titre>
+              <DetailsVisible>1</DetailsVisible>
+              <DetailsVideVisible>1</DetailsVideVisible>
+              <Enfants/>
+            </Action>
+          </Enfants>
+        </Action>
+        <Action>
+          <Position>893;159</Position>
+          <StyleLien>2</StyleLien>
+          <PreAssertion>pointA
+pointB
+pointVirtuel</PreAssertion>
+          <PostAssertion>angle</PostAssertion>
+          <Titre>calcul de la valeur de l'angle</Titre>
+          <DetailsVisible>1</DetailsVisible>
+          <DetailsVideVisible>1</DetailsVideVisible>
+          <Enfants>
+            <Action>
+              <Position>666;301</Position>
+              <StyleLien>2</StyleLien>
+              <PreAssertion>pointA
+pointB
+pointVirtuel</PreAssertion>
+              <PostAssertion>hypothenuse
+adjacent</PostAssertion>
+              <Titre>initialisation des cotés du triangle rectangle</Titre>
+              <DetailsVisible>1</DetailsVisible>
+              <DetailsVideVisible>1</DetailsVideVisible>
+              <Enfants>
+                <Action>
+                  <Position>609;428</Position>
+                  <StyleLien>1</StyleLien>
+                  <PreAssertion>pointA
+pointB
+pointVirtuel</PreAssertion>
+                  <PostAssertion>hypothenuse
+adjacent</PostAssertion>
+                  <Titre>hypothenuse ← distance(pointA,pointB)
+adjacent ← distance(pointA, pointVirtuel)</Titre>
+                  <DetailsVisible>1</DetailsVisible>
+                  <DetailsVideVisible>1</DetailsVideVisible>
+                  <Enfants/>
+                </Action>
+              </Enfants>
+            </Action>
+            <Action>
+              <Position>1227;301</Position>
+              <StyleLien>2</StyleLien>
+              <PreAssertion>hypothenuse
+adjacent</PreAssertion>
+              <PostAssertion>angle</PostAssertion>
+              <Titre>calcul trigonométrique</Titre>
+              <DetailsVisible>1</DetailsVisible>
+              <DetailsVideVisible>1</DetailsVideVisible>
+              <Enfants>
+                <Action>
+                  <Position>1184;422</Position>
+                  <StyleLien>1</StyleLien>
+                  <PreAssertion>hypothenuse
+adjacent</PreAssertion>
+                  <PostAssertion>angle</PostAssertion>
+                  <Titre>angle ← acos(adjacent/hypothenuse)</Titre>
+                  <DetailsVisible>1</DetailsVisible>
+                  <DetailsVideVisible>1</DetailsVideVisible>
+                  <Enfants/>
+                </Action>
+              </Enfants>
+            </Action>
+          </Enfants>
+        </Action>
+      </Enfants>
+    </Action>
+    <Action>
+      <Position>529;812</Position>
+      <StyleLien>1</StyleLien>
+      <PreAssertion>matrice&#xd;
+centre</PreAssertion>
+      <PostAssertion>XRepereCentre&#xd;
+YRepereCentre</PostAssertion>
+      <Titre>placer les coordonées dans un reperes qui a pour origine le point centre</Titre>
+      <DetailsVisible>1</DetailsVisible>
+      <DetailsVideVisible>1</DetailsVideVisible>
+      <Enfants/>
+    </Action>
+  </Elements>
+  <Dictionary/>
+</Algorithme>
