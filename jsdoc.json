@@ -1,6 +1,6 @@
 {
     "source": {
-        "include": ["src/codeJavaScript/st_code/src/js/classObjet"],
+        "include": ["src/codeJavaScript/st_code/src/js/classObjet","src/codeJavaScript/st_code/src/js/classMethod"],
         "includePattern": ".js$",
         "excludePattern": "(node_modules/|docs)"
     },
