@@ -1,8 +1,7 @@
-//Classe ListeBarre 
 /**
  * Classe représentant une liste de barres.
  *
- * Une liste de barres est une liste de hauteurs de barre.
+ * Explication : Une liste de barres est une liste de hauteurs de barre.
  *
  * @author Sport Track
  */
@@ -16,9 +15,6 @@ class ListeBarre {
     constructor(l="") {
       this.listeBarre = l;
     }
-
-    //Encapsulation
-    //Fonction qui retourne l'attribut numLicence
     /**
      * Retourne la liste de barres.
      *

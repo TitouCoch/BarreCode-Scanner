@@ -1,8 +1,8 @@
 /**
- * Class représentant la matrice de contour
- * 
- * Explication :
- * 
+ * Classe représentant une matrice de Contours Objets.
+ *
+ * Explication : Une matrice de contours objets est un tableau à trois dimension d'entien
+ *
  * @author Sport Track
  */
 class ContoursObjets {

@@ -1,8 +1,7 @@
-//Classe Licence 
 /**
  * Classe représentant une licence.
  *
- * Une licence est caractérisée par une chaine de chiffre et de caractère, exemple "Ax67De6t54".
+ * Explication : Une licence est caractérisée par une chaine de chiffre et de caractère, exemple "Ax67De6t54".
  *
  * @author Sport Track
  */
@@ -17,7 +16,6 @@ class Licence {
       this.numLicence = l;
     }
     
-    //Encapsulation
     /**
      * Getter qui retourne le numéro de la licence.
      *

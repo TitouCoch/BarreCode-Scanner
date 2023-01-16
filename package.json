@@ -1,0 +1,26 @@
+{
+  "name": "sporttrack",
+  "version": "1.0.0",
+  "description": "[![forthebadge](https://forthebadge.com/images/badges/built-by-developers.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/made-with-javascript.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/for-you.svg)](https://forthebadge.com)",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "doc": "jsdoc -c jsdoc.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TitouCoch/SportTrack.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TitouCoch/SportTrack/issues"
+  },
+  "homepage": "https://github.com/TitouCoch/SportTrack#readme",
+  "devDependencies": {
+    "jsdoc": "^4.0.0"
+  }
+}

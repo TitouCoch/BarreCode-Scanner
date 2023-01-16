@@ -1,8 +1,8 @@
 //Classe GrayCode 
 /**
- * Classe représentant un Gray code.
+ * Classe représentant un code Gray code.
  *
- * Le Gray code est un code binaire utilisé pour éviter les variations brusques dans les signaux numériques.
+ * Explication : Le Gray code est un code binaire utilisé pour éviter les variations brusques dans les signaux numériques.
  *
  * @author Sport Track
  */

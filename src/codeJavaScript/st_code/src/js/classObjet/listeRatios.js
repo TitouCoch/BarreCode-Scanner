@@ -1,8 +1,20 @@
+//Classe Liste Ratios 
+/**
+ * Classe représentant les listes ratios.
+ *
+ * Explication : Une liste de ratios est une liste correspondant au code en graycode.
+ *
+ * @author Sport Track
+ */
 class ListeRatios {
-    //ATTRIBUTS et CONSTRUCTEUR
+    /**
+     * Constructeur de l'objet ListeRatios.
+     *
+     * @param {Array[float]} uneListeRatios - Liste de ratios.
+     */
     constructor(uneListeRatios) {
         this.ListeRatios = uneListeRatios;
-        // ENCAPSULATION
+
     };
     setListeRatios(uneListeRatios) {
         this.ListeRatios = uneListeRatios;
