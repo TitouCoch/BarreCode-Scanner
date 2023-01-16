@@ -21,7 +21,7 @@
 
   /* a type name */
   .typ {
-    color: #4271ae; }
+    color: #ddb800; }
 
   /* a literal value */
   .lit {
@@ -61,7 +61,7 @@
 
   /* a function name */
   .fun {
-    color: #4271ae; } }
+    color: #ddb800; } }
 /* Use higher contrast and text-weight for printable form. */
 @media print, projection {
   .str {
