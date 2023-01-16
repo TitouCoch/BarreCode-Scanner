@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Class: Licence</title>
+    <title>JSDoc: Class: ListeBarre</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Class: Licence</h1>
+    <h1 class="page-title">Class: ListeBarre</h1>
 
     
 
@@ -28,10 +28,7 @@
 
 <header>
     
-        <h2><span class="attribs"><span class="type-signature"></span></span>Licence<span class="signature">(l)</span><span class="type-signature"></span></h2>
-        
-            <div class="class-description"><p>Classe représentant une licence.</p>
-<p>Une licence est caractérisée par une chaine de chiffre et de caractère, exemple &quot;Ax67De6t54&quot;.</p></div>
+        <h2><span class="attribs"><span class="type-signature"></span></span>ListeBarre<span class="signature">(l)</span><span class="type-signature"></span></h2>
         
     
 </header>
@@ -42,11 +39,9 @@
         
 
     
-    <h2>Constructor</h2>
-    
 
     
-    <h4 class="name" id="Licence"><span class="type-signature"></span>new Licence<span class="signature">(l)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="ListeBarre"><span class="type-signature"></span>new ListeBarre<span class="signature">(l)</span><span class="type-signature"></span></h4>
     
 
     
@@ -54,7 +49,7 @@
 
 
 <div class="description">
-    <p>Constructeur de l'objet Licence.</p>
+    <p>Constructeur de l'objet ListeBarre.</p>
 </div>
 
 
@@ -106,7 +101,7 @@
 
             
 
-            <td class="description last"><p>Numéro de la licence. Valeur par défaut : chaine vide.</p></td>
+            <td class="description last"><p>Liste de barres. Valeur par défaut : chaine vide.</p></td>
         </tr>
 
     
@@ -137,13 +132,6 @@
     
 
     
-    <dt class="tag-author">Author:</dt>
-    <dd class="tag-author">
-        <ul>
-            <li>Sport Track</li>
-        </ul>
-    </dd>
-    
 
     
 
@@ -154,7 +142,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="licence.js.html">licence.js</a>, <a href="licence.js.html#line9">line 9</a>
+        <a href="listeBarre.js.html">listeBarre.js</a>, <a href="listeBarre.js.html#line13">line 13</a>
     </li></ul></dd>
     
 
@@ -210,7 +198,7 @@
     
 
     
-    <h4 class="name" id="getNumLicence"><span class="type-signature"></span>getNumLicence<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
+    <h4 class="name" id="getListeBarre"><span class="type-signature"></span>getListeBarre<span class="signature">()</span><span class="type-signature"> &rarr; {string}</span></h4>
     
 
     
@@ -218,7 +206,7 @@
 
 
 <div class="description">
-    <p>Getter qui retourne le numéro de la licence.</p>
+    <p>Retourne la liste de barres.</p>
 </div>
 
 
@@ -262,7 +250,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="licence.js.html">licence.js</a>, <a href="licence.js.html#line26">line 26</a>
+        <a href="listeBarre.js.html">listeBarre.js</a>, <a href="listeBarre.js.html#line21">line 21</a>
     </li></ul></dd>
     
 
@@ -291,7 +279,7 @@
 
         
 <div class="param-desc">
-    <p>Numéro de la licence.</p>
+    <p>Liste de barres.</p>
 </div>
 
 
@@ -320,7 +308,7 @@
     
 
     
-    <h4 class="name" id="setNumLicence"><span class="type-signature"></span>setNumLicence<span class="signature">(l)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id="setListeBarre"><span class="type-signature"></span>setListeBarre<span class="signature">(l)</span><span class="type-signature"></span></h4>
     
 
     
@@ -328,7 +316,7 @@
 
 
 <div class="description">
-    <p>Modifie le numéro de la licence.</p>
+    <p>Modifie la liste de barres.</p>
 </div>
 
 
@@ -380,7 +368,7 @@
 
             
 
-            <td class="description last"><p>Nouveau numéro de la licence. Valeur par défaut : chaine vide.</p></td>
+            <td class="description last"><p>Nouvelle liste de barres. Valeur par défaut : chaine vide.</p></td>
         </tr>
 
     
@@ -421,7 +409,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="licence.js.html">licence.js</a>, <a href="licence.js.html#line35">line 35</a>
+        <a href="listeBarre.js.html">listeBarre.js</a>, <a href="listeBarre.js.html#line30">line 30</a>
     </li></ul></dd>
     
 
@@ -467,13 +455,13 @@
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="ContoursObjets.html">ContoursObjets</a></li><li><a href="GrayCode.html">GrayCode</a></li><li><a href="Licence.html">Licence</a></li><li><a href="ListeBarre.html">ListeBarre</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="global.html#ContoursObjets">ContoursObjets</a></li><li><a href="global.html#GrayCode">GrayCode</a></li><li><a href="global.html#Licence">Licence</a></li><li><a href="global.html#ListeBarre">ListeBarre</a></li><li><a href="global.html#ListeRatios">ListeRatios</a></li></ul><h3><a href="global.html">Global</a></h3>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Mon Jan 16 2023 11:33:25 GMT+0100 (Central European Standard Time)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Mon Jan 16 2023 14:28:42 GMT+0100 (Central European Standard Time)
 </footer>
 
 <script> prettyPrint(); </script>

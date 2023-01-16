@@ -1,12 +1,10 @@
 /**
- * Classe représentant une liste de barres.
- *
- * Explication : Une liste de barres est une liste de hauteurs de barre.
- *
+ * Objet Liste Barre
+ * @classListeBarre
+ * @property {string} listeBarre - La liste des barre
  * @author Sport Track
  */
 class ListeBarre {
-    //Constructeur de l'objet Licence
     /**
      * Constructeur de l'objet ListeBarre.
      *

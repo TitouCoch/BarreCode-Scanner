@@ -1,11 +1,24 @@
-//Classe Encodeur js
+/**
+ * Class méthode objet Encodeur de licence
+ * @class Encodeur
+ * @property {string} licence - Le numéro de licence
+ * @author Sport Track
+ */
 class Encodeur {
     //ATTRIBUTS et CONSTRUCTEUR
     constructor(licence) {
         //Table Encodage gray code
 
         //Initialisation des variables
+        /**
+         * Numéro de licence du joueur
+         * @type {string}
+         */
         this.licence = licence;
+        /**
+         * Table d'encodage, correspondance entre les caractères et le gray code
+         * @type {Object}
+         */
         this.TABLE_ENCODAGE = {
             'a': '000000',
             'b': '000001',
@@ -70,7 +83,10 @@ class Encodeur {
             8: '100010',
             9: '100011'
         };
-
+        /**
+         * Table de correspondance entre les le gray code et les ratios
+         * @type {Object}
+         */
         this.CORRESP_GRAYCODE_BARRE = {
             1: [0, 0, 0],
             2: [0, 0, 1],
@@ -84,7 +100,12 @@ class Encodeur {
 
     };
 
-    //Méthode Spécifique
+    /**
+     * Fonction qui convertie le numéro de licence en gray code à l'aide de la table de correspondance
+     * @function
+     * @param {string} numLicence - Le numéro de licence 
+     * @returns {string} licenceGrayCode 
+     */
     //Méthode : Aucune données >> Méthode convertionGrayCode >> licenceGrayCode
     convertionGrayCode(numLicence = "") {
         //licenceGrayCode >> Initialisation des variables >> licenceGrayCode
@@ -99,7 +120,12 @@ class Encodeur {
         return licenceGrayCode;
     }
 
-
+    /**
+     * Fonction qui convertie la phrase gray code en une liste de hauteur de barre à l'aide de la table de correspondance
+     * @function
+     * @param {string} licenceGrayCode - La phrase gray code 
+     * @returns {Array} listeBarre 
+     */
     //Méthode : licenceGrayCode >> conversionBarre >> liteBarre
     conversionBarres(licenceGrayCode) {
         //listeBarre >> Initialisation de liste barres >> listeBarre
@@ -130,6 +156,11 @@ class Encodeur {
         return listeBarre
     }
 
+    /**
+     * Fonction qui convertie la phrase gray code en une liste de hauteur de barre à l'aide de la table de correspondance
+     * @function
+     * @param {Array} listeBarre - La liste de hauteur de barre
+     */
     //Méthode : Aucune données >> genererCodeBarre >> Aucun résultat
     genererCodeBarre(listeBarre) {
         //Affichage du ST code

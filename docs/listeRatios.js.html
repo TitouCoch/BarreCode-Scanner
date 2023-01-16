@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: contoursObjet.js</title>
+    <title>JSDoc: Source: listeRatios.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: contoursObjet.js</h1>
+    <h1 class="page-title">Source: listeRatios.js</h1>
 
     
 
@@ -27,37 +27,38 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>/**
- * Objet Contours Objets 
- * @typedef {Object} ContoursObjets
- * @property {Array[Array[int]]} leContoursObjets
+ * Objet Liste Ratios
+ * @typedef {Object} ListeRatios
+ * @property {Array[float]} ListeRatios - La liste des ratios
  * @author Sport Track
  */
-class ContoursObjets {
+class ListeRatios {
     /**
-     * Constructeur de l'objet ContoursObjets.
+     * Constructeur de l'objet ListeRatios.
      *
-     * @param {} unContoursObjets - Matrice de contour.
+     * @param {Array[float]} uneListeRatios - Liste de ratios.
      */
-    constructor(unContoursObjets) {
-        this.leContoursObjets = unContoursObjets;
+    constructor(uneListeRatios) {
+        this.ListeRatios = uneListeRatios;
+
+    };
+    /**
+     * Méthode getListeRatios pour définir l'attribut de l'objet 
+     * @function
+     * @param {Array[float]} uneListeRatios - Une liste de ratios
+     */
+    setListeRatios(uneListeRatios) {
+        this.ListeRatios = uneListeRatios;
+    };
+    /**
+     * Méthode getListeRatios pour récupérer l'attribut de l'objet 
+     * @function
+     * @returns {Array[float]}
+     */
+    getListeRatios() {
+        return this.ListeRatios;
     };
 
-    /**
-     * SETTER : Modifie la matrice de contours.
-     * @param {} uneContoursObjets - Matrice de contour.
-     * 
-     */
-    setContoursObjets(unContoursObjets) {
-        this.leContoursObjets = unContoursObjets;
-    };
-    /**
-     * GETTER : Retourne la matrice de contours.
-     *
-     * @return {} Matrice de contour.
-     */
-    getContoursObjets() {
-        return this.leContoursObjets;
-    };
 };</code></pre>
         </article>
     </section>

@@ -1,13 +1,10 @@
-//Classe GrayCode 
 /**
- * Classe représentant un code Gray code.
- *
- * Explication : Le Gray code est un code binaire utilisé pour éviter les variations brusques dans les signaux numériques.
- *
+ * Objet GrayCode 
+ * @class GrayCode
+ * @property {string} graycode
  * @author Sport Track
  */
 class GrayCode {
-    //Constructeur de l'objet Licence
     /**
      * Constructeur de l'objet GrayCode.
      *
@@ -16,11 +13,8 @@ class GrayCode {
     constructor(g) {
       this.graycode = g;
     }
-
-    //Encapsulation
-    //Fonction qui retourne l'attribut numLicence
     /**
-     * Retourne le Gray code.
+     * Getter : Retourne le Gray code.
      *
      * @return {string} Gray code.
      */
@@ -29,7 +23,7 @@ class GrayCode {
     }
 
     /**
-     * Modifie le Gray code.
+     * Setter : Modifie le paramètre de l'objet Gray code.
      *
      * @param {string} g - Nouveau Gray code.
      */
