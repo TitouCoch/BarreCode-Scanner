@@ -19,7 +19,7 @@ La dernière partie de l’application sera une partie profil : statistiques, cl
 ## Problème Algorithmique
 
 Nous avons incorporé un code barre unique à tous les utilisateurs de l'application qui est généré à partir de la licence. Cela permettra de vérifier l'identité d'une personne aux matchs et de mettre à jour le tableau des présences, qui pourra être consulté par l'entraineur.
-Suite à cela nous avons développé un scanneur sur mesure pour décoder l'information encodé dans le code barre et retrouvé le numéro de licence
+Suite à cela nous avons développé un scanneur sur mesure pour décoder l'information encodée dans le code barre et retrouver le numéro de licence.
 
 ![Code barre](https://imgur.com/3D12ZPu.png)
 
@@ -35,7 +35,7 @@ Suite à cela nous avons développé un scanneur sur mesure pour décoder l'info
 ## Versions
 
 * [Ebauche Fonctionnelle](https://github.com/TitouCoch/SportTrack/releases/tag/versionFonctionnelle) 
-* [Version Final](https://github.com/TitouCoch/SportTrack/releases/tag/versionScannerFonctionnel)
+* [Version Finale](https://github.com/TitouCoch/SportTrack/releases/tag/versionScannerFonctionnel)
 
 ## Auteurs
 - [Ivan Salle](https://github.com/IvanSalle)
